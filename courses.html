@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCA Foundations — Required Courses</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Literata:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+  :root {
+    --bg: #0d0f14; --surface: #13161e; --surface2: #1a1e2a;
+    --border: #252a38; --border2: #2e3448;
+    --text: #e8eaf0; --muted: #7a8099;
+    --accent: #6c8ef5; --accent2: #a78bfa; --accent3: #34d399;
+    --accent4: #fb923c; --accent5: #f472b6; --warn: #fbbf24;
+    --d1: #6c8ef5; --d2: #a78bfa; --d3: #34d399; --d4: #fb923c; --d5: #f472b6;
+    --code-bg: #0a0c11; --radius: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Literata', Georgia, serif; font-size: 16px; line-height: 1.75; padding-bottom: 80px; }
+
+  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 40px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; }
+  .topbar a.back { color: var(--accent); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600; text-decoration: none; letter-spacing: 0.04em; }
+  .topbar a.back:hover { color: var(--text); }
+  .topbar-sep { color: var(--border2); }
+  .topbar-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; }
+  .topbar-right { margin-left: auto; }
+  .skilljar-btn { display: inline-flex; align-items: center; gap: 6px; background: rgba(108,142,245,0.1); border: 1px solid rgba(108,142,245,0.3); color: var(--accent); font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px; text-decoration: none; transition: all 0.15s; }
+  .skilljar-btn:hover { background: rgba(108,142,245,0.18); }
+
+  .hero { max-width: 860px; margin: 48px auto 0; padding: 0 40px; }
+  .hero .eyebrow { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; line-height: 1.2; margin-bottom: 14px; }
+  .hero h1 span { color: var(--accent3); }
+  .hero p { color: var(--muted); font-size: 15px; max-width: 580px; }
+
+  .progress-track { max-width: 860px; margin: 40px auto 0; padding: 0 40px; display: flex; align-items: center; overflow-x: auto; }
+  .progress-step { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; min-width: 110px; }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; border: 2px solid var(--border2); color: var(--muted); background: var(--surface); }
+  .step-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-align: center; line-height: 1.4; }
+  .progress-connector { flex: 1; height: 2px; background: var(--border); margin-bottom: 22px; min-width: 16px; }
+
+  .courses { max-width: 860px; margin: 44px auto 0; padding: 0 40px; display: flex; flex-direction: column; gap: 20px; }
+
+  .course-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .course-header { display: flex; align-items: flex-start; gap: 16px; padding: 22px 24px 0; }
+  .course-num { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; flex-shrink: 0; }
+  .course-meta { flex: 1; }
+  .level-badge { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border2); color: var(--muted); margin-bottom: 6px; }
+  .course-meta h2 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .course-meta h2 a { color: var(--text); text-decoration: none; }
+  .course-meta h2 a:hover { color: var(--accent); }
+  .course-meta h2 .ext { font-size: 13px; color: var(--muted); margin-left: 3px; }
+  .domain-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .dtag { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; padding: 2px 7px; border-radius: 4px; }
+  .dtag-d1 { background: rgba(108,142,245,0.12); color: var(--d1); border: 1px solid rgba(108,142,245,0.2); }
+  .dtag-d2 { background: rgba(167,139,250,0.12); color: var(--d2); border: 1px solid rgba(167,139,250,0.2); }
+  .dtag-d3 { background: rgba(52,211,153,0.12); color: var(--d3); border: 1px solid rgba(52,211,153,0.2); }
+  .dtag-d4 { background: rgba(251,146,60,0.12); color: var(--d4); border: 1px solid rgba(251,146,60,0.2); }
+  .dtag-d5 { background: rgba(244,114,182,0.12); color: var(--d5); border: 1px solid rgba(244,114,182,0.2); }
+
+  .course-body { padding: 16px 24px 20px; }
+  .course-desc { font-size: 14px; color: var(--muted); margin-bottom: 14px; line-height: 1.65; }
+  .topics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; margin-bottom: 16px; }
+  .topic-item { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.5; }
+  .topic-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+  .exam-note { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; font-size: 13px; line-height: 1.65; }
+  .exam-note-label { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+
+  .enroll-row { display: flex; align-items: center; justify-content: flex-end; padding: 4px 24px 20px; }
+  .enroll-btn { display: inline-flex; align-items: center; gap: 7px; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; padding: 8px 18px; border-radius: 7px; text-decoration: none; border: 1px solid transparent; transition: opacity 0.15s; }
+  .enroll-btn:hover { opacity: 0.85; }
+
+  .domain-map { max-width: 860px; margin: 48px auto 0; padding: 0 40px; }
+  .domain-map h2 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600; }
+
+  code { font-family: 'DM Mono', monospace; font-size: 12px; background: var(--code-bg); border: 1px solid var(--border); padding: 1px 5px; border-radius: 4px; }
+
+  @media (max-width: 680px) {
+    .topbar, .hero, .courses, .domain-map, .progress-track { padding-left: 20px; padding-right: 20px; }
+    .hero { margin-top: 28px; }
+    .hero h1 { font-size: 24px; }
+    .topics-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="back">← Study Guide</a>
+  <span class="topbar-sep">/</span>
+  <span class="topbar-title">Required Courses</span>
+  <div class="topbar-right">
+    <a href="https://anthropic.skilljar.com" target="_blank" class="skilljar-btn">Anthropic Academy ↗</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">Claude Certified Architect · Foundations</div>
+  <h1>Complete These <span>5 Courses</span><br>Before the Exam</h1>
+  <p>Work through these Anthropic Academy courses in order. Together they cover every concept tested across the five exam domains.</p>
+</div>
+
+<div class="progress-track">
+  <div class="progress-step">
+    <div class="step-num" style="border-color:var(--accent3);color:var(--accent3);">1</div>
+    <div class="step-label">Claude Code<br>101</div>
+  </div>
+  <div class="progress-connector"></div>
+  <div class="progress-step">
+    <div class="step-num" style="border-color:var(--d3);color:var(--d3);">2</div>
+    <div class="step-label">Claude Code<br>in Action</div>
+  </div>
+  <div class="progress-connector"></div>
+  <div class="progress-step">
+    <div class="step-num" style="border-color:var(--d4);color:var(--d4);">3</div>
+    <div class="step-label">Build with<br>Claude API</div>
+  </div>
+  <div class="progress-connector"></div>
+  <div class="progress-step">
+    <div class="step-num" style="border-color:var(--d2);color:var(--d2);">4</div>
+    <div class="step-label">Intro to<br>MCP</div>
+  </div>
+  <div class="progress-connector"></div>
+  <div class="progress-step">
+    <div class="step-num" style="border-color:var(--accent2);color:var(--accent2);">5</div>
+    <div class="step-label">MCP<br>Advanced</div>
+  </div>
+</div>
+
+<div class="courses">
+
+  <!-- 1: Claude Code 101 -->
+  <div class="course-card">
+    <div class="course-header">
+      <div class="course-num" style="background:rgba(52,211,153,0.12);color:var(--accent3);">1</div>
+      <div class="course-meta">
+        <div class="level-badge">Foundational</div>
+        <h2><a href="https://anthropic.skilljar.com/claude-code-101" target="_blank">Claude Code 101 <span class="ext">↗</span></a></h2>
+        <div class="domain-tags">
+          <span class="dtag dtag-d1">D1 Agentic</span>
+          <span class="dtag dtag-d2">D2 MCP</span>
+          <span class="dtag dtag-d3">D3 Config</span>
+          <span class="dtag dtag-d4">D4 Prompts</span>
+          <span class="dtag dtag-d5">D5 Context</span>
+        </div>
+      </div>
+    </div>
+    <div class="course-body">
+      <p class="course-desc">Everything from installation to advanced customization — for developers new to AI coding agents or experienced engineers exploring Claude Code for the first time.</p>
+      <div class="topics-grid">
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent3)"></span>AI coding agents vs. chat-based tools</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent3)"></span>Installation: terminal, VS Code, JetBrains, web</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent3)"></span>Agentic loop, context window &amp; permissions</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent3)"></span>Approval mode, auto-accept &amp; Plan Mode</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent3)"></span>Explore → Plan → Code → Commit workflow</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent3)"></span>Context management techniques</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent3)"></span><code>CLAUDE.md</code> for persistent project memory</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent3)"></span>Custom subagents &amp; MCP server basics</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent3)"></span>Writing hooks for deterministic control</div>
+      </div>
+      <div class="exam-note">
+        <div class="exam-note-label" style="color:var(--accent3)">Why this matters</div>
+        Introduces foundational concepts tested across all five domains — the agentic loop (D1), MCP servers (D2), <code>CLAUDE.md</code> and hooks (D3), prompt writing and Plan Mode (D4), and context management (D5). The most exam-relevant starting point in the catalog.
+      </div>
+    </div>
+    <div class="enroll-row">
+      <a href="https://anthropic.skilljar.com/claude-code-101" target="_blank" class="enroll-btn" style="background:rgba(52,211,153,0.12);border-color:rgba(52,211,153,0.35);color:var(--accent3);">Start Course ↗</a>
+    </div>
+  </div>
+
+  <!-- 2: Claude Code in Action -->
+  <div class="course-card">
+    <div class="course-header">
+      <div class="course-num" style="background:rgba(52,211,153,0.12);color:var(--d3);">2</div>
+      <div class="course-meta">
+        <div class="level-badge">Level 200 · Intermediate</div>
+        <h2><a href="https://anthropic.skilljar.com/claude-code-in-action" target="_blank">Claude Code in Action <span class="ext">↗</span></a></h2>
+        <div class="domain-tags">
+          <span class="dtag dtag-d3">D3 Config</span>
+          <span class="dtag dtag-d1">D1 Agentic</span>
+          <span class="dtag dtag-d5">D5 Context</span>
+        </div>
+      </div>
+    </div>
+    <div class="course-body">
+      <p class="course-desc">Practical guide to integrating Claude Code into development workflows — the core course for Domain 3 and Agent SDK multi-agent patterns.</p>
+      <div class="topics-grid">
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d3)"></span>Context management in real projects</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d3)"></span>Hooks for pre/post-tool enforcement</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d3)"></span>Custom slash commands &amp; skills</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d3)"></span>Agent SDK for multi-agent orchestration</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d3)"></span><code>CLAUDE.md</code> hierarchy &amp; path-specific rules</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d3)"></span>CI/CD integration with <code>-p</code> flag</div>
+      </div>
+      <div class="exam-note">
+        <div class="exam-note-label" style="color:var(--d3)">Why this matters</div>
+        Directly maps to <strong>Domain 3</strong> (~20% of exam) — <code>CLAUDE.md</code> hierarchy, custom commands/skills, path-specific rules, Plan Mode, and CI/CD. Reinforces <strong>Domain 1</strong> through the Agent SDK and multi-agent orchestration patterns.
+      </div>
+    </div>
+    <div class="enroll-row">
+      <a href="https://anthropic.skilljar.com/claude-code-in-action" target="_blank" class="enroll-btn" style="background:rgba(52,211,153,0.12);border-color:rgba(52,211,153,0.35);color:var(--d3);">Start Course ↗</a>
+    </div>
+  </div>
+
+  <!-- 3: Building with the Claude API -->
+  <div class="course-card">
+    <div class="course-header">
+      <div class="course-num" style="background:rgba(251,146,60,0.12);color:var(--d4);">3</div>
+      <div class="course-meta">
+        <div class="level-badge">Level 100 + 200</div>
+        <h2><a href="https://anthropic.skilljar.com/claude-with-the-anthropic-api" target="_blank">Building with the Claude API <span class="ext">↗</span></a></h2>
+        <div class="domain-tags">
+          <span class="dtag dtag-d1">D1 Agentic</span>
+          <span class="dtag dtag-d4">D4 Prompts</span>
+          <span class="dtag dtag-d5">D5 Context</span>
+          <span class="dtag dtag-d2">D2 MCP</span>
+        </div>
+      </div>
+    </div>
+    <div class="course-body">
+      <p class="course-desc">From authentication and basic prompting (L100) through tool use, RAG, building agents, and production optimization techniques (L200). Complete both sections.</p>
+      <div class="topics-grid">
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d4)"></span>Authentication &amp; basic prompting</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d4)"></span>Prompt engineering &amp; evaluations</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d4)"></span>Tool use &amp; <code>stop_reason</code> handling</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d4)"></span>Building agentic loops</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d4)"></span>RAG patterns</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d4)"></span>Production patterns &amp; optimization</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d4)"></span>Batch processing (Message Batches API)</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d4)"></span>Structured output via <code>tool_use</code></div>
+      </div>
+      <div class="exam-note">
+        <div class="exam-note-label" style="color:var(--d4)">Why this matters</div>
+        Maps to <strong>Domain 1</strong> (agentic loop, <code>tool_use</code>, <code>stop_reason</code>), <strong>Domain 4</strong> (prompt engineering, structured output, batch processing), and <strong>Domain 5</strong> (context management, retry loops). Complete both the L100 and L200 sections.
+      </div>
+    </div>
+    <div class="enroll-row">
+      <a href="https://anthropic.skilljar.com/claude-with-the-anthropic-api" target="_blank" class="enroll-btn" style="background:rgba(251,146,60,0.12);border-color:rgba(251,146,60,0.35);color:var(--d4);">Start Course ↗</a>
+    </div>
+  </div>
+
+  <!-- 4: Introduction to MCP -->
+  <div class="course-card">
+    <div class="course-header">
+      <div class="course-num" style="background:rgba(167,139,250,0.12);color:var(--d2);">4</div>
+      <div class="course-meta">
+        <div class="level-badge">Level 200 · Intermediate</div>
+        <h2><a href="https://anthropic.skilljar.com/introduction-to-model-context-protocol" target="_blank">Introduction to Model Context Protocol <span class="ext">↗</span></a></h2>
+        <div class="domain-tags">
+          <span class="dtag dtag-d2">D2 MCP</span>
+          <span class="dtag dtag-d1">D1 Agentic</span>
+        </div>
+      </div>
+    </div>
+    <div class="course-body">
+      <p class="course-desc">Learn to build MCP servers and clients from scratch using Python. Master tools, resources, and prompts to connect Claude with external services.</p>
+      <div class="topics-grid">
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d2)"></span>MCP server architecture</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d2)"></span>Building MCP clients in Python</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d2)"></span>Defining tools, resources &amp; prompts</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d2)"></span>Connecting Claude to external services</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d2)"></span>Tool descriptions &amp; error responses</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--d2)"></span>MCP server configuration &amp; scopes</div>
+      </div>
+      <div class="exam-note">
+        <div class="exam-note-label" style="color:var(--d2)">Why this matters</div>
+        Directly maps to <strong>Domain 2</strong> (~18% of exam) — writing effective tool descriptions, MCP server configuration, tool distribution, and structured error responses. Complete this before MCP Advanced Topics.
+      </div>
+    </div>
+    <div class="enroll-row">
+      <a href="https://anthropic.skilljar.com/introduction-to-model-context-protocol" target="_blank" class="enroll-btn" style="background:rgba(167,139,250,0.12);border-color:rgba(167,139,250,0.35);color:var(--d2);">Start Course ↗</a>
+    </div>
+  </div>
+
+  <!-- 5: MCP Advanced Topics -->
+  <div class="course-card">
+    <div class="course-header">
+      <div class="course-num" style="background:rgba(167,139,250,0.12);color:var(--accent2);">5</div>
+      <div class="course-meta">
+        <div class="level-badge">Level 300 · Advanced</div>
+        <h2><a href="https://anthropic.skilljar.com/model-context-protocol-advanced-topics" target="_blank">Model Context Protocol: Advanced Topics <span class="ext">↗</span></a></h2>
+        <div class="domain-tags">
+          <span class="dtag dtag-d2">D2 MCP</span>
+        </div>
+      </div>
+    </div>
+    <div class="course-body">
+      <p class="course-desc">Advanced implementation patterns for production MCP server development — builds directly on Introduction to Model Context Protocol.</p>
+      <div class="topics-grid">
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent2)"></span>Sampling patterns</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent2)"></span>Notifications &amp; event handling</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent2)"></span>File system access</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent2)"></span>Transport mechanisms</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent2)"></span>Production server patterns</div>
+        <div class="topic-item"><span class="topic-dot" style="background:var(--accent2)"></span>Error handling at scale</div>
+      </div>
+      <div class="exam-note">
+        <div class="exam-note-label" style="color:var(--accent2)">Why this matters</div>
+        Deepens <strong>Domain 2</strong> knowledge beyond basic server setup. Production MCP patterns — transport mechanisms, resource access, error handling at scale — map directly to exam questions on MCP configuration, structured error responses, and tool distribution.
+      </div>
+    </div>
+    <div class="enroll-row">
+      <a href="https://anthropic.skilljar.com/model-context-protocol-advanced-topics" target="_blank" class="enroll-btn" style="background:rgba(167,139,250,0.12);border-color:rgba(167,139,250,0.35);color:var(--accent2);">Start Course ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Domain map -->
+<div class="domain-map">
+  <h2>Course → Domain Coverage</h2>
+  <table>
+    <thead>
+      <tr><th>Course</th><th>Primary Domains</th><th>Secondary</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://anthropic.skilljar.com/claude-code-101" target="_blank" style="color:var(--accent3);text-decoration:none;">Claude Code 101</a></td>
+        <td><span class="dtag dtag-d1">D1</span> <span class="dtag dtag-d2">D2</span> <span class="dtag dtag-d3">D3</span> <span class="dtag dtag-d4">D4</span> <span class="dtag dtag-d5">D5</span></td>
+        <td style="color:var(--muted);font-size:13px;">baseline across all</td>
+      </tr>
+      <tr>
+        <td><a href="https://anthropic.skilljar.com/claude-code-in-action" target="_blank" style="color:var(--d3);text-decoration:none;">Claude Code in Action</a></td>
+        <td><span class="dtag dtag-d3">D3</span></td>
+        <td><span class="dtag dtag-d1">D1</span> <span class="dtag dtag-d5">D5</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://anthropic.skilljar.com/claude-with-the-anthropic-api" target="_blank" style="color:var(--d4);text-decoration:none;">Building with the Claude API</a></td>
+        <td><span class="dtag dtag-d1">D1</span> <span class="dtag dtag-d4">D4</span> <span class="dtag dtag-d5">D5</span></td>
+        <td><span class="dtag dtag-d2">D2</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://anthropic.skilljar.com/introduction-to-model-context-protocol" target="_blank" style="color:var(--d2);text-decoration:none;">Introduction to MCP</a></td>
+        <td><span class="dtag dtag-d2">D2</span></td>
+        <td><span class="dtag dtag-d1">D1</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://anthropic.skilljar.com/model-context-protocol-advanced-topics" target="_blank" style="color:var(--accent2);text-decoration:none;">MCP: Advanced Topics</a></td>
+        <td><span class="dtag dtag-d2">D2</span></td>
+        <td style="color:var(--muted);font-size:13px;">—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;">
+    <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--warn);margin-bottom:14px;">Domain Weight Recap</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;">
+      <div style="display:flex;justify-content:space-between;padding:7px 12px;background:rgba(108,142,245,0.07);border-radius:6px;border:1px solid rgba(108,142,245,0.15)"><span style="color:var(--d1)">D1 Agentic Architecture</span><strong style="color:var(--d1)">27%</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 12px;background:rgba(52,211,153,0.07);border-radius:6px;border:1px solid rgba(52,211,153,0.15)"><span style="color:var(--d3)">D3 Claude Code Config</span><strong style="color:var(--d3)">20%</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 12px;background:rgba(251,146,60,0.07);border-radius:6px;border:1px solid rgba(251,146,60,0.15)"><span style="color:var(--d4)">D4 Prompt Engineering</span><strong style="color:var(--d4)">20%</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 12px;background:rgba(167,139,250,0.07);border-radius:6px;border:1px solid rgba(167,139,250,0.15)"><span style="color:var(--d2)">D2 Tool Design &amp; MCP</span><strong style="color:var(--d2)">18%</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 12px;background:rgba(244,114,182,0.07);border-radius:6px;border:1px solid rgba(244,114,182,0.15)"><span style="color:var(--d5)">D5 Context &amp; Reliability</span><strong style="color:var(--d5)">15%</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 12px;background:rgba(251,191,36,0.07);border-radius:6px;border:1px solid rgba(251,191,36,0.15)"><span style="color:var(--warn)">Passing Score</span><strong style="color:var(--warn)">720 / 1000</strong></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
