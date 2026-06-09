@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCA Foundations — Practice Questions</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Literata:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+  :root {
+    --bg: #0d0f14; --surface: #13161e; --surface2: #1a1e2a;
+    --border: #252a38; --border2: #2e3448;
+    --text: #e8eaf0; --muted: #7a8099;
+    --accent: #6c8ef5; --accent2: #a78bfa; --accent3: #34d399;
+    --accent4: #fb923c; --accent5: #f472b6; --warn: #fbbf24;
+    --d1: #6c8ef5; --d2: #a78bfa; --d3: #34d399; --d4: #fb923c; --d5: #f472b6;
+    --code-bg: #0a0c11; --radius: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Literata', Georgia, serif; font-size: 16px; line-height: 1.75; padding: 0 0 80px; }
+
+  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 40px; display: flex; align-items: center; gap: 20px; position: sticky; top: 0; z-index: 100; }
+  .topbar a { color: var(--accent); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600; text-decoration: none; letter-spacing: 0.04em; }
+  .topbar a:hover { color: var(--text); }
+  .topbar-sep { color: var(--border2); }
+  .topbar-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); }
+  .topbar-count { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); }
+
+  .hero { max-width: 900px; margin: 48px auto 16px; padding: 0 40px; }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+  .hero p { color: var(--muted); font-size: 15px; max-width: 640px; }
+
+  .stats { max-width: 900px; margin: 24px auto; padding: 0 40px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .stat-pill { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; font-family: 'DM Mono', monospace; font-size: 12px; display: flex; align-items: center; gap: 8px; }
+  .stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  .scenario-block { max-width: 900px; margin: 40px auto 0; padding: 0 40px; }
+  .scenario-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .scenario-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--surface2); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .scenario-header h2 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; }
+  .scenario-header .qcount { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: 3px 10px; border-radius: 12px; }
+
+  .q-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 16px; overflow: hidden; }
+  .q-meta { display: flex; align-items: center; gap: 10px; padding: 14px 20px 0; }
+  .q-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+  .d-badge { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+  .d1 { background: rgba(108,142,245,0.15); color: var(--d1); border: 1px solid rgba(108,142,245,0.25); }
+  .d2 { background: rgba(167,139,250,0.15); color: var(--d2); border: 1px solid rgba(167,139,250,0.25); }
+  .d3 { background: rgba(52,211,153,0.15); color: var(--d3); border: 1px solid rgba(52,211,153,0.25); }
+  .d4 { background: rgba(251,146,60,0.15); color: var(--d4); border: 1px solid rgba(251,146,60,0.25); }
+  .d5 { background: rgba(244,114,182,0.15); color: var(--d5); border: 1px solid rgba(244,114,182,0.25); }
+
+  .q-body { padding: 12px 20px 16px; }
+  .q-text { font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+  .q-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+  .q-opt { display: flex; gap: 12px; align-items: flex-start; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 14px; line-height: 1.6; }
+  .q-opt-letter { font-family: 'DM Mono', monospace; font-weight: 500; color: var(--muted); flex-shrink: 0; margin-top: 1px; }
+  .q-opt.correct { border-color: var(--accent3); background: rgba(52,211,153,0.08); }
+  .q-opt.correct .q-opt-letter { color: var(--accent3); }
+
+  .reveal-btn { background: none; border: 1px solid var(--border2); color: var(--muted); font-family: 'DM Mono', monospace; font-size: 12px; padding: 6px 16px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
+  .reveal-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .reveal-btn.shown { border-color: var(--accent3); color: var(--accent3); }
+
+  .answer-block { display: none; margin-top: 14px; background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; font-size: 14px; line-height: 1.65; }
+  .answer-block.visible { display: block; }
+  .answer-label { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent3); margin-bottom: 6px; }
+  .answer-text { color: var(--text); }
+
+  code { font-family: 'DM Mono', monospace; font-size: 13px; background: var(--code-bg); border: 1px solid var(--border); padding: 1px 5px; border-radius: 4px; }
+
+  @media (max-width: 680px) {
+    .topbar { padding: 12px 20px; }
+    .hero, .stats, .scenario-block { padding: 0 20px; }
+    .hero { margin-top: 28px; }
+    .hero h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html">← Study Guide</a>
+  <span class="topbar-sep">/</span>
+  <span class="topbar-title">Practice Questions</span>
+  <span class="topbar-count">49 unique questions · 4 scenarios</span>
+</div>
+
+<div class="hero">
+  <h1>Practice Question Bank</h1>
+  <p>Questions grouped by scenario, tagged by domain. Click <em>Show Answer</em> to reveal the correct option and explanation.</p>
+</div>
+
+<div class="stats">
+  <div class="stat-pill"><span class="stat-dot" style="background:var(--d1)"></span>D1 Agentic Architecture · 27%</div>
+  <div class="stat-pill"><span class="stat-dot" style="background:var(--d2)"></span>D2 Tool Design &amp; MCP · 18%</div>
+  <div class="stat-pill"><span class="stat-dot" style="background:var(--d3)"></span>D3 Claude Code Config · 20%</div>
+  <div class="stat-pill"><span class="stat-dot" style="background:var(--d4)"></span>D4 Prompt Engineering · 20%</div>
+  <div class="stat-pill"><span class="stat-dot" style="background:var(--d5)"></span>D5 Context Management · 15%</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCENARIO 1: Claude Code for CI
+════════════════════════════════════════════ -->
+<div class="scenario-block">
+  <div class="scenario-header">
+    <div class="scenario-icon">⚙️</div>
+    <h2>Scenario: Claude Code for Continuous Integration</h2>
+    <span class="qcount">11 questions</span>
+  </div>
+
+  <!-- Q1 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q1</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">The code review component works iteratively: Claude analyzes a changed file, then may request related files via tool calling to understand context before providing final feedback. You're evaluating batch processing to reduce API costs. What is the primary technical constraint when considering batch processing for this workflow?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Batch processing latency of up to 24 hours is too slow for pull request feedback, though the workflow could otherwise function.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Batch processing lacks request correlation identifiers for matching outputs to input requests.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>The asynchronous model prevents executing tools mid-request and returning results for Claude to continue analysis.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>The batch API doesn't support tool definitions in request parameters.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">Batch processing is fundamentally asynchronous — the entire request is submitted and completed in one shot. This makes it incompatible with agentic loops that require tool execution mid-request and returning results back to Claude for continued reasoning.</div></div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q2</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">Your CI/CD system performs three types of analysis: (1) quick style checks on each PR that block merging, (2) comprehensive security audits run weekly, and (3) test case generation triggered nightly. The Message Batches API offers 50% cost savings but can take up to 24 hours. Which combination correctly matches each task to its API approach?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Use synchronous calls for PR style checks and nightly test generation; use Message Batches API only for weekly security audits.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Use synchronous calls for PR style checks; use the Message Batches API for weekly security audits and nightly test generation.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Use the Message Batches API for all three tasks to maximize the 50% cost savings.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Use synchronous calls for all three tasks and rely on prompt caching to reduce costs.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text">PR style checks block merging and need synchronous responses. Weekly security audits and nightly test generation are non-blocking background jobs — their results don't need to be immediate, making them ideal for batch processing's 50% cost saving.</div></div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q3</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">Your team currently runs two workflows: (1) a blocking pre-merge check that must complete before developers can merge, and (2) a technical debt report generated overnight for review the next morning. Your manager proposes switching both to the Message Batches API for its 50% cost savings. How should you evaluate this proposal?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Keep real-time calls for both workflows to avoid batch result ordering issues.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Switch both to batch processing with a timeout fallback to real-time if batches take too long.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Switch both workflows to batch processing with status polling to check for completion.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Use batch processing for the technical debt reports only; keep real-time calls for pre-merge checks.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: D</div><div class="answer-text">Pre-merge checks require synchronous responses — developers can't wait up to 24 hours to merge. The overnight technical debt report has no urgency requirement, so batch processing is a safe cost saving there.</div></div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q4</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text">Your automated review analyzes comments and docstrings. The current prompt instructs Claude to "check that comments are accurate and up-to-date." Findings frequently flag acceptable patterns (TODO markers, straightforward descriptions) while missing comments that describe behavior the code no longer implements. What change addresses the root cause?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Include git blame data so Claude can identify comments that predate recent code modifications.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Filter out TODO, FIXME, and descriptive comment patterns before analysis to reduce noise.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Specify explicit criteria: flag comments only when their claimed behavior contradicts actual code behavior.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Add few-shot examples of misleading comments to help the model recognize similar patterns.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">The prompt is vague — "accurate and up-to-date" is ambiguous. Explicit criteria (flag only when claimed behavior contradicts actual behavior) directly addresses the root cause by removing the model's latitude to over-interpret the instruction.</div></div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q5</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text">Your automated review generates test case suggestions for each PR. Claude suggests 10 test cases but 6 duplicate scenarios already covered in the existing test suite. What change would most effectively reduce duplicate suggestions?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Add instructions directing Claude to focus exclusively on edge cases and error conditions.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Reduce requested suggestions from 10 to 5, assuming Claude will prioritize the most valuable cases first.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Include the existing test file in the context so Claude can identify what scenarios are already covered.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Implement post-processing that filters suggestions whose descriptions match keywords from existing test names.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">Claude can't avoid duplicates it doesn't know about. Providing the existing test file as context gives Claude the information it needs to identify and skip already-covered scenarios.</div></div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q6</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text">Your CI pipeline runs the Claude Code CLI (with <code>--print</code> mode) for code reviews. Developers find reviews insightful but report the narrative paragraph output is difficult to integrate — they need structured data with file path, line number, severity, and suggested fix to auto-post as inline PR comments. What's the most effective approach?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Include explicit formatting instructions in your review prompt requiring each finding to follow a parseable template like <code>[FILE:path] [LINE:n] [SEVERITY:level]</code>.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Use CLI flags <code>--output-format json</code> and <code>--json-schema</code> to enforce structured findings, then parse output to post inline comments via the GitHub API.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Keep the narrative format but add a summarization step that uses Claude to generate a structured JSON summary.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Add a "Review Output Format" section to <code>CLAUDE.md</code> with examples showing structured findings.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: A</div><div class="answer-text">Explicit formatting instructions with a parseable template in the prompt is the most direct and reliable way to enforce consistent structured output. This directly controls what Claude produces without adding extra pipeline steps.</div></div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q7</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text">Analysis shows significant variation in false positive rates: security/correctness findings 8%, performance 18%, style/naming 52%, documentation 48%. Developer surveys indicate growing distrust — many dismiss findings without review because "half are wrong." The high false positive categories are undermining confidence in the accurate ones. What approach best restores developer trust?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Apply a uniform strictness reduction across all categories to bring the overall false positive rate to an acceptable level.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Keep all categories but display a confidence score with each finding, letting developers decide which to investigate.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Temporarily disable high false positive categories (style, naming, documentation) and run only high-precision categories while improving prompts.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">Disabling low-precision categories lets the high-value findings (security, correctness) regain trust while you iterate on improving the problematic prompts. A uniform reduction would degrade the good categories unnecessarily.</div></div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q8</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text">Your automated code review averages 15 findings per PR with a 40% false positive rate. The bottleneck is investigation time — developers must click into each finding to read Claude's reasoning before deciding. Your CLAUDE.md already has comprehensive rules, and stakeholders have rejected filtering findings before developer review. What change would best address the investigation time bottleneck?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Categorize findings as "blocking issues" versus "suggestions" with tiered review requirements.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Add a post-processor that analyzes finding patterns and automatically suppresses those matching historical false positive signatures.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Configure Claude to only surface findings it assesses as high confidence, filtering out uncertain flags before developers see them.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Require Claude to include its reasoning and confidence assessment inline with each finding.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: D</div><div class="answer-text">The bottleneck is clicking in to read reasoning — surfacing reasoning inline eliminates that extra step. B and C both filter before developers see them, which stakeholders explicitly rejected.</div></div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q9</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text">Your automated reviews identify valid issues but developers report feedback isn't actionable. Findings say things like "complex ticket allocation logic" or "potential null pointer" without specifying what to change. Adding "always include specific fix suggestions" to the prompt produces inconsistent output — sometimes detailed, sometimes vague. What prompting technique would most reliably produce consistently actionable feedback?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Implement a two-pass approach where one prompt identifies issues and a second prompt generates fixes, allowing specialization.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Further refine the instructions with more explicit requirements for each part of the feedback format.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Expand the context window to include more of the surrounding codebase so the model has sufficient information.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Add 3-4 few-shot examples showing the exact format: issue identified, code location, specific fix suggestion.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: D</div><div class="answer-text">Few-shot examples provide a concrete template the model can pattern-match against, producing more consistent output than prose instructions alone. When instructions have already been tried and produce inconsistent results, examples are the next lever.</div></div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q10</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text">After an initial review generates 12 findings, a developer pushes new commits to address them. The re-review produces 8 findings — but 5 duplicate earlier comments on code already fixed in the new commits. What's the most effective way to eliminate redundant feedback while maintaining thorough analysis?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Add a post-processing filter that removes findings matching previous file paths and issue descriptions.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Include prior review findings in context, instructing Claude to only report new or still-unaddressed issues.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Run reviews only on initial PR creation and final pre-merge state, skipping intermediate commits.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Restrict the review scope to only files modified in the most recent push.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text">Giving Claude the prior findings as context and instructing it to skip already-addressed issues is the most reliable approach — the model can reason about what was fixed rather than relying on brittle text matching (A) or skipping legitimate re-checks (D).</div></div>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q11</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text">Your pipeline script runs <code>claude "Analyze this pull request for security issues"</code> but the job hangs indefinitely. Logs indicate Claude Code is waiting for interactive input. What's the correct approach to run Claude Code in an automated pipeline?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Add the <code>--batch</code> flag: <code>claude --batch "Analyze this pull request..."</code></div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Add the <code>-p</code> flag: <code>claude -p "Analyze this pull request..."</code></div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Set the environment variable <code>CLAUDE_HEADLESS=true</code> before running.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Redirect stdin from /dev/null: <code>claude "..." &lt; /dev/null</code></div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text">The <code>-p</code> (print) flag puts Claude Code into non-interactive mode, printing output to stdout and exiting. This is the correct way to use Claude Code in CI/CD pipelines and automated scripts.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCENARIO 2: Customer Support Agent
+════════════════════════════════════════════ -->
+<div class="scenario-block">
+  <div class="scenario-header">
+    <div class="scenario-icon">🎧</div>
+    <h2>Scenario: Customer Support Resolution Agent</h2>
+    <span class="qcount">15 questions</span>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q12</span><span class="d-badge d2">D2 · Tool Design & MCP</span></div>
+    <div class="q-body">
+      <p class="q-text">In testing, the agent frequently calls <code>get_customer</code> when users ask about order status, even though <code>lookup_order</code> would be more appropriate. What should you examine first to address this issue?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Reduce the number of tools available to the agent to simplify selection.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Implement a pre-processing classifier that detects order queries and routes directly to <code>lookup_order</code>.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Review tool descriptions to ensure they clearly distinguish each tool's purpose.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Add few-shot examples covering every possible order-related query pattern to the system prompt.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">Tool descriptions are the primary signal Claude uses for tool selection. Vague or overlapping descriptions are the most common root cause of tool misselection. This is always the first thing to examine before adding classifiers or examples.</div></div>
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q13</span><span class="d-badge d2">D2 · Tool Design & MCP</span></div>
+    <div class="q-body">
+      <p class="q-text">Your <code>get_customer</code> tool returns all matches when searching by name. Claude picks the customer with the most recent order when multiple results are returned, but production data shows this causes 15% of multi-match cases to proceed with the wrong customer account. How should you address this?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Implement a confidence scoring system that proceeds automatically above 85% and prompts for clarification below.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Modify <code>get_customer</code> to return only the single most likely match, eliminating ambiguous results.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Add few-shot examples showing Claude how to use conversational context to infer the correct customer.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Instruct Claude to ask for an additional identifier (email, phone, or order number) when <code>get_customer</code> returns multiple matches.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text">Returning a single best-match from the tool eliminates ambiguity at the source. Having Claude guess from multiple matches (even with few-shot examples) is unreliable when identity accuracy matters. Tool design change is more robust than prompt engineering here.</div></div>
+    </div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q14</span><span class="d-badge d2">D2 · Tool Design & MCP</span></div>
+    <div class="q-body">
+      <p class="q-text">Production logs show: when customers include "account" in their message (e.g., "check my account for the order"), the agent calls <code>get_customer</code> first 78% of the time. Without "account" (e.g., "check on the order I placed"), it calls <code>lookup_order</code> first 93% of the time. Tool descriptions are well-written. What is the most likely root cause?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>The model's base training creates associations between "account" terminology and customer-related operations that override the tool descriptions.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>The model requires fine-tuning on examples that include both account and order language.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>The tool descriptions need additional negative examples specifying when NOT to use each tool.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>The system prompt contains keyword-sensitive instructions that steer behavior based on terms like "account," creating unintended tool selection patterns.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: D</div><div class="answer-text">When descriptions are already well-written and the behavior is keyword-triggered, the most likely culprit is the system prompt containing language that inadvertently steers tool selection. Review the system prompt for "account"-related routing instructions.</div></div>
+    </div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q15</span><span class="d-badge d2">D2 · Tool Design & MCP</span></div>
+    <div class="q-body">
+      <p class="q-text">Production data shows that in 12% of cases, your agent skips <code>get_customer</code> entirely and calls <code>lookup_order</code> using only the customer's stated name, occasionally leading to misidentified accounts and incorrect refunds. What change would most effectively address this reliability issue?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Enhance the system prompt to state that customer verification via <code>get_customer</code> is mandatory before any order operations.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Implement a routing classifier that enables only the subset of tools appropriate for each request type.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Add few-shot examples showing the agent always calling <code>get_customer</code> first.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Add a programmatic prerequisite that blocks <code>lookup_order</code> and <code>process_refund</code> calls until <code>get_customer</code> has returned a verified customer ID.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: A</div><div class="answer-text">An explicit mandatory instruction in the system prompt is the most direct fix. It addresses the 12% skips without adding architectural complexity. Hard-wiring with a programmatic prerequisite (D) is over-engineering for a prompt-fixable problem.</div></div>
+    </div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q16</span><span class="d-badge d2">D2 · Tool Design & MCP</span></div>
+    <div class="q-body">
+      <p class="q-text">Production metrics show your agent averages 4+ API round-trips per resolution. Analysis reveals Claude frequently requests <code>get_customer</code> and <code>lookup_order</code> in separate sequential turns even when both are needed upfront. What's the most effective way to reduce round-trips?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Prompt Claude to batch tool requests per turn, and return all tool results together before the next API call.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Implement speculative execution that automatically calls likely-needed tools alongside any requested tool.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Create composite tools like <code>get_customer_with_orders</code> that bundle common lookup combinations into single calls.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Increase <code>max_tokens</code> to give Claude more space to plan ahead and naturally batch its tool requests.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">Composite tools that bundle commonly co-requested data into a single call directly reduce round-trips at the tool design level. This is more reliable than trying to prompt Claude to parallelize calls (A), which Claude may or may not follow.</div></div>
+    </div>
+  </div>
+
+  <!-- Q17 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q17</span><span class="d-badge d2">D2 · Tool Design & MCP</span></div>
+    <div class="q-body">
+      <p class="q-text">Production logs reveal the agent misinterprets data: Unix timestamps from <code>get_customer</code>, ISO 8601 dates from <code>lookup_order</code>, and numeric status codes (1=pending, 2=shipped). Some tools are third-party MCP servers you cannot modify. What's the most maintainable approach to normalize data formats?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Add detailed format documentation to your system prompt explaining each tool's data conventions.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Create a <code>normalize_data</code> tool that the agent calls after each data retrieval to transform values.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Use a <code>PostToolUse</code> hook to intercept tool results and apply formatting transformations before agent processing.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Modify tools you control to return human-readable formats; create wrapper tools for third-party tools.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">A <code>PostToolUse</code> hook intercepts all tool results automatically before Claude sees them, applying normalization transparently regardless of whether the tool is yours or third-party. This is more maintainable than modifying each tool individually.</div></div>
+    </div>
+  </div>
+
+  <!-- Q18 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q18</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">Your agent achieves 55% first-contact resolution, well below the 80% target. Logs show it escalates straightforward cases (standard damage replacements with photo evidence) while attempting to autonomously handle complex situations requiring policy exceptions. What's the most effective way to improve escalation calibration?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Add explicit escalation criteria to your system prompt with few-shot examples demonstrating when to escalate versus resolve autonomously.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Implement sentiment analysis to detect customer frustration and automatically escalate when negative sentiment exceeds a threshold.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Deploy a separate classifier model trained on historical tickets to predict which requests need escalation.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Have the agent self-report a confidence score and automatically route to humans when confidence falls below a threshold.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: A</div><div class="answer-text">The agent is miscalibrated on escalation criteria — it doesn't know when to escalate. Explicit criteria with few-shot examples directly teaches the correct decision boundary. This is a prompt engineering problem, not a sentiment or separate-model problem.</div></div>
+    </div>
+  </div>
+
+  <!-- Q19 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q19</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text">Your support agent uses progressive summarization — when context reaches 70% capacity, older turns are summarized while recent ones remain verbatim. Customers reference specific amounts stated 20+ turns ago (e.g., "the 15% discount I mentioned") but the agent responds with incorrect values because these details got condensed into vague summaries like "discussed promotional pricing." What's the most effective fix?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Store full conversation history externally and implement retrieval to search it when the agent detects reference phrases.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Revise the summarization prompt to explicitly preserve all numerical values, percentages, dates, and customer-stated expectations verbatim.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Extract transactional facts (amounts, dates, order numbers) into a persistent "case facts" block included in each prompt, outside the summarized history.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Increase the summarization threshold from 70% to 85% capacity so conversations have more room before summarization triggers.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">A persistent "case facts" block kept outside summarized history ensures critical transactional data is always available regardless of context compression. This architecturally separates durable facts from conversational history, which is the correct pattern.</div></div>
+    </div>
+  </div>
+
+  <!-- Q20 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q20</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">Simple requests like "refund order #1234" succeed in 3-4 tool calls with 91% resolution rate. Complex requests like "I've been charged twice, my discount didn't apply, and I want to cancel" average 12+ tool calls with only 54% resolution — the agent investigates concerns sequentially and gathers redundant customer data for each one. What's the most effective change?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Reduce the number of available tools by consolidating <code>get_customer</code>, <code>lookup_order</code>, and billing lookups into a single tool.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Decompose the request into distinct concerns, then investigate each in parallel using shared customer context before synthesizing a resolution.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Add explicit verification gates requiring the agent to checkpoint after resolving each concern before moving to the next.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Add few-shot examples demonstrating ideal tool call sequences for various multi-part billing scenarios.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text">Decomposing into parallel concerns eliminates redundant customer lookups and sequential investigation. Shared customer context is fetched once. This directly addresses both the high tool-call count and the low resolution rate caused by sequential handling.</div></div>
+    </div>
+  </div>
+
+  <!-- Q21 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q21</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">You're implementing the agentic loop for your support agent. After each API call to Claude, you need to determine whether to continue the loop (execute the requested tools and call Claude again) or stop (present the final response to the customer). What determines this decision?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Parse Claude's response text for phrases like "I've completed" or "Is there anything else?" — these natural language signals indicate the task is finished.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Check whether the response includes any assistant text content — if Claude generated explanatory text, the loop should end.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Set a maximum iteration count (e.g., 10 calls) and stop when reached, regardless of whether Claude indicates more work is needed.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Check the <code>stop_reason</code> field in Claude's response — continue when it equals <code>"tool_use"</code> and stop when it equals <code>"end_turn"</code>.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: D</div><div class="answer-text"><code>stop_reason</code> is the authoritative signal in the API response. <code>"tool_use"</code> means Claude wants to call tools; <code>"end_turn"</code> means Claude has finished. Parsing natural language (A) is fragile and unreliable.</div></div>
+    </div>
+  </div>
+
+  <!-- Q22 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q22</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text">Your agent handles single-concern requests with 94% accuracy. However, multi-concern messages (e.g., "I need a refund for order #1234 and also want to update my shipping address for order #5678") drop to 58% — the agent typically addresses only one concern or mixes up parameters. What's the most effective approach?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Add few-shot examples demonstrating the correct reasoning and tool sequence for multi-concern requests.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Consolidate related tools into fewer, more general-purpose tools.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Implement response validation that detects incomplete responses and automatically re-prompts the agent.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Implement a preprocessing layer that decomposes multi-concern messages into individual requests, processes each independently, then combines the results.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: D</div><div class="answer-text">Decomposing at the preprocessing layer eliminates the root cause — the agent trying to handle multiple independent concerns in a single pass. Each concern is handled in isolation (where accuracy is 94%), then results are combined. This is architectural rather than prompt-patching.</div></div>
+    </div>
+  </div>
+
+  <!-- Q23 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q23</span><span class="d-badge d2">D2 · Tool Design & MCP</span></div>
+    <div class="q-body">
+      <p class="q-text">Production logs show the agent frequently calls <code>get_customer</code> when users ask about orders (e.g., "check my order #12345"), instead of calling <code>lookup_order</code>. Both tools have minimal descriptions ("Retrieves customer information" / "Retrieves order details") and accept similar identifier formats. What's the most effective first step?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Consolidate both tools into a single <code>lookup_entity</code> tool that internally determines which backend to query.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Expand each tool's description to include input formats, example queries, edge cases, and boundaries explaining when to use it versus similar tools.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Add few-shot examples to the system prompt demonstrating correct tool selection patterns.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Implement a routing layer that parses user input and pre-selects the appropriate tool based on detected keywords.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text">The descriptions are minimal — that's the root cause. Expanding them with input formats, examples, and explicit "use when X, not when Y" boundaries is the most direct fix. This is always step one before adding classifiers or few-shot examples.</div></div>
+    </div>
+  </div>
+
+  <!-- Q24 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q24</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text">Complex cases (billing disputes, multi-order returns) have customer satisfaction scores 15% lower than simple cases — even when the resolution is technically correct. Root cause analysis reveals the agent provides accurate resolutions but inconsistently explains reasoning: sometimes omitting relevant policy details, timeline information, or next steps. You want to improve quality without adding human review overhead. What's most effective?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Add a confirmation step where the agent asks "Does this fully address your concern?" before closing.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Increase the model tier from Haiku to Sonnet for complex cases, routing based on detected complexity.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Add a self-critique step where the agent evaluates its draft response for completeness before sending.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Implement few-shot examples showing complete resolution explanations for five common complex case types.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">A self-critique step (multi-pass review) catches omissions before the response is sent — the agent evaluates its own output against a completeness checklist. This directly addresses the inconsistency without adding human review or changing the model tier.</div></div>
+    </div>
+  </div>
+
+  <!-- Q25 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q25</span><span class="d-badge d2">D2 · Tool Design & MCP</span></div>
+    <div class="q-body">
+      <p class="q-text">After calling <code>get_customer</code> and <code>lookup_order</code>, the agent has retrieved all available system data but faces uncertainty. Which situation represents the most appropriate trigger for calling <code>escalate_to_human</code>?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>The customer wants to cancel an order that shipped yesterday with delivery scheduled for tomorrow.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>The customer's message mentions both a billing question and a product return — escalate so a human can coordinate both issues.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>The customer claims they never received their order, but tracking shows it was delivered and signed for three days ago.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>The customer requests a price match against a competitor. Your policies allow adjustments for your own site within 14 days but are silent on competitor pricing.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: D</div><div class="answer-text">Policy ambiguity (the policy is silent on competitor pricing) is a clear escalation trigger — the agent cannot make an authoritative decision without policy guidance. A, B, and C are all situations the agent has the data and policy clarity to handle autonomously.</div></div>
+    </div>
+  </div>
+
+  <!-- Q26 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q26</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text">Production logs show the agent sometimes selects <code>get_customer</code> when <code>lookup_order</code> would be more appropriate for ambiguous requests like "I need help with my recent purchase." You decide to add few-shot examples. Which approach will most effectively address this issue?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Add 4-6 examples targeting ambiguous scenarios, each showing reasoning for why one tool was chosen over plausible alternatives.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Add examples grouped by tool — all <code>get_customer</code> scenarios together, then all <code>lookup_order</code> scenarios.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Add explicit "use when" and "do not use when" guidelines in each tool's description covering the ambiguous cases.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Add 10-15 examples of clear, unambiguous requests that demonstrate correct tool selection for each tool's typical use cases.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: A</div><div class="answer-text">The problem is specifically with ambiguous requests. Targeting examples at the ambiguous cases (with visible reasoning) trains the model on exactly the decision boundary it's getting wrong. Unambiguous examples (D) don't help with the ambiguous ones.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCENARIO 3: Multi-Agent Research System
+════════════════════════════════════════════ -->
+<div class="scenario-block">
+  <div class="scenario-header">
+    <div class="scenario-icon">🔬</div>
+    <h2>Scenario: Multi-Agent Research System</h2>
+    <span class="qcount">12 questions</span>
+  </div>
+
+  <!-- Q27 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q27</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">The document analysis agent discovers that two credible sources contain directly conflicting statistics: one government report states 40% growth while an industry analysis states 12% growth. Both appear legitimate and the discrepancy could significantly affect research conclusions. What's the most effective way for the document analysis agent to handle this?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Complete the document analysis with both figures included, explicitly annotate the conflict with source attribution, and let the coordinator decide how to reconcile before passing to synthesis.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Include both figures in the analysis output without flagging them, allowing the synthesis agent to determine which to use.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Halt analysis and escalate to the coordinator immediately, asking it to determine which source is authoritative before continuing.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Apply source credibility heuristics to select the most likely accurate figure and complete analysis using that value.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: A</div><div class="answer-text">The subagent should complete its work, surface the conflict with explicit annotation and source attribution, and propagate the decision upward. Halting mid-analysis (C) is inefficient; silently passing both (B) loses the conflict signal; choosing one (D) makes a decision that belongs to the coordinator.</div></div>
+    </div>
+  </div>
+
+  <!-- Q28 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q28</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">The document analysis subagent frequently encounters failures: corrupted PDF sections, password-protected files, and parsing timeouts. Currently any exception immediately terminates the subagent and returns an error to the coordinator, causing excessive coordinator involvement in routine error handling. What's the most effective architectural improvement?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Configure the subagent to always return partial results with success status, embedding error details in metadata.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Create a dedicated error-handling agent that monitors all subagent failures via a shared queue and makes recovery decisions.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Have the coordinator validate all documents before dispatching to the subagent, rejecting documents likely to cause failures.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Have the subagent implement local recovery for transient failures and only propagate errors it cannot resolve, including what was attempted and any partial results obtained.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: D</div><div class="answer-text">Handle errors at the lowest level capable of resolving them. The subagent can retry transient failures (timeouts, partial reads) locally without bothering the coordinator. Only unresolvable errors propagate upward — with full context about what was tried and what partial data was recovered.</div></div>
+    </div>
+  </div>
+
+  <!-- Q29 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q29</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">During a materials research task, the web search subagent queries three source categories: academic databases returned 15 relevant papers, industry reports returned "0 results found," and patent databases returned "Connection timeout." When designing error propagation to the coordinator, what approach enables the best recovery decisions?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Distinguish access failures (timeout) needing retry decisions from valid empty results ("0 results") representing successful queries.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Report both the timeout and "0 results" as failures requiring coordinator intervention.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Have the subagent retry transient failures internally and only report persistent errors.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Aggregate outcomes into a single success rate metric (e.g., "67% source coverage") with detailed logs available on request.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: A</div><div class="answer-text">A timeout and "0 results" are semantically distinct: a timeout is an infrastructure failure that may succeed on retry; "0 results" is a valid completed query indicating no data exists. Conflating them (B, D) causes the coordinator to make wrong recovery decisions.</div></div>
+    </div>
+  </div>
+
+  <!-- Q30 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q30</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">The web search results covered 3 of 5 requested source categories (competitor websites and industry reports succeeded; news archives and social media feeds timed out). Document analysis succeeded for all provided documents. The synthesis agent must now produce a findings summary from this mixed-quality input. What's the most effective error propagation strategy?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Have the synthesis agent request the coordinator retry the timed-out sources with extended timeouts before proceeding.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Proceed with synthesis using only the successful sources, generating output without indicating which data was unavailable.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Structure the synthesis output with coverage annotations indicating which findings are well-supported versus which topic areas have gaps due to unavailable sources.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Have the synthesis agent return an error to the coordinator indicating incomplete upstream data, triggering a full retry or task failure.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">The synthesis agent should produce output with explicit coverage annotations — indicating which areas are well-supported and which have gaps. This provides value from the available data while preserving data provenance for the consumer of the report.</div></div>
+    </div>
+  </div>
+
+  <!-- Q31 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q31</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">When researching a broad topic, both the web search agent and the document analysis agent are investigating the same subtopics, resulting in significant overlap in findings. Token usage has nearly doubled without proportionally increasing research coverage. What's the most effective way to address this?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Allow both agents to complete their parallel work, then have the coordinator deduplicate overlapping findings before passing to the synthesis agent.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Have the coordinator explicitly partition the research space before delegation, assigning distinct subtopics or source types to each agent.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Convert to sequential execution where document analysis runs only after web search completes, using the web search findings as context to avoid duplication.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text">Partitioning the research space before delegation prevents overlap at the source. Deduplication after the fact (A) wastes tokens on redundant work. Sequential execution (C) sacrifices the parallelism benefit and increases latency.</div></div>
+    </div>
+  </div>
+
+  <!-- Q32 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q32</span><span class="d-badge d2">D2 · Tool Design & MCP</span></div>
+    <div class="q-body">
+      <p class="q-text">Production logs show requests to "analyze the quarterly report I uploaded" are routed to the web search agent 45% of the time instead of the document analysis agent. The web search agent has an <code>analyze_content</code> tool described as "analyzes content and extracts key information," while the document analysis agent has <code>analyze_document</code> described as "analyzes documents and extracts key information." How should you address this misrouting?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Expand the document analysis tool's description to include example use cases like "Use for uploaded PDFs, Word documents, and spreadsheets."</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Add few-shot examples to the coordinator's prompt showing correct routing: "User uploads quarterly report → document analysis agent."</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Add a pre-routing classifier that determines whether the user is referencing uploaded files or web content.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Rename the web search tool to <code>extract_web_results</code> and update its description to clarify it handles web-sourced content only.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text">Few-shot examples in the coordinator's prompt directly address the routing decision the coordinator is getting wrong. They teach the correct "uploaded file → document agent, web content → web agent" pattern more reliably than description tweaks alone.</div></div>
+    </div>
+  </div>
+
+  <!-- Q33 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q33</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">During testing, the synthesis agent frequently needs to verify specific claims while combining findings. Currently, when verification is needed, the synthesis agent returns control to the coordinator, which invokes the web search agent, then re-invokes synthesis with results — adding 2-3 round-trips per task and increasing latency by 40%. 85% of verifications are simple fact-checks; 15% require deeper investigation. What's the most effective approach?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Have the synthesis agent accumulate all verification needs and return them as a batch to the coordinator at the end of its pass.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Give the synthesis agent access to all web search tools so it can handle any verification need directly.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Give the synthesis agent a scoped <code>verify_fact</code> tool for simple lookups, while complex verifications continue delegating through the coordinator.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Have the web search agent proactively cache extra context during initial research, anticipating what the synthesis agent might need to verify.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">A scoped tool handles the 85% of simple cases locally (eliminating 2-3 round-trips for them) while the 15% complex cases still route through the coordinator as appropriate. This is the principle of minimum necessary tool scope — give agents only what they need for their role.</div></div>
+    </div>
+  </div>
+
+  <!-- Q34 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q34</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">The web search subagent times out while researching a complex topic. You need to design how this failure information flows back to the coordinator agent. Which error propagation approach best enables intelligent recovery?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Catch the timeout within the subagent and return an empty result set marked as successful.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Return structured error context to the coordinator including the failure type, the attempted query, any partial results, and potential alternative approaches.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Implement automatic retry with exponential backoff within the subagent, returning a generic "search unavailable" status only after all retries are exhausted.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Propagate the timeout exception directly to a top-level handler that terminates the entire research workflow.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text">Structured error context — failure type, attempted query, partial results, alternative approaches — gives the coordinator everything it needs to make an intelligent recovery decision (retry with different query, use alternative source, proceed with partial data). Masking failures (A) or terminating (D) eliminate the coordinator's ability to recover.</div></div>
+    </div>
+  </div>
+
+  <!-- Q35 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q35</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text">Production monitoring reveals inconsistent synthesis quality. When aggregated results total ~75K tokens, the synthesis agent reliably cites information from the first 15K tokens and the final 10K tokens, but frequently omits critical findings in the middle 50K tokens — even when those findings directly address the research question. How should you restructure the aggregated input?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Place a key findings summary at the beginning of the aggregated input and organize detailed results with explicit section headers for easier navigation.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Summarize all subagent outputs to under 20K tokens total before aggregation.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Stream subagent results to the synthesis agent incrementally, processing web search results first to completion before introducing document analysis findings.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Implement rotation that alternates which subagent's results appear first across different research tasks.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: A</div><div class="answer-text">This is the "lost in the middle" problem — LLMs attend more to content at the start and end of long contexts. Placing a key findings summary at the beginning ensures the most important content is in the high-attention zone, while section headers help navigation through the detailed body.</div></div>
+    </div>
+  </div>
+
+  <!-- Q36 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q36</span><span class="d-badge d2">D2 · Tool Design & MCP</span></div>
+    <div class="q-body">
+      <p class="q-text">You gave the document analysis agent access to a general-purpose <code>fetch_url</code> tool so it could load documents from URLs. Production logs reveal this agent now frequently fetches search engine result pages to conduct ad-hoc web searches — behavior that should route through the web search agent. What's the most effective fix?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Replace <code>fetch_url</code> with a <code>load_document</code> tool that validates URLs point to document formats (PDF, DOCX, etc.).</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Implement filtering that blocks <code>fetch_url</code> calls to known search engine domains while allowing other URLs.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Remove <code>fetch_url</code> from the document analysis agent and route all URL loading through the coordinator to the web search agent.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Add instructions to the document analysis agent's prompt clarifying it should only use <code>fetch_url</code> for loading document URLs, not searching.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: A</div><div class="answer-text">Replacing with a constrained <code>load_document</code> tool that validates document format URLs makes misuse structurally impossible. Prompt instructions (D) are fragile. Domain blocking (B) is a whack-a-mole approach that won't catch novel search engines or creative workarounds.</div></div>
+    </div>
+  </div>
+
+  <!-- Q37 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q37</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text">Combined outputs from the web search agent (~85K tokens) and document analysis agent (~70K tokens) total 155K tokens, but the synthesis agent performs optimally with inputs under 50K tokens. What's the most effective solution?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Add an intermediate summarization agent that condenses findings before passing to synthesis.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Have the synthesis agent process findings in sequential batches, maintaining running state between calls.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Store findings in a vector database and give the synthesis agent retrieval tools to query during its work.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Modify upstream agents to return structured data (key facts, citations, relevance scores) instead of verbose content and reasoning.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: D</div><div class="answer-text">Modifying upstream agents to return structured data (key facts, citations, scores) instead of full content and reasoning chains addresses the root cause — the volume is generated unnecessarily. An intermediate summarization agent (A) adds latency and another potential failure point without fixing the source of the problem.</div></div>
+    </div>
+  </div>
+
+  <!-- Q38 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q38</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">After running the system on "impact of AI on creative industries," each subagent completes successfully. However, final reports cover only visual arts — completely missing music, writing, and film production. When examining the coordinator's logs, it decomposed the topic into: "AI in digital art creation," "AI in graphic design," and "AI in photography." What is the most likely root cause?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>The coordinator agent's task decomposition is too narrow, resulting in subagent assignments that don't cover all relevant domains of the topic.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>The web search agent's queries are not comprehensive enough and need to be expanded to cover more creative industry sectors.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>The document analysis agent is filtering out sources related to non-visual creative industries due to overly restrictive relevance criteria.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>The synthesis agent lacks instructions for identifying coverage gaps in the findings it receives.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: A</div><div class="answer-text">The coordinator's decomposition log explicitly shows only visual arts subtasks — this is the evidence. Each subagent did its job correctly within its assigned scope. The problem is the coordinator's narrow task decomposition, not the subagents' execution.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCENARIO 4: Code Generation with Claude Code
+════════════════════════════════════════════ -->
+<div class="scenario-block">
+  <div class="scenario-header">
+    <div class="scenario-icon">💻</div>
+    <h2>Scenario: Code Generation with Claude Code</h2>
+    <span class="qcount">11 questions</span>
+  </div>
+
+  <!-- Q39 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q39</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text">You want to create a custom <code>/review</code> slash command that runs your team's standard code review checklist. This command should be available to every developer when they clone or pull the repository. Where should you create this command file?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>In the <code>CLAUDE.md</code> file at the project root.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>In <code>~/.claude/commands/</code> in each developer's home directory.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>In the <code>.claude/commands/</code> directory in the project repository.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>In a <code>.claude/config.json</code> file with a <code>commands</code> array.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">Project-scoped commands live in <code>.claude/commands/</code> within the repo and are available to all developers who clone it. User-scoped commands in <code>~/.claude/commands/</code> (B) are personal and not shared through the repo.</div></div>
+    </div>
+  </div>
+
+  <!-- Q40 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q40</span><span class="d-badge d2">D2 · Tool Design & MCP</span></div>
+    <div class="q-body">
+      <p class="q-text">Your team wants to add a GitHub MCP server to enable PR lookups and CI status checks through Claude Code. Each of the six developers has their own GitHub personal access token. You want consistent tooling across the team without committing credentials to version control. What's the most effective configuration approach?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Create an MCP server wrapper that reads tokens from a <code>.env</code> file and proxies requests to the GitHub API, then add this wrapper to your project <code>.mcp.json</code>.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Have each developer configure the server in user scope with <code>claude mcp add --scope user</code>.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Configure the server in project scope with a placeholder token value, then instruct developers to override it in their local scope configuration.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Add the server to a project-scoped <code>.mcp.json</code> with environment variable expansion (<code>${GITHUB_TOKEN}</code>) for authentication, and document the required environment variable in your project README.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">Configuring the server in project scope with a placeholder, then having each developer override with their local token in local scope, keeps the MCP config shared without committing credentials. Each developer's local config takes precedence over the project config.</div></div>
+    </div>
+  </div>
+
+  <!-- Q41 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q41</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text">Your team's <code>/migration</code> skill has three production issues: (1) developers invoke it without arguments, producing poorly-named files; (2) the skill incorporates schema details from unrelated earlier conversations; (3) a developer accidentally triggered destructive cleanup when the skill had broad tool access. Which configuration approach addresses all three issues?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Use positional parameters instead of <code>$ARGUMENTS</code> to enforce specific inputs, include explicit schema file references via <code>@</code> syntax, and add <code>description</code> frontmatter warning about destructive operations.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Add <code>argument-hint</code> frontmatter to prompt for required parameters, use <code>context: fork</code> to isolate execution, and restrict <code>allowed-tools</code> to file write operations.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Split into separate <code>/migration-create</code> and <code>/migration-apply</code> skills, add instructions to request a migration name if not provided, and use different <code>allowed-tools</code> scopes for each.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Include validation instructions directing Claude to verify <code>$ARGUMENTS</code> contains a valid name, add prompts to ignore prior conversation context, and list forbidden operations.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text"><code>argument-hint</code> prompts for required parameters (issue 1); <code>context: fork</code> isolates the skill from prior conversation context (issue 2); restricting <code>allowed-tools</code> to file write operations prevents broad tool access from enabling accidental destructive actions (issue 3).</div></div>
+    </div>
+  </div>
+
+  <!-- Q42 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q42</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text">Developers report that after running your <code>/explore-alternatives</code> skill, Claude's subsequent responses are influenced by the exploration — sometimes referencing abandoned approaches or maintaining exploratory context that confuses actual implementation work. What's the most effective way to configure this skill?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Split the skill into two separate skills — <code>/explore-start</code> and <code>/explore-end</code> — to demarcate when exploration context should be discarded.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Add <code>context: fork</code> to the skill's frontmatter.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Create the skill in <code>~/.claude/skills/</code> instead of <code>.claude/skills/</code>.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Use the <code>!</code> prefix in the skill to execute the exploration logic as a bash subprocess.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text"><code>context: fork</code> runs the skill in an isolated context branch — the exploration happens in a fork that doesn't pollute the main conversation history. When the skill completes, the main context is unchanged.</div></div>
+    </div>
+  </div>
+
+  <!-- Q43 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q43</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text">Your team's <code>CLAUDE.md</code> file has grown to over 500 lines, mixing TypeScript conventions, testing guidelines, API patterns, and deployment procedures. Developers find it difficult to locate and update relevant sections. What approach does Claude Code support for organizing project-level instructions into focused, topic-specific modules?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Create separate markdown files in <code>.claude/rules/</code>, each covering one topic (e.g., <code>testing.md</code>, <code>api-conventions.md</code>).</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Split instructions into <code>README.md</code> files in relevant subdirectories, which Claude automatically loads as instructions.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Define a <code>.claude/config.yaml</code> file that maps file patterns to specific sections within <code>CLAUDE.md</code>.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Create multiple files named <code>CLAUDE.md</code> at different levels of the directory tree, each one overriding the parent's instructions.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: A</div><div class="answer-text">Claude Code supports modular instructions via separate markdown files in <code>.claude/rules/</code>. Each file is topic-focused and loaded automatically. This is the supported mechanism for breaking up a monolithic <code>CLAUDE.md</code>.</div></div>
+    </div>
+  </div>
+
+  <!-- Q44 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q44</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text">You're adding error handling wrappers to external API calls across a 120-file codebase in three phases: (1) discovering all API call locations, (2) designing the error handling approach collaboratively, and (3) implementing wrappers consistently. During Phase 1, Claude generates verbose output listing hundreds of call sites. Your context window is filling rapidly before discovery is even complete. What's the most effective approach?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Define your error handling pattern in <code>CLAUDE.md</code>, then process files in batches across multiple sessions, relying on the shared memory file for consistency.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Use the Explore subagent for Phase 1 to isolate verbose output and return a summary, then continue Phases 2-3 in the main conversation.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Continue all phases in the main conversation, using <code>/compact</code> periodically to reduce context usage as you progress.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Switch to headless mode with <code>--continue</code>, passing explicit context summaries between batch invocations.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: B</div><div class="answer-text">Using the Explore subagent for the verbose discovery phase keeps the noisy output isolated from the main conversation. The subagent returns a compact summary, preserving main context for the design and implementation phases where continuity matters.</div></div>
+    </div>
+  </div>
+
+  <!-- Q45 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q45</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text">You've found that including 2-3 full exemplar endpoint implementations as context significantly improves consistency when generating new API endpoints. However, this context is only useful for creating new endpoints — not for bug fixes, code reviews, or other API directory work. What's the most efficient configuration approach?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Reference the exemplar endpoints manually in each generation request by copying relevant code into your prompt.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Add the exemplar endpoint code with pattern documentation to the project <code>CLAUDE.md</code> file so it's automatically available.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Configure path-specific rules in <code>.claude/rules/api/</code> that include the exemplar code and activate when working in the API directory.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Create a skill that references the exemplar endpoints and includes pattern-following instructions, invoked on-demand via slash command.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: D</div><div class="answer-text">A skill invoked on-demand means the heavy exemplar context is only loaded when you're actually generating a new endpoint. Adding it to <code>CLAUDE.md</code> (B) wastes context on every interaction. Path-specific rules (C) would activate on all API directory work, not just endpoint creation.</div></div>
+    </div>
+  </div>
+
+  <!-- Q46 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q46</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text">You've asked Claude Code to implement a function that transforms API responses into a normalized internal format. After two iterations, the output structure still doesn't match expectations — some fields are nested differently and timestamps aren't formatted correctly. You've been describing the requirements in prose, but Claude interprets them differently each time. What's the most effective approach for the next iteration?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Rewrite your requirements with greater technical precision, specifying exact field mappings, nesting rules, and timestamp format strings.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Write a JSON schema defining the expected output structure and validate Claude's output against it after each iteration.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Provide 2-3 concrete input-output examples showing the expected transformation for representative API responses.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Ask Claude to explain its current interpretation of the requirements so you can identify where understanding diverges.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: A</div><div class="answer-text">When prose descriptions produce inconsistent interpretations, the fix is greater technical precision — exact field names, explicit nesting rules, format strings. This removes ambiguity from the specification itself rather than working around it.</div></div>
+    </div>
+  </div>
+
+  <!-- Q47 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q47</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text">You've created a <code>/commit</code> skill in <code>.claude/skills/commit/SKILL.md</code> that your team uses. One developer wants to customize it for their personal workflow (different commit message format, additional checks) without affecting teammates. What should you recommend?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Set <code>override: true</code> in the personal skill's frontmatter to take precedence over the project version.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Create a personal version in <code>~/.claude/skills/</code> with a different name like <code>/my-commit</code>.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Add username-based conditional logic to the project skill's frontmatter.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Create a personal version at <code>~/.claude/skills/commit/SKILL.md</code> with the same name.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: D</div><div class="answer-text">User-scope skills (<code>~/.claude/skills/</code>) with the same name as a project-scope skill take precedence for that user, while teammates continue using the project version unchanged. This is the intended scoping hierarchy.</div></div>
+    </div>
+  </div>
+
+  <!-- Q48 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q48</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text">Three developers have been using Claude Code for months and Claude correctly follows the "always include comprehensive error handling" guideline. A fourth developer who just joined reports Claude isn't following this guideline, even though all four are working in the same repository with the latest code pulled. What's the most likely cause?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>The new developer's <code>~/.claude/CLAUDE.md</code> contains conflicting instructions that override the project settings.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Claude Code builds per-user preference models over time. The new developer needs to repeatedly specify the requirement until Claude learns their preferences.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>The guideline exists in the original developers' <code>~/.claude/CLAUDE.md</code> files (user-level) instead of the project's <code>.claude/CLAUDE.md</code>. Move it to the project-level file.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Claude Code caches <code>CLAUDE.md</code> contents after first read. The original developers have cached versions while the new developer loaded after the file was modified.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">If three people who set up their environment earlier follow the guideline but a new joiner doesn't, the most likely cause is the guideline living in their user-level <code>CLAUDE.md</code> files rather than in the project-level file. Moving it to the project scope fixes it for all current and future team members.</div></div>
+    </div>
+  </div>
+
+  <!-- Q49 -->
+  <div class="q-card">
+    <div class="q-meta"><span class="q-num">Q49</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text">Your team uses Claude Code to generate code suggestions, but subtle issues — performance optimizations that break edge cases, cleanups that change behavior unexpectedly — only surface when a different team member reviews the PR. Claude's generation reasoning shows it considered these cases but concluded its approach was correct. Which approach directly addresses the root cause of this self-review limitation?</p>
+      <div class="q-options">
+        <div class="q-opt"><span class="q-opt-letter">A</span>Add explicit self-review instructions to the generation prompt, asking Claude to critique its own suggestions before finalizing output.</div>
+        <div class="q-opt"><span class="q-opt-letter">B</span>Enable extended thinking mode for the generation pass, allowing more thorough deliberation before producing suggestions.</div>
+        <div class="q-opt"><span class="q-opt-letter">C</span>Have a second, independent Claude Code instance review the changes without seeing the generator's reasoning.</div>
+        <div class="q-opt"><span class="q-opt-letter">D</span>Include comprehensive test files and documentation in the prompt context so Claude better understands expected behavior during generation.</div>
+      </div>
+      <button class="reveal-btn" onclick="reveal(this)">Show Answer</button>
+      <div class="answer-block"><div class="answer-label">Correct Answer: C</div><div class="answer-text">The root cause is that a model reviewing its own reasoning is anchored by its own conclusions. An independent instance that doesn't see the generator's reasoning chain will surface issues the generator rationalized away — the same reason human code review catches things the author misses.</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function reveal(btn) {
+  const card = btn.closest('.q-body');
+  const block = card.querySelector('.answer-block');
+  const correct = block.querySelector('.answer-label').textContent.replace('Correct Answer: ', '').trim();
+  const opts = card.querySelectorAll('.q-opt');
+  const letters = ['A','B','C','D'];
+  opts.forEach((opt, i) => {
+    if (letters[i] === correct) opt.classList.add('correct');
+  });
+  block.classList.add('visible');
+  btn.textContent = 'Answer Shown';
+  btn.classList.add('shown');
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>
