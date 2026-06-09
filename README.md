@@ -12,7 +12,7 @@
 |---|---|
 | [Interactive Study Guide](https://mukesh-simform.github.io/claude-certified-architect-guide/) | Primary study resource — all 5 domains, cheat sheets, code examples, dark-themed UI |
 | [Practice Question Bank](https://mukesh-simform.github.io/claude-certified-architect-guide/questions.html) | 49 unique questions from official practice exams, grouped by scenario, with reveal answers |
-| [Required Courses](courses.html) | The 5 Anthropic Academy courses to complete before the exam |
+| [Required Courses](https://mukesh-simform.github.io/claude-certified-architect-guide/courses.html) | The 5 Anthropic Academy courses to complete before the exam |
 | [Official Exam Guide](docs/Exam_Guide.pdf) | Anthropic's official exam specification (8 pages) |
 | [Course Catalog](docs/Anthropic_Academy_Course_Catalog.pdf) | Full Anthropic Academy catalog |
 
@@ -40,7 +40,7 @@ Complete these five [Anthropic Academy](https://anthropic.skilljar.com) courses 
 4. **Introduction to Model Context Protocol** *(Level 200)* — Building MCP servers and clients → covers D2
 5. **Model Context Protocol: Advanced Topics** *(Level 300)* — Production MCP patterns: sampling, notifications, file system access, transport mechanisms → deepens D2
 
-See [courses.html](courses.html) for full descriptions and domain mapping.
+See [courses](https://mukesh-simform.github.io/claude-certified-architect-guide/courses.html) for full descriptions and domain mapping.
 
 ---
 
