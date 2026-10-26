@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CCAP Playbook · Claude Certified Architect Professional</title>
+<meta name="description" content="Free community playbook for the Claude Certified Architect – Professional exam: 7 domains, objective map, cheat sheet, 129 practice questions and a timed mock exam.">
+<link rel="canonical" href="https://mukesh-simform.github.io/claude-certified-architect-guide/ccap/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Claude Certification Prep">
+<meta property="og:title" content="CCAP Playbook · Claude Certified Architect Professional">
+<meta property="og:description" content="Free community playbook for the Claude Certified Architect – Professional exam: 7 domains, objective map, cheat sheet, 129 practice questions and a timed mock exam.">
+<meta property="og:url" content="https://mukesh-simform.github.io/claude-certified-architect-guide/ccap/">
+<meta property="og:image" content="https://mukesh-simform.github.io/claude-certified-architect-guide/assets/img/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FAF9F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1F1E1D" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="ccap.css">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+<header class="sitebar">
+  <a class="logo" href="../index.html"><i aria-hidden="true"></i>Claude Certification Prep</a>
+  <nav aria-label="Site">
+    <a href="../ccaf/index.html">CCAF guide</a><a href="../ccap/index.html" aria-current="page">CCAP playbook</a><a href="../practice/index.html">Practice</a><a href="../courses/index.html">Courses</a>
+  </nav>
+  <button class="iconbtn" id="themebtn" type="button">Dark mode</button>
+</header>
+<div class="shell">
+<nav class="rail" aria-label="Domains">
+  <div class="brand">CCAP Playbook</div>
+  <div class="sub">Last reviewed <span data-reviewed></span></div>
+  <ol id="nav"></ol>
+  <div class="prog" aria-hidden="true"><i id="progbar"></i></div>
+  <div class="progtxt" id="progtxt"></div>
+  <div class="progtxt" id="qtotal" style="margin-top:6px"></div>
+</nav>
+<main id="top">
+
+<section class="hero chap" id="start" data-title="Start here" data-w="">
+  <div class="eyebrow">Claude Certified Architect · Professional · All domains</div>
+  <h1>CCAP Playbook</h1>
+  <p class="lead">The one source to study from. It covers the seven domains of the published exam guide and concentrates on the distinctions that are easiest to confuse. Reviewed against Anthropic docs as of October 2026; when they disagree, the docs win. Read each domain once, drill the contrast boxes and the Exact facts chapter, then follow the study plan to exam day.</p>
+  <div class="call note"><span class="tag">Unofficial study playbook</span><p>This playbook is community-written exam preparation. It is not affiliated with, endorsed by or reviewed by Anthropic, and it contains no real exam questions. The practice questions are original, written with AI assistance, and are not a prediction of what the exam will ask. Product names, limits, settings and model versions change. Facts were last checked against the Anthropic docs in <span data-reviewed></span>, and the <a href="#sources">Sources</a> chapter lists every page used. Where other material and the docs disagree, this guide follows the docs.</p></div>
+  <div class="facts">
+    <div class="fact"><b>63</b><span>items, multiple choice and multiple response</span></div>
+    <div class="fact"><b>120</b><span>minutes, about 1 min 54 s per item</span></div>
+    <div class="fact"><b>720</b><span>pass on a 100–1,000 scaled score</span></div>
+    <div class="fact"><b>12 mo</b><span>credential validity, free renewal assessment (as of Oct 2026)</span></div>
+  </div>
+  <h2 class="sub2">Reading plan, about 75 minutes</h2>
+  <p>Minutes follow each domain's exam weight. Practice questions sit at the end of each domain; allow about 45 seconds per question on top.</p>
+  <div class="plan" id="plan"></div>
+  <div class="call tip"><span class="tag">How to read a scenario question</span>
+    <p>A scenario question usually stresses one constraint: control, audience, cost, latency, risk, compliance, or reliability. Options often name a trade-off. Several options are true statements. Only one answers <b>the constraint the scenario stresses</b>, and usually with the smallest change that fixes it. Three eliminations work on most items:</p>
+    <ul>
+      <li><b>Bigger model, more tools, more autonomy</b> is rarely the answer to a reliability, cost or risk problem.</li>
+      <li><b>Monitor it, log it, or add a confirmation</b> loses to <b>removing the risk</b> when removal is possible.</li>
+      <li><b>Fix the root cause at its layer:</b> stale data is a retrieval problem, a broken rule is a determinism problem, a wrong format is a prompt or schema problem.</li>
+    </ul>
+  </div>
+  <details><summary>Exam logistics and rules</summary><div>
+    <ul>
+      <li><b>As of October 2026; confirm on the official exam page before booking.</b> Proctored online (OnVUE) or at a Pearson VUE test center, in English or Japanese. Exam code CCAR-P, fee USD 175. Closed book. Allow about 135 minutes in the seat for the 120-minute exam.</li>
+      <li>The certification is offered to organizations in the Claude Partner Network. No single course is required; the official exam guide and the Anthropic Academy partner courses are the official preparation.</li>
+      <li>Criterion-referenced scoring. Results show pass/fail and percent correct by domain.</li>
+      <li>Retakes (as of October 2026; confirm on the official exam page): wait 14 days after a first fail, 30 after a second, 90 after a third. Maximum 4 attempts in 12 months, full fee each time.</li>
+      <li>Cancel or reschedule at least 24 hours before the appointment, or the fee is forfeited (official exam guide).</li>
+      <li>Bring a valid government photo ID matching your registration exactly. No phones, watches, headphones, notes or second monitors. You accept an NDA before starting.</li>
+      <li>Target candidate: solution architects, AI/ML engineers and tech leads with about 3 years of architecture work and 6 months of hands-on production work with Claude. Not aimed at casual users or isolated prompt writing.</li>
+    </ul></div></details>
+  <details><summary>About this version</summary><div>
+    <ul>
+      <li><b>What is inside.</b> All seven domains mapped to the 38 official objectives, contrast boxes, sixteen distractor patterns, a one-page cheat sheet, 49 exact facts, 129 original practice questions with explanations, and a timed 63-question exam mode.</li>
+      <li><b>Sources:</b> reviewed against the Anthropic docs listed in the <a href="#sources">Sources</a> chapter as of October 2026; when they disagree, the docs win. Places where other material often differs from the docs are listed at the end of the <a href="#final">Final review</a>.</li>
+      <li>Your progress (answers and ticks) is saved in this browser only. Use <b>Reset my progress</b> at the end of the page to clear it.</li>
+    </ul></div></details>
+</section>
+
+<!-- ================= STUDY PLAN ================= -->
+<section class="chap" id="plan7" data-title="Study plan" data-w="">
+  <header><div class="eyebrow">Three days to the exam</div><h2>Study plan</h2>
+  <p>The exam tests judgment on <a href="#objectives">38 published objectives</a>, not product trivia. Read the seven domains once, then follow these three days and book. A new detail in a third-party practice exam is not a reason to delay.</p></header>
+  <ol class="days">
+    <li><span class="t">Before</span><div><strong>Read the seven domains once</strong><span class="d">Normal speed, about 75 minutes. Answer each domain's practice questions as you finish it.</span></div></li>
+    <li><span class="t">Day 1</span><div><strong>Objective map (about 2 hours)</strong><span class="d">Go through all 38 rows of the <a href="#objectives">Objective map</a>. Say each rule out loud. If you hesitate, open the linked section, re-read it, then tick the row. Finish with every row ticked.</span></div></li>
+    <li><span class="t">Day 2</span><div><strong>Drill (about 2 hours)</strong><span class="d">The <a href="#facts">Exact facts</a> table with answers hidden, then every practice question not yet answered. Finish with the <a href="#traps">Distractor patterns</a> and the <a href="#cheat">cheat sheet</a>.</span></div></li>
+    <li><span class="t">Day 3</span><div><strong>Timed exam (2 h 15 min)</strong><span class="d">One sitting in <a href="#exam">Timed exam mode</a>: 63 questions, 120 minutes. Flag anything you guessed. Afterwards, review every wrong or flagged answer and its section.</span></div></li>
+  </ol>
+  <div class="call watch"><span class="tag">High-yield: the most-confused concepts</span><p>These four topics have the most moving parts and are the easiest to mix up. Give them extra time on Day 1.</p><ol class="ordr">
+    <li><b>Cache invalidation by prefix level</b> (<a href="#d2-reuse">Domain 2 §5</a>). A change breaks its own level and everything after it, never above.</li>
+    <li><b>Tool search round-trip</b> (<a href="#d3-bloat">Domain 3 §1</a>). Never defer the search tool; resend every tool each turn; expansion is automatic; no <code>tool_result</code> for <code>srvtoolu_</code>.</li>
+    <li><b>Metric families</b> (<a href="#d4-metrics">Domain 4</a> contrast box). Wording, meaning, fields or judged quality decides the grader.</li>
+    <li><b>Subagents, agent teams, dynamic workflows</b> (<a href="#d1-teams">Domain 1 §4b</a>). Who talks to whom, what it costs, the hard limits.</li>
+  </ol></div>
+  <h3>When to book</h3>
+  <div class="gate">
+    <div class="go"><b>Timed exam ≥ 80%, no domain below 70%</b>Book the exam.</div>
+    <div class="mid"><b>72–79%, or one domain below 70%</b>One session on that domain's sections and questions, then a second timed run (it draws a new mix). Then book.</div>
+    <div class="stop"><b>Below 72%</b>Repeat Day 1 for the two weakest domains, then another timed run.</div>
+  </div>
+  <div class="call good"><span class="tag">Stop rule</span><p>Once you pass the gate, book. The blueprint is fixed at 38 objectives; product details keep changing and any practice bank will always show you something new. You pass by applying the decision rules, not by having seen every fact.</p></div>
+  <div class="call tip"><span class="tag">How to run each session</span><ul>
+    <li><b>Recall before reading.</b> Cover the right-hand column of each table and say the answer first. The Exact facts table has a Hide answers switch for this.</li>
+    <li><b>Find the tell.</b> For every question you get wrong, write the one phrase in the stem that decides it ("vast majority within", "only rules defined centrally", "one engineer, teammates fine").</li>
+    <li><b>Courses.</b> Anthropic publishes a five-course CCAP prep path on the Anthropic Academy partner portal. See the <a href="../courses/index.html#ccap-courses">courses page</a> for the list and the public courses that reinforce each domain. No course is required.</li>
+    <li><b>Optional lab.</b> If you have never built one, the official guide recommends an end-to-end build: a small RAG app with prompt caching and citations, a 20-case eval (one code grader, one LLM grader) and Claude Code with OTEL export to the console. Typing the setting names once makes them stick.</li>
+  </ul></div>
+  <div class="call note"><span class="tag">Practice scores are a guide, not a guarantee</span><p>Practice exams and course material may use older model names or a different framing from the current docs. On the exam, answer on the principle the question tests: start at the balanced default, move only on eval evidence, fix the failing layer with the smallest change.</p></div>
+</section>
+
+<!-- ================= OBJECTIVE MAP ================= -->
+<section class="chap" id="objectives" data-title="Objective map" data-w="">
+  <header><div class="eyebrow">Official blueprint</div><h2>Objective map</h2>
+  <p>The official exam guide lists 38 objectives and no technical detail; the guide says the exam is built on them. Each row gives the rule to apply and a link to the section. Tick a row when you could answer any scenario on it. Ticks are saved in this browser.</p></header>
+  <div class="toolbar"><span class="srcl" id="objcount"></span><button class="btn" id="objreset" type="button">Clear ticks</button></div>
+  <noscript><p class="srcl">The objective map needs JavaScript. The rules are also in each domain chapter.</p></noscript>
+  <div class="tw" tabindex="0" role="region" aria-label="Objective map (table)"><table class="obj"><thead><tr><th>#</th><th>Objective</th><th>Rule to apply</th><th>Confident</th></tr></thead><tbody id="objmap"></tbody></table></div>
+</section>
+
+<!-- ================= D1 ================= -->
+<section class="chap" id="d1" data-title="Solution Design" data-w="17%" data-min="12">
+  <header><div class="eyebrow">Domain 1</div><h2>Solution Design &amp; Architecture</h2>
+  <div class="dmeta"><span class="pill w">17% · ~11 items</span><span class="pill">12 min read</span></div></header>
+
+  <h3 id="d1-frame">0. Frame the problem before the architecture</h3>
+  <div class="flow"><span class="n hl">Job to be done</span><span class="a">&rarr;</span><span class="n">Constraints: latency, audit, compliance, budget</span><span class="a">&rarr;</span><span class="n">Success metric with baseline and target</span><span class="a">&rarr;</span><span class="n hl">Solution shape</span></div>
+  <div class="tw" tabindex="0" role="region" aria-label="0. Frame the problem before the architecture (table)"><table><thead><tr><th>Task shape</th><th>Default way to measure it</th></tr></thead><tbody>
+    <tr><td>Classification or routing</td><td>Exact match; per-class precision and recall when classes are imbalanced</td></tr>
+    <tr><td>Extraction</td><td>Per-field precision, recall and F1 against labeled documents</td></tr>
+    <tr><td>Summarization</td><td>LLM rubric for faithfulness and coverage; ROUGE-L only against gold summaries</td></tr>
+    <tr><td>Generation or conversation</td><td>LLM rubric (tone, correctness, policy) plus task completion</td></tr>
+    <tr><td>Agentic action</td><td>Task success rate, correct tool calls, cost and turns per task</td></tr>
+  </tbody></table></div>
+  <p>Rules, thresholds and exact calculations go to code, not to Claude. A strict latency SLA limits how long a chain can be; an audit requirement pushes you toward a fixed workflow with logged steps.</p>
+
+  <h3>1. Three layers, three separate decisions</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="1. Three layers, three separate decisions (table)"><table><thead><tr><th>Layer</th><th>Options</th><th>Decided by</th></tr></thead><tbody>
+    <tr><td>Entry point</td><td>Claude.ai (with Projects and connectors), Claude Code, your own app on the API</td><td>Audience and build effort. Non-technical users get a ready-made product; embedding in your product means a custom app.</td></tr>
+    <tr><td>Build-time interface</td><td>Messages API, client SDKs and Tool Runner, MCP, Agent SDK, Managed Agents</td><td>SDK is the default. Raw API only for a feature the SDK lacks. MCP when tools must be shared across clients. Agent SDK or Managed Agents when you need an agent loop (table below).</td></tr>
+    <tr><td>Delivery route</td><td>Anthropic API, AWS Bedrock, Google Vertex AI, Microsoft Foundry</td><td>Procurement, identity and audit. An existing cloud commitment points to that cloud. No constraint means Anthropic first-party, which also gets new features first.</td></tr>
+  </tbody></table></div>
+  <div class="kv">
+    <div><b>"Run behind our own audit infrastructure"</b>Control: API or SDK behind the firm's own app and gateway.</div>
+    <div><b>"Runs on AWS with an enterprise agreement"</b>Bedrock: IAM, networking and audit inherit from the account.</div>
+    <div><b>"Non-technical staff, shared tablets"</b>Audience: Claude.ai with a Project for shared context.</div>
+  </div>
+  <h3>Which way to build an agent</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="Which way to build an agent (table)"><table><thead><tr><th>Option</th><th>What it is</th><th>Choose it when</th></tr></thead><tbody>
+    <tr><td>Messages API</td><td>Raw model calls. You write the loop, run the tools and manage context.</td><td>A custom workflow where you want full control</td></tr>
+    <tr><td>Tool Runner (client SDK)</td><td>SDK helper that runs <i>your</i> tool functions in a loop and keeps the conversation</td><td>A simple tool loop you don't want to hand-write</td></tr>
+    <tr><td>Agent SDK</td><td>The Claude Code harness as a library <b>in your own process</b>: built-in Read, Write, Edit, Bash and Grep tools, hooks, sessions, MCP and permissions</td><td>The agent must run on your infrastructure against your files and repos</td></tr>
+    <tr><td>Managed Agents</td><td><b>Anthropic-hosted</b> agents with a managed sandbox and sessions</td><td>Long-running asynchronous work with no infrastructure for you to run</td></tr>
+  </tbody></table></div>
+
+  <h3 id="d1-decomp">2. Decompose: give every step the right owner</h3>
+  <div class="tw" tabindex="0" role="region" aria-label="2. Decompose: give every step the right owner (table)"><table><thead><tr><th>Owner</th><th>Owns</th></tr></thead><tbody>
+    <tr><td>Claude</td><td>Language work: reading, extracting, summarizing, drafting, planning, tool-mediated action.</td></tr>
+    <tr><td>Existing systems</td><td>Rules, records, live state and exact calculation: rule engine, order system, database of record, policy tables.</td></tr>
+    <tr><td>Humans</td><td>Approvals, judgment calls, exceptions, anything high-stakes or irreversible.</td></tr>
+  </tbody></table></div>
+  <p>Test each step for <b>reversibility</b>, <b>stakes</b> and <b>accountability</b>. Ask "where do Claude's properties argue for Claude over the system that already does this?" A claims assistant: Claude reads the claim; the rule engine decides priority; coverage comes live through a tool or MCP; Claude drafts the email, the email system sends it, and a human approves above a value threshold.</p>
+  <ul>
+    <li><b>Fixed, known steps</b> → prompt chain. <b>Subtasks only knowable at run time</b> → orchestrator-workers.</li>
+    <li>Split along one axis: by <b>stage</b> (extract, check, draft), <b>section</b> (chapter, file), <b>perspective</b> (legal, financial) or <b>specialism</b> (tool or model).</li>
+    <li><b>Attention dilution</b> (the "lost in the middle" effect): one pass over a long input misses items in the middle. Run a pass per unit, then an integration pass that reconciles and de-duplicates. Both are needed.</li>
+    <li>Use schema'd intermediate outputs with a check between steps. Don't split work that fits comfortably in one call.</li>
+  </ul>
+  <div class="call watch"><span class="tag">Trap · deterministic drift</span><p>A "claims over $5,000 go to a senior adjuster" rule was moved into a prompt. 41 of 14,000 claims were misrouted, all with amounts written as text ("around five thousand dollars"), and nothing logged the model's choice. Let Claude extract the amount into a field. Keep the threshold in the rule engine.</p></div>
+
+  <h3 id="d1-patterns">3. Pick the least autonomy that works</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="3. Pick the least autonomy that works (table)"><table><thead><tr><th>Pattern</th><th>Control flow</th><th>Use when</th><th>Cost, latency, observability</th></tr></thead><tbody>
+    <tr><td>Augmented LLM</td><td>One bounded call, optionally with tools, retrieval or thinking</td><td>Well-defined task with verifiable output</td><td>Lowest on all three</td></tr>
+    <tr><td>Workflow</td><td>Your code, named steps</td><td>Steps known in advance, error cost real, audit needed</td><td>Medium; steps log like code</td></tr>
+    <tr><td>Agent</td><td>The model picks its steps toward a goal with tools</td><td>Steps truly cannot be enumerated and wrong turns are recoverable</td><td>Highest; budget for the worst case</td></tr>
+  </tbody></table></div>
+  <p>The building block of every pattern is the <b>augmented LLM</b>: a model with retrieval, tools and memory. Workflows follow predefined code paths; agents direct their own process and tool use. Agents in production always have constrained tools, turn budgets, permissions and stop criteria.</p>
+  <div class="tw" tabindex="0" role="region" aria-label="3. Pick the least autonomy that works (table)"><table><thead><tr><th>Workflow pattern</th><th>How to recognize it in a stem</th></tr></thead><tbody>
+    <tr><td>Prompt chaining (+ gate)</td><td>Fixed steps in order, each using the last one's output, with a code check between them</td></tr>
+    <tr><td>Routing</td><td>Classify the input first, then send it to a specialized prompt, model or path</td></tr>
+    <tr><td>Parallelization: sectioning</td><td>Independent subtasks <b>known in advance</b>, run at the same time and combined</td></tr>
+    <tr><td>Parallelization: voting</td><td>The <b>same</b> input run several times; the majority or a threshold decides</td></tr>
+    <tr><td>Orchestrator-workers</td><td>A central LLM <b>decides the subtasks at run time</b>, delegates them and synthesizes</td></tr>
+    <tr><td>Evaluator-optimizer</td><td>One call drafts, another grades against a rubric or tests and sends feedback, in a loop to a limit</td></tr>
+  </tbody></table></div>
+  <div class="call watch"><span class="tag">Trap · flexibility mistaken for need</span><p>A team picked an agent because the task "felt open-ended". Traces later showed only four real paths. A router plus four chains would have been cheaper, testable and auditable. They had also added so many guardrail tools that they had rebuilt a workflow inside the agent, without the logging.</p></div>
+  <p><b>Quality ladder:</b> improve the prompt, then add tools or retrieval, then a stronger pattern (evaluator-optimizer), and only then fine-tuning (very high volume, tight latency, or a format prompting cannot hold).</p>
+
+  <h3 id="d1-multi">4. Multi-agent: orchestrator and subagents</h3>
+  <p>The orchestrator owns the goal, splits work, delegates and synthesizes, and never does sub-task work. Subagents each run one scoped unit in a clean context. Fan-out over a large item (400 files, 200 documents, 50 rules) gives clean contexts and concurrency. Budget for cost: Anthropic measured agents at about <b>4×</b> the tokens of a chat and multi-agent systems at about <b>15×</b>, so multi-agent must buy something a single agent can't.</p>
+  <div class="tw wide" tabindex="0" role="region" aria-label="4. Multi-agent: orchestrator and subagents (table)"><table><thead><tr><th>Failure</th><th>Recoverable?</th><th>Design response</th></tr></thead><tbody>
+    <tr><td>Subagent returns empty or malformed result</td><td>Yes</td><td>Validate each result; retry, re-route or flag the gap</td></tr>
+    <tr><td>Subagents conflict</td><td>Yes</td><td>Explicit conflict rule, or escalate to a human</td></tr>
+    <tr><td>Orchestrator loses goal or state</td><td>Usually not</td><td>Protect and checkpoint orchestrator state; make subagent work idempotent</td></tr>
+    <tr><td>Traces split across agents</td><td>Cross-cutting</td><td>One shared trace ID per run</td></tr>
+  </tbody></table></div>
+  <div class="call watch"><span class="tag">Trap · the dropped unit</span><p>A 50-section contract review reported "48 sections reviewed, 3 flagged". Two subagents had failed silently, and the fluent summary hid the gap. Reconcile dispatched units against returned results before synthesis, and state coverage in the output.</p></div>
+
+  <h3 id="d1-teams">4b. Subagents, agent teams or a dynamic workflow</h3>
+  <p>The three differ on who talks to whom, who coordinates and what it costs. Tool restrictions are configurable in all of them, so they are never the distinguishing feature.</p>
+  <div class="tw wide" tabindex="0" role="region" aria-label="4b. Subagents, agent teams or a dynamic workflow (table)"><table><thead><tr><th>Dimension</th><th>Subagents</th><th>Agent teams</th><th>Dynamic workflow</th></tr></thead><tbody>
+    <tr><td>Coordinator</td><td>Parent agent delegates and receives results</td><td>A lead session; teammates share a task list</td><td>A workflow script spawns and sequences agents</td></tr>
+    <tr><td>Communication</td><td>Child returns its result to the caller; no shared task list (subagents Claude named can message each other)</td><td>Teammates message each other directly</td><td>Through the script; agents do the real work</td></tr>
+    <tr><td>Instances</td><td>Own context window inside the parent's session</td><td>Each teammate is a separate Claude Code instance</td><td>Each spawned agent has its own context</td></tr>
+    <tr><td>Token cost</td><td>Lowest; only results return to the parent</td><td>Higher; scales linearly with teammates</td><td>Scales with the agents a run spawns</td></tr>
+    <tr><td>Hard limits</td><td>Nest up to 3 layers below the main conversation by default (<code>CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH</code>; docs as of Oct 2026)</td><td>Experimental, off by default (<code>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1</code>); one team per session; teammates cannot spawn teammates; interactive sessions only; docs suggest 3–5 teammates</td><td>1,000 agents per run; 16 concurrent by default (fewer on small CPUs, up to 256 with <code>CLAUDE_CODE_WORKFLOW_MAX_CONCURRENT_AGENTS</code>); the script has no filesystem or shell access; no mid-run user input</td></tr>
+    <tr><td>Pick it when</td><td>Focused side tasks where only the answer matters</td><td>Workers must debate, challenge or hand work to each other</td><td>A known, repeatable fan-out at scale</td></tr>
+  </tbody></table></div>
+  <div class="call watch"><span class="tag">Trap · the false difference and the live reroute</span><p>"Teammates can't have tool restrictions" is false: subagents use <code>tools</code> and <code>disallowedTools</code>, and teammates spawned from a subagent definition inherit them. A workflow run pauses only for permission prompts and usage-limit waits; when a human must sign off between stages, split the work into separate workflows.</p></div>
+  <p class="srcl"><a href="https://code.claude.com/docs/en/agent-teams" target="_blank" rel="noopener">Agent teams</a> · <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">Subagents</a> · <a href="https://code.claude.com/docs/en/workflows" target="_blank" rel="noopener">Dynamic workflows</a></p>
+
+  <h3 id="d1-e2e">5. End-to-end shape and business value</h3>
+  <div class="flow"><span class="n hl">Input</span><span class="a">&rarr;</span><span class="n">Validate and classify</span><span class="a">&rarr;</span><span class="n">Process (pattern)</span><span class="a">&rarr;</span><span class="n">Validate output</span><span class="a">&rarr;</span><span class="n hl">Output or action</span><span class="a">&rarr;</span><span class="n">Feedback: logs, evals, human corrections</span></div>
+  <ul>
+    <li><b>Output is untrusted until validated.</b> A schema-valid answer can still be wrong for the business (a total of 0, a date in the future). Add business-rule checks after the schema.</li>
+    <li><b>Retries must not repeat side effects.</b> Make actions idempotent: give each action a unique ID so a retried request is recognized and ignored.</li>
+    <li><b>Fail loudly.</b> A silent empty or default answer is the worst failure. Reject and route to a human queue instead.</li>
+  </ul>
+  <div class="tw wide" tabindex="0" role="region" aria-label="5. End-to-end shape and business value (table)"><table><thead><tr><th>Value pillar</th><th>Measure it with</th><th>Typical design lever</th></tr></thead><tbody>
+    <tr><td>Efficiency</td><td>Handle time, throughput, touches per case</td><td>Automate drafting and extraction; keep humans on exceptions</td></tr>
+    <tr><td>Productivity</td><td>Output per person, time to first draft</td><td>Assistants in existing tools (Claude.ai, Claude Code)</td></tr>
+    <tr><td>Transformation</td><td>New capability or process that was not feasible</td><td>Agents and multi-agent research over large corpora</td></tr>
+    <tr><td>Cost</td><td>Cost per task, not per token</td><td>Model routing, caching, batch processing, smaller context</td></tr>
+    <tr><td>Performance SLAs</td><td>p95 latency, availability, accuracy on an eval set</td><td>Pattern choice, streaming, model tier, fallbacks</td></tr>
+  </tbody></table></div>
+  <p><b>Reference architectures:</b> RAG for stable corpora, never for live state. Document pipelines with an evaluator-optimizer and an exception path to humans. Support triage that routes to retrieval, transactional APIs or human approval. Coding agents that explore agentically but edit, test and review through deterministic steps behind a human review gate.</p>
+  <div class="contr"><h3>Contrasts to know</h3><p>Signal phrases to notice, what they usually point to, and the tempting answer that loses.</p><div class="tw wide" tabindex="0" role="region" aria-label="Contrasts to know (table)"><table><thead><tr><th>If the scenario says&hellip;</th><th>Lean toward&hellip;</th><th>Rule out&hellip;</th></tr></thead><tbody>
+    <tr><td>Accuracy matters most and the agent acts autonomously</td><td>The most capable model</td><td>Dropping to a smaller model to save cost</td></tr>
+    <tr><td>High volume, simple, repetitive task</td><td>A smaller, cheaper model, adopted after a benchmark on your own eval set</td><td>Assuming the small model is good enough without testing</td></tr>
+    <tr><td>Mixed everyday workload, no extreme on either axis</td><td>The balanced default tier, with routing for exceptions. Current docs start on Opus 5.5; course material and some practice exams call Sonnet the default</td><td>One top-tier model for every request</td></tr>
+    <tr><td>Replies are too long but quality is fine</td><td>Lower effort, prompt for brevity, or set a max output limit</td><td>Switching model family to fix verbosity</td></tr>
+    <tr><td>Why split work across subagents</td><td>Permission scoping, independent or parallel work, a different model or effort per task, keeping verbose exploration out of the main context</td><td>"Guarantees shorter wall-clock time" or "always cuts token cost". Each subagent adds its own system prompt, tool definitions and handoff</td></tr>
+    <tr><td>Four steps, each needing the full output of the one before</td><td>One agent or a prompt chain</td><td>Splitting into subagents, which only loses detail at each handoff</td></tr>
+    <tr><td>Agent must run in your own CI or servers with built-in file and shell tools</td><td>Agent SDK</td><td>Managed Agents (Anthropic-hosted) or a Tool Runner loop (your own tools only)</td></tr>
+  </tbody></table></div></div>
+  <div class="practice" data-domain="d1"><noscript><p class="srcl">The practice questions need JavaScript.</p></noscript></div>
+</section>
+
+<!-- ================= D2 ================= -->
+<section class="chap" id="d2" data-title="Models &amp; Prompting" data-w="13%" data-min="10">
+  <header><div class="eyebrow">Domain 2</div><h2>Claude Models, Prompting &amp; Context Engineering</h2>
+  <div class="dmeta"><span class="pill w">13% · ~8 items</span><span class="pill">10 min read</span></div></header>
+
+  <h3 id="d2-models">1. Model selection</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="1. Model selection (table)"><table><thead><tr><th>Model (as of <span data-reviewed></span>)</th><th>API ID</th><th>Price in / out per MTok</th><th>Default effort</th><th>Positioning in the docs</th><th>Move to it when</th></tr></thead><tbody>
+    <tr><td>Fable 5.1</td><td><code>claude-fable-5-1</code></td><td>$10 / $50</td><td>high</td><td>Demanding reasoning, long-horizon agentic work. Needs 30-day data retention, so not available under ZDR</td><td>Evals on Opus 5.5 at higher effort still fall short, and the org's retention terms allow it</td></tr>
+    <tr><td>Opus 5.5</td><td><code>claude-opus-5-5</code></td><td>$4 / $20</td><td>medium</td><td>Recommended starting point for most workloads; long-running agentic coding and knowledge work</td><td>Start here (current docs)</td></tr>
+    <tr><td>Sonnet 5.5</td><td><code>claude-sonnet-5-5</code></td><td>$2 / $10</td><td>high</td><td>Best combination of speed and intelligence</td><td>Latency or cost matters and the eval holds</td></tr>
+    <tr><td>Haiku 5.5</td><td><code>claude-haiku-5-5</code></td><td>from $0.10 / $0.50</td><td>medium</td><td>High-volume, latency-sensitive classification, extraction and routing</td><td>An eval confirms the quality is enough for this task</td></tr>
+  </tbody></table></div>
+  <p class="srcl">All four have a 1M-token context window and 128K max output. Older names you will meet in practice material (Opus 4.8, Fable 5, Sonnet 5, Haiku 4.5) are earlier versions. <a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank" rel="noopener">Models overview</a></p>
+  <div class="call note"><span class="tag">Course versus current docs</span><p>The course teaches the three-tier family as Opus (most capable), Sonnet (default start) and Haiku (fast, cheap). Current docs add Fable at the top and recommend starting with Opus 5.5. The <b>principle tested is the same</b>: start at the balanced default, then move up or down only on eval evidence. If a question offers only Opus, Sonnet and Haiku, the course answer is to start on Sonnet.</p>
+  <p><b>Requirement first, lever second, model last.</b> "Accuracy outweighs cost" for autonomous work points to the most capable model. "Replies are too long" is an output-control problem: lower effort, prompt for brevity, cap <code>max_tokens</code>. It is never fixed by a smarter model.</p></div>
+  <p>Move models on evidence, never by reflex. Build a stratified eval set, <b>set the rollback criterion before the data comes in</b>, and compare per segment. In the course case Sonnet scored 0.94 and Haiku 0.86 on average. Two document types fell to 0.71 and 0.74, under the pre-set 0.85 floor, so the full migration was rejected. Routing those two types to Sonnet and the rest to Haiku still cut cost. Routing by difficulty is often the best answer.</p>
+  <p><b>Thinking</b> adds a billed reasoning pass, charged as output tokens, and adds latency. Use it for multi-step reasoning, not for simple lookups. Current models use <b>adaptive thinking</b>: Claude decides whether and how much to think, steered by <code>output_config.effort</code>. On the current models the manual mode (<code>budget_tokens</code>) returns a 400. <b>Opus 5.5</b> can't turn thinking off (<code>disabled</code> returns a 400 at every effort level), so effort is the control. <b>Sonnet 5.5</b> also rejects <code>disabled</code>; to turn thinking off, send <code>thinking: {type: "between_tools"}</code> (effort <code>high</code> or below). <b>Fable 5.1</b> thinking is always on. Assistant-message prefill returns a 400 on current models, so control format with structured outputs or instructions. Non-default <code>temperature</code>, <code>top_p</code> and <code>top_k</code> are rejected on Claude 4.7 and later models (and from API version 2026-10-21, sending them at all is a 400 on every model). Changing thinking or effort between requests invalidates cached messages, so keep them stable on cached conversations.</p>
+  <p><b>Thinking blocks across turns.</b> Inside a tool-use turn, pass thinking blocks back complete and unmodified with the <code>tool_result</code>. Once a new user message that is not a tool result arrives, older models (earlier Opus and Sonnet, and Haiku 4.5 and before) strip all previous thinking blocks: they stop counting toward context, while text, <code>tool_use</code> and <code>tool_result</code> stay. Current models (Opus 4.5 and later, Sonnet 4.6 and later, Haiku 5.5, Fable and Mythos) keep prior-turn thinking. History is not always append-only. <a class="srcl" href="https://platform.claude.com/docs/en/build-with-claude/extended-thinking" target="_blank" rel="noopener">Extended thinking</a></p>
+  <h3>Effort levels</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="Effort levels (table)"><table><thead><tr><th>Level</th><th>What it does</th><th>Use it for</th></tr></thead><tbody>
+    <tr><td><code>max</code></td><td>No limit on token spend</td><td>The hardest problems, when cost is no object</td></tr>
+    <tr><td><code>xhigh</code></td><td>Extended capability for long-horizon work</td><td>Long agentic runs (not every model supports it)</td></tr>
+    <tr><td><code>high</code></td><td>Spends what the task needs. Default on most models</td><td>Complex multi-step reasoning</td></tr>
+    <tr><td><code>medium</code></td><td>Balanced, moderate savings. Default on Opus 5.5 and Haiku 5.5</td><td>Mixed everyday work</td></tr>
+    <tr><td><code>low</code></td><td>Most efficient, some capability loss; may skip thinking</td><td>Routine turns under cost or latency pressure</td></tr>
+  </tbody></table></div>
+  <p>Effort is <b>"a behavioral signal, not a strict token budget"</b>. It covers all output: text, tool calls and thinking. Low effort plus missed conditions in a multi-step instruction means raise effort or route to human review; it is not a context-window problem. Effort may not reliably shorten replies on some models, so also prompt for length. <span class="srcl"><a href="https://platform.claude.com/docs/en/build-with-claude/effort" target="_blank" rel="noopener">Effort docs</a></span></p>
+
+  <h3 id="d2-prompts">2. System prompts, templates and guardrails</h3>
+  <div class="kv">
+    <div><b>Role and scope</b>Who the model is, what it handles, what it declines.</div>
+    <div><b>Constraints</b>What it must always do and must never do.</div>
+    <div><b>Output contract</b>The exact shape of the response: schema, sections, length.</div>
+  </div>
+  <p>Templates keep the fixed scaffolding, including the safety constraints, outside the variable slots, so filling a slot can never remove a guardrail. Separate instructions from data with clear delimiters (XML tags work well) and tell the model to treat content inside them as data, not instructions. Use structured outputs or schema validation when downstream code parses the result. When literal instructions and intent may diverge, state the goal next to the rule.</p>
+
+  <h3 id="d2-tech">3. Prompting techniques</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="3. Prompting techniques (table)"><table><thead><tr><th>Technique</th><th>Use when</th><th>Cost</th></tr></thead><tbody>
+    <tr><td>Zero-shot</td><td>Well-specified task the model handles reliably. Try first.</td><td>Lowest</td></tr>
+    <tr><td>Few-shot</td><td>Format or judgment is easier to show than describe. Use diverse examples that cover edge cases.</td><td>More input tokens</td></tr>
+    <tr><td>Chain-of-thought</td><td>Multi-step logic where the path matters</td><td>More output tokens and latency</td></tr>
+  </tbody></table></div>
+  <p>Use the lightest technique that meets the requirement. Prompts behave differently across tiers and generations, so re-run evals after any model change. More capable models often need less scaffolding.</p>
+  <div class="tw" tabindex="0" role="region" aria-label="3. Prompting techniques (table)"><table><thead><tr><th>Failure you see</th><th>Fix to try first</th></tr></thead><tbody>
+    <tr><td>Right content, wrong or inconsistent format</td><td>Structured outputs, or 3–5 examples of the exact format</td></tr>
+    <tr><td>Wrong at the boundary between two categories</td><td>Definitions plus examples that sit right at the boundary</td></tr>
+    <tr><td>Wrong conclusion on multi-step reasoning</td><td>Chain-of-thought or extended thinking; move exact maths to code</td></tr>
+    <tr><td>Still failing after the above, on hard segments only</td><td>A stronger model for those segments, proven on the eval</td></tr>
+  </tbody></table></div>
+
+  <h3 id="d2-context">4. Context windows and tokens</h3>
+  <ul>
+    <li>The context window is a hard edge. Outside it the model has no access. Everything counts toward it: system prompt, history, retrieved documents, tool results and outputs.</li>
+    <li>Measure with the <code>usage</code> field and the token-counting endpoint. Never assume a characters-per-token ratio.</li>
+    <li>Window sizes: 1M tokens on all four current models (Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5), with up to 128K output. 200K on older models such as Sonnet 4.5 and Haiku 4.5. Tool definitions and thinking also count, and cached tokens still occupy the window.</li>
+    <li>Overflow: input alone too long gives <code>400 invalid_request_error</code> ("prompt is too long"). Input fits but input plus <code>max_tokens</code> exceeds the window: on Claude 4.5 and newer the request is accepted and stops with <code>stop_reason: model_context_window_exceeded</code> (older models return a validation error). A request body over the API's size limit is rejected separately from the token limit.</li>
+    <li>Built-in context management: server-side <b>compaction</b> summarizes older turns in long conversations (the docs' main strategy for long agentic work); <b>context editing</b> clears old tool results or thinking blocks in agent loops; the <b>memory tool</b> keeps facts outside the window across sessions ("resume tomorrow").</li>
+    <li>The model has no memory between calls. Continuity comes from what your app stores and sends back. Live data needs a tool call.</li>
+    <li>Quality can degrade on very long contexts before the limit. Put long documents first and the question last, and trim what the step does not need.</li>
+  </ul>
+
+  <h3 id="d2-reuse">5. Reuse: caching, modular prompts, Skills</h3>
+  <div class="tw" tabindex="0" role="region" aria-label="5. Reuse: caching, modular prompts, Skills (table)"><table><thead><tr><th>Lever</th><th>Rule</th></tr></thead><tbody>
+    <tr><td>Prompt caching</td><td>Caches a stable prefix. <b>Static content first, dynamic last</b>, breakpoint between them. Cuts cost and time to first token on repeated prefixes. Pick the cache lifetime by call frequency; infrequent calls or small prefixes may not repay the cache write.</td></tr>
+    <tr><td>Caching numbers</td><td><ul style="margin:0">
+      <li>Lifetime 5 minutes by default (write 1.25x input price) or 1 hour (write 2x). Each reuse refreshes it at no cost.</li>
+      <li>Read 0.1x by default (Sonnet 5.5 included: $0.20 on $2 input), 0.05x on Opus 5.5 ($0.20 on $4), 0.025x on Fable 5.1 ($0.25 on $10). A shorter lifetime never lowers the per-token price.</li>
+      <li>Up to <b>4 breakpoints</b>. Automatic caching (one top-level <code>cache_control</code>) uses one of them, leaving 3 explicit slots.</li>
+      <li>Each breakpoint looks back at most <b>20 block positions</b>. Long conversations need explicit breakpoints so earlier entries stay in range.</li>
+      <li>Minimum cacheable prompt: 512 tokens on current models, up to 4,096 on older ones such as Haiku 4.5. Below the minimum the prompt is <b>silently not cached</b>, with no error.</li>
+      <li>Order is <code>tools &rarr; system &rarr; messages</code>. A change invalidates its own level and everything after it, never above. Tool definitions: all three. Web search, citations or speed: system and messages. <b><code>tool_choice</code> or images: messages only</b>, so cached tools and system still hit. (Forced <code>tool_choice</code>, <code>any</code> or <code>tool</code>, returns a 400 on Opus 5.5, Sonnet 5.5 and Fable 5.1; there the choice is between <code>auto</code> and <code>none</code>.) Thinking or effort: messages always, and tools and system too on models that render the thinking config ahead of them. Judge a parameter by where it sits in the prefix, not by its name.</li>
+      <li>Cache hits don't count against input-token rate limits, so caching also raises throughput.</li></ul></td></tr>
+    <tr><td>Modular prompt library</td><td>Assembled, often-tweaked fragments owned by engineers in one codebase or team.</td></tr>
+    <tr><td>Skills</td><td>Packaged, stable procedures (instructions, scripts, resources) reused across teams and products with versioning, approval and rollback. Progressive disclosure in three levels: name and description always loaded (about 100 tokens each), the SKILL.md body when triggered (under 5K tokens), bundled files and scripts only when used. Use Skills only from trusted sources, since they can direct tool use and code execution. Custom Skills do not sync between the API, Claude.ai and Claude Code. <code>SKILL.md</code> frontmatter: <code>name</code> up to 64 characters (lowercase letters, numbers, hyphens; may not contain "anthropic" or "claude") and <code>description</code> up to 1,024 characters. Claude sees only these until the skill triggers, so the description must say what it does and when to use it. On the API, custom Skills need the code execution tool and are shared across the workspace.</td></tr>
+  </tbody></table></div>
+  <div class="call watch"><span class="tag">Trap · the cache that never hits</span><p>Putting the per-request document above the fixed instructions changes the prefix on every call, so the cache never hits. Reorder the prompt; do not shorten it.</p></div>
+  <div class="contr"><h3>Contrasts to know</h3><p>Signal phrases to notice, what they usually point to, and the tempting answer that loses.</p><div class="tw wide" tabindex="0" role="region" aria-label="Contrasts to know (table)"><table><thead><tr><th>If the scenario says&hellip;</th><th>Lean toward&hellip;</th><th>Rule out&hellip;</th></tr></thead><tbody>
+    <tr><td>Low effort misses conditions in a multi-step instruction</td><td>Raise effort, or add human review for those cases</td><td>Rewriting the whole prompt or changing model first</td></tr>
+    <tr><td>Routine turns, cost pressure</td><td>Lower effort on routine turns</td><td>Highest effort everywhere</td></tr>
+    <tr><td>A long conversation stops hitting the cache</td><td>Add explicit cache breakpoints; each breakpoint looks back at most 20 block positions</td><td>Assuming automatic caching covers any length</td></tr>
+    <tr><td>Designing a cacheable prompt</td><td>Static content first (tools, then system, then messages), a small number of breakpoints, a TTL that matches the call pattern</td><td>Putting changing content at the start of the prefix</td></tr>
+    <tr><td>Estimate token cost before sending</td><td>The token counting endpoint: no output generated, its own rate limits</td><td>Sending a real request just to read the usage</td></tr>
+    <tr><td>Output must match a schema</td><td>Structured outputs or strict tool use (<code>strict: true</code>); both guarantee schema-valid output</td><td>Asking for JSON in the prompt and retrying on failure, or forcing the tool with <code>tool_choice</code> (a 400 on Opus 5.5, Sonnet 5.5 and Fable 5.1)</td></tr>
+    <tr><td>The cache never hits on a short prompt</td><td>Check the minimum cacheable length first; below it the marker is ignored without an error</td><td>Shortening the TTL or adding more breakpoints</td></tr>
+  </tbody></table></div></div>
+  <div class="practice" data-domain="d2"><noscript><p class="srcl">The practice questions need JavaScript.</p></noscript></div>
+</section>
+
+<!-- ================= D3 ================= -->
+<section class="chap" id="d3" data-title="Integration" data-w="19%" data-min="15">
+  <header><div class="eyebrow">Domain 3 · Heaviest domain</div><h2>Integration</h2>
+  <div class="dmeta"><span class="pill w">19% · ~12 items</span><span class="pill">15 min read</span></div></header>
+
+  <h3 id="d3-bloat">1. Capability bloat and least privilege</h3>
+  <p>Every tool an agent holds is attack surface, selection noise and context tokens. Give each role only the tools that role needs.</p>
+  <ul>
+    <li><b>Remove</b> tools the role does not need. That beats logging them, adding confirmations, or hoping the prompt prevents misuse. Removing a capability beats guarding it.</li>
+    <li>Prefer narrow, single-purpose tools (<code>get_order_status</code>) over broad ones (<code>run_sql</code>). Split read tools from write tools, and gate write or irreversible tools behind human approval.</li>
+    <li>Too many similar tools reduce selection accuracy: Anthropic's docs say accuracy degrades beyond roughly <b>30–50 tools</b>. Write clear, distinct, namespaced names (<code>github_</code>, <code>slack_</code>) and descriptions with typed parameters, and return concise, structured results.</li>
+    <li>With large catalogs (10+ tools or 10K+ tokens of definitions, common with several MCP servers), use the <b>tool search tool</b>: mark tools <code>defer_loading: true</code> so only the 3–5 needed load per request. Docs cite over 85% fewer definition tokens. Keep the few most-used tools always loaded.</li>
+    <li>Two variants: <code>tool_search_tool_regex_20251119</code> (Claude writes regex patterns; best for strict, consistent prefixes such as <code>db_read_</code>, <code>db_write_</code>) and <code>tool_search_tool_bm25_20251119</code> (natural-language queries; best for descriptive or inconsistent names). At least one tool must stay non-deferred, or the request returns a 400; <b>never set <code>defer_loading</code> on the search tool itself</b>, since it is the only way to reach deferred tools. Both variants match tool names, descriptions, argument names and argument descriptions, case-insensitive; a regex pattern is capped at 200 characters and a BM25 query at 500. A deferred tool <b>cannot</b> also carry <code>cache_control</code> (400 error); put the breakpoint on a non-deferred tool. Up to 10,000 deferred tools per request; each search returns up to 5 tools by default.</li>
+    <li><b>Continuing the conversation.</b> The search runs server-side as a <code>server_tool_use</code> with an <code>srvtoolu_</code> id: never send a <code>tool_result</code> for it, or the request is rejected. The result holds <code>tool_reference</code> blocks that the API expands into full definitions automatically; you never inject schemas. Claude then calls the discovered tool as a normal <code>toolu_</code> call, which you run and answer. Every later request resends the <b>whole</b> <code>tools</code> array, deferred tools included, plus the prior assistant content unchanged. <a class="srcl" href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool" target="_blank" rel="noopener">Tool search tool</a></li>
+    <li>Don't use tool search with fewer than about 10 tools, when every tool is used on every request, or when definitions are tiny.</li>
+  </ul>
+
+  <h3 id="d3-auth">2. Authentication and authorization gaps</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="2. Authentication and authorization gaps (table)"><table><thead><tr><th>Gap</th><th>Why it is a gap</th><th>Fix</th></tr></thead><tbody>
+    <tr><td>Shared service account behind the agent</td><td>Any user can reach any data the agent can (confused deputy)</td><td>Act on behalf of the user with per-user, delegated, scoped tokens (OAuth for remote MCP servers); enforce authorization in the backend</td></tr>
+    <tr><td>Authorization enforced by the prompt</td><td>Prompts can be overridden by injection</td><td>Authorize in code and at the tool or API layer, never by instructions alone</td></tr>
+    <tr><td>Secrets in prompts or tool results</td><td>Anything in context can leak in output or logs</td><td>Keep credentials in the tool runtime or a secrets manager; redact logs</td></tr>
+    <tr><td>Long-lived broad tokens</td><td>Large blast radius if leaked</td><td>Short-lived, least-scope tokens; rotate; audit usage</td></tr>
+    <tr><td>MCP server passes the client's token straight to upstream APIs (token passthrough)</td><td>The server can't verify or scope what it forwards; a confused-deputy risk the MCP spec forbids</td><td>The server validates tokens issued for itself and obtains its own scoped credentials for upstream calls</td></tr>
+    <tr><td>Untrusted tool output treated as instructions</td><td>Indirect prompt injection from web pages, emails, documents</td><td>Treat tool output as data, limit what actions can follow it, require approval for sensitive actions</td></tr>
+    <tr><td>Remote MCP server protected by a static shared key</td><td>No per-user identity; any leaked key works for everyone</td><td>MCP authorization (for HTTP servers; stdio servers take credentials from the environment): OAuth 2.1 with PKCE; the server publishes Protected Resource Metadata (in a <code>WWW-Authenticate</code> header on a 401, or at <code>/.well-known/oauth-protected-resource</code>); clients send a resource indicator, and the server rejects tokens not issued for it</td></tr>
+  </tbody></table></div>
+
+  <h3 id="d3-latency">3. Accuracy versus latency</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="3. Accuracy versus latency (table)"><table><thead><tr><th>Lever</th><th>Improves accuracy</th><th>Costs latency or money</th></tr></thead><tbody>
+    <tr><td>Larger model tier</td><td>Harder reasoning</td><td>Slower, more expensive; route only the hard cases</td></tr>
+    <tr><td>Extended thinking or effort</td><td>Multi-step reasoning</td><td>Billed output tokens, slower first token</td></tr>
+    <tr><td>More retrieval (top-k), reranking</td><td>Recall and precision</td><td>More tokens and an extra step</td></tr>
+    <tr><td>Evaluator-optimizer loop</td><td>Verified quality</td><td>Multiple calls per task</td></tr>
+    <tr><td>Streaming</td><td>None</td><td>Improves perceived latency only</td></tr>
+    <tr><td>Message Batches API</td><td>None</td><td>50% cheaper; most batches finish within 1 hour, up to 24 hours; results kept 29 days; no streaming. Fits offline bulk work, never interactive work. Combines with caching.</td></tr>
+    <tr><td>Parallel tool calls and subagents</td><td>None</td><td>Cuts wall-clock time for independent work</td></tr>
+  </tbody></table></div>
+  <p>Justify a configuration against the stated SLA: if the user waits, use streaming, a smaller model for simple steps and caching; if accuracy is the contract, spend latency where the eval shows gains.</p>
+
+  <h3 id="d3-obs">4. Observability at scale</h3>
+  <ul>
+    <li>Trace each request end to end with one ID across orchestrator, subagents, tools and retrieval.</li>
+    <li>Log prompt and model versions, retrieved chunk IDs, tool calls and results, token usage, stop reasons, latency (p50/p95/p99, time to first token) and cost per task.</li>
+    <li>Quality can't be read from logs. Sample production traffic and score it with code checks, LLM-as-judge rubrics calibrated against humans, and user feedback.</li>
+    <li>Alert on drift: refusal rate, fallback rate, cost per task, error and empty-result rates, and eval score after each deploy.</li>
+    <li>Redact PII in logs and control who can read transcripts.</li>
+    <li>For Claude Code and the Agent SDK, the exact OpenTelemetry settings are in <a href="#d3-otel">section 10</a>.</li>
+  </ul>
+
+  <h3 id="d3-rag">5. RAG pipeline: chunk, index, retrieve</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="5. RAG pipeline: chunk, index, retrieve (table)"><table><thead><tr><th>Choice</th><th>Option</th><th>Pick when</th></tr></thead><tbody>
+    <tr><td rowspan="3">Chunking (by corpus structure)</td><td>Fixed-size with overlap</td><td>Homogeneous, unstructured text; simplest</td></tr>
+    <tr><td>Semantic</td><td>Prose where each chunk must stand alone</td></tr>
+    <tr><td>Hierarchical</td><td>Contracts, manuals, policies where the section carries meaning</td></tr>
+    <tr><td rowspan="3">Indexing (by query pattern)</td><td>Dense embeddings</td><td>Paraphrase, intent, concepts</td></tr>
+    <tr><td>Sparse (BM25)</td><td>Exact tokens: part numbers, error codes, statute citations</td></tr>
+    <tr><td>Hybrid, merged by reciprocal rank fusion</td><td>Mixed queries, the usual production case</td></tr>
+  </tbody></table></div>
+  <p>Add a <b>reranker</b> after broad retrieval to improve precision. Prepend a short (about 50–100 token) document-level context to each chunk before embedding and BM25 indexing (contextual retrieval) so isolated chunks keep their meaning. Anthropic measured retrieval failures down 35% with contextual embeddings, 49% adding contextual BM25, and 67% adding a reranker. Contextualized chunk embedding models (Voyage <code>voyage-context-*</code>) do this inside the embedding. The current one is <code>voyage-context-4</code> (<code>voyage-context-3</code> is the previous generation), called through <code>contextualized_embed()</code>. When a stem wants each vector to carry document context automatically, this beats wider chunk overlap, which only adds neighboring sentences. Use <b>metadata filters</b> (date, product, region, permissions) to scope results. Retrieval must respect the user's document permissions.</p>
+  <div class="call tip"><span class="tag">Practical RAG rules</span><ul>
+    <li><b>Small corpus, no RAG.</b> Under about 200K tokens (about 500 pages) of stable knowledge, put it all in the prompt and cache it.</li>
+    <li><b>Retrieve broad, rerank narrow.</b> Anthropic's reference setup retrieves the top 150 chunks and reranks to the top 20.</li>
+    <li><b>Filter before ranking.</b> Apply metadata and permission filters in the query, not on the results.</li>
+    <li><b>Refresh atomically, pin the embedder.</b> Re-chunk, re-embed and swap the whole index in one step, with one pinned embedding model version. Vectors from two embedding models don't match; this is a common cause of "confident but wrong after a refresh".</li>
+    <li><b>No universal chunk size.</b> Pick by structure, then tune size and overlap on your own retrieval eval (recall at k).</li>
+  </ul></div>
+  <h3 id="d3-retrieval">6. Retrieval matched to data shape</h3>
+  <div class="tw" tabindex="0" role="region" aria-label="6. Retrieval matched to data shape (table)"><table><thead><tr><th>Data shape or query</th><th>Retrieval strategy</th></tr></thead><tbody>
+    <tr><td>Structured records, aggregates ("total refunds last month")</td><td>Tool call to SQL or an API; the database does the maths</td></tr>
+    <tr><td>Live state (order status, inventory)</td><td>Tool call to the system of record, never an index snapshot</td></tr>
+    <tr><td>Large stable unstructured corpus</td><td>Hybrid RAG with reranking and citations</td></tr>
+    <tr><td>Small, stable reference that fits</td><td>Put it in the prompt and cache it</td></tr>
+    <tr><td>Codebase or file tree</td><td>Agentic search (grep, glob, read) just in time</td></tr>
+    <tr><td>Relationship questions across entities</td><td>Graph or multi-hop retrieval, or an agent issuing several queries</td></tr>
+    <tr><td>One document already in hand, exact quotes needed</td><td>Document content block with <code>citations</code> enabled; no index needed</td></tr>
+    <tr><td>Your own RAG results, and you want Claude to cite them</td><td>Return them as <b>search-result content blocks</b> (source, title, content) so citations work</td></tr>
+    <tr><td>The same large file reused across many requests</td><td>Files API: upload once, reference by <code>file_id</code>; content is still billed as input tokens</td></tr>
+  </tbody></table></div>
+  <div class="call watch"><span class="tag">Trap · the stale snapshot</span><p>"Where's my order?" returned two real chunks from different points in time, "shipped on the 12th" and "being processed". The order had actually been returned to the depot. Neither chunk was current. Order status is live state and needs a tool call.</p></div>
+
+  <h3 id="d3-connect">7. Connection mechanisms</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="7. Connection mechanisms (table)"><table><thead><tr><th>Mechanism</th><th>Choose when</th><th>Notes</th></tr></thead><tbody>
+    <tr><td>Direct API or CLI call (tool use)</td><td>One application, one integration, tight control</td><td>Least machinery. Tools defined in your own code. CLIs suit coding agents in a shell.</td></tr>
+    <tr><td>MCP</td><td>The same tools or data must be reusable across many clients and agents (Claude.ai, Claude Code, your agents)</td><td>Servers expose tools (model-controlled), resources (application-controlled) and prompts (user-controlled). Two transports: <b>stdio</b> for local servers launched by the client (credentials from the environment), <b>Streamable HTTP</b> for remote servers, with OAuth 2.1 authorization. HTTP+SSE is deprecated. Build once, reuse everywhere: MCP turns M×N custom integrations (M apps × N tools) into M+N.<br>The API's <b>MCP connector</b> lists servers in <code>mcp_servers</code> (with an optional <code>authorization_token</code> your app obtains and refreshes) plus an <code>mcp_toolset</code> entry in <code>tools</code>. It supports <b>tools only</b>, needs a public HTTPS server, and is not ZDR- or HIPAA-eligible.</td></tr>
+    <tr><td>Agent-to-agent (A2A)</td><td>Independent agents, often owned by different teams or vendors, must delegate tasks to each other</td><td>Peers exchange tasks and results. An open protocol started by Google, now a Linux Foundation project. Inside one system, plain orchestrator and subagent calls are simpler.</td></tr>
+  </tbody></table></div>
+
+  <h3 id="d3-progressive">8. Progressive discovery versus monolithic context</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="8. Progressive discovery versus monolithic context (table)"><table><thead><tr><th>Strategy</th><th>Wins when</th><th>Breaks when</th></tr></thead><tbody>
+    <tr><td>Monolithic (load everything)</td><td>Bounded input, stable prefix that caches well, reasoning needs all material at once</td><td>Context accumulates over turns; cost and latency grow linearly; attention degrades</td></tr>
+    <tr><td>Progressive (load just in time)</td><td>Multi-turn work, agents, large corpora or tool catalogs. Default for most production.</td><td>Long-range coherence needed; detail dropped earlier is needed later; harder to cache</td></tr>
+    <tr><td>Compaction (summarize history)</td><td>Long-running agents near the limit. The API offers server-side compaction plus context editing that clears stale tool results</td><td>Drops identifiers, numbers and earlier decisions; the summariser is another model call</td></tr>
+  </tbody></table></div>
+  <p>Real systems combine them. A coding agent starts with a small cached prefix, appends recent tool results, retrieves files just in time, and compacts old exploration.</p>
+
+  <h3>9. Agent SDK permission controls</h3>
+  <p>Two separate questions decide every tool call. <b>Which tools exist?</b> is set by <code>tools</code> and <code>disallowedTools</code>. <b>Is this call approved?</b> is set by the permission pipeline, evaluated in this order:</p>
+  <div class="flow"><span class="n hl">1 Hooks</span><span class="a">&rarr;</span><span class="n">2 Deny rules</span><span class="a">&rarr;</span><span class="n">3 Ask rules</span><span class="a">&rarr;</span><span class="n">4 Permission mode</span><span class="a">&rarr;</span><span class="n">5 Allow rules</span><span class="a">&rarr;</span><span class="n hl">6 canUseTool callback</span></div>
+  <p>Hooks and deny rules come before the mode, so they hold even under <code>bypassPermissions</code>. Bypass approves everything that reaches step 4.</p>
+  <div class="tw wide" tabindex="0" role="region" aria-label="9. Agent SDK permission controls (table)"><table><thead><tr><th>Control</th><th>What it does</th><th>What it does not do</th></tr></thead><tbody>
+    <tr><td><code>tools</code> (subagent)</td><td>Sets which tools the subagent has. Omitted means it inherits all of them</td><td>Approve calls</td></tr>
+    <tr><td><code>disallowedTools</code></td><td>A bare name removes the tool; a scoped rule such as <code>Bash(rm *)</code> denies matching calls in every mode</td><td>Ask the user; it blocks outright</td></tr>
+    <tr><td><code>allowedTools</code></td><td><b>Pre-approves</b> the listed tools so they run without a prompt</td><td>Block unlisted tools. It is not a whitelist</td></tr>
+    <tr><td><code>permissionMode</code></td><td>Approves or prompts for calls that reach step 4</td><td>Add or remove tools</td></tr>
+    <tr><td>Parent in <code>bypassPermissions</code></td><td>Subagents inherit bypass; a subagent's own <code>permissionMode</code> is ignored</td><td>Widen a subagent's <code>tools</code> set</td></tr>
+    <tr><td><code>canUseTool</code></td><td>Decides whatever is left at the end of the pipeline</td><td>Run under bypass, which approves first</td></tr>
+    <tr><td><code>skills</code> (subagent)</td><td>Preloads only the named skills</td><td>&mdash;</td></tr>
+  </tbody></table></div>
+  <div class="call watch"><span class="tag">Trap · "allow" read as "only allow"</span><p>A read-only subagent with <code>allowedTools: ["Read","Grep"]</code> and no <code>tools</code> field, under a parent in bypass, can still edit files. Fix it with a narrow <code>tools</code> set or <code>disallowedTools</code> for Write, Edit and Bash. A hook that returns <b>deny</b> is documented to hold under bypass; whether a hook returning <b>ask</b> forces a prompt under bypass is not documented, so for a guarantee, deny.</p></div>
+
+  <h3 id="d3-otel">10. Telemetry: the exact names</h3>
+  <p>Claude Code and the Agent SDK export OpenTelemetry once <code>CLAUDE_CODE_ENABLE_TELEMETRY=1</code> is set. By default they export structure (events, counts, durations, tokens, cost) and redact content. Every question asks about one of three layers: <b>content</b> (opt in), <b>cost</b> (cardinality) or <b>delivery</b> (headers and timing).</p>
+  <div class="tw wide" tabindex="0" role="region" aria-label="10. Telemetry: the exact names (table)"><table><thead><tr><th>Goal</th><th>Setting</th><th>Remember</th></tr></thead><tbody>
+    <tr><td>Filter telemetry by agent type</td><td><code>OTEL_SERVICE_NAME</code></td><td>Replaces the default service name <code>claude-code</code></td></tr>
+    <tr><td>Attribute usage to an end user or tenant on shared credentials</td><td><code>OTEL_RESOURCE_ATTRIBUTES</code> with <code>enduser.id</code>, <code>tenant.id</code></td><td>Labels only; values percent-encoded, no spaces. Never unlocks content</td></tr>
+    <tr><td>Forward an audit trail of events to a SIEM</td><td><code>OTEL_LOGS_EXPORTER=otlp</code></td><td>Exports <code>claude_code.*</code> events such as tool decisions and results</td></tr>
+    <tr><td>Capture prompt text</td><td><code>OTEL_LOG_USER_PROMPTS=1</code></td><td>Off by default (prompts redacted)</td></tr>
+    <tr><td>Capture tool inputs and arguments</td><td><code>OTEL_LOG_TOOL_DETAILS=1</code></td><td>Off by default. Wrong if the stem says "no content capture"</td></tr>
+    <tr><td>Capture full request and response bodies</td><td><code>OTEL_LOG_RAW_API_BODIES</code></td><td>Highest risk; almost never the answer</td></tr>
+    <tr><td>Cut metrics storage cost</td><td><code>OTEL_METRICS_INCLUDE_SESSION_ID=false</code>, <code>OTEL_METRICS_INCLUDE_ACCOUNT_UUID=false</code></td><td>Cardinality = distinct label values. Session ID and account UUID are on by default; <code>_VERSION</code> is off</td></tr>
+    <tr><td>Collector bearer token expires every 15 minutes</td><td><code>otelHeadersHelper</code> script + <code>CLAUDE_CODE_OTEL_HEADERS_HELPER_DEBOUNCE_MS</code> below the token life</td><td>Default refresh is 29 minutes. Static <code>OTEL_EXPORTER_OTLP_HEADERS</code> can't rotate. Dynamic headers work on HTTP exporters, not gRPC</td></tr>
+    <tr><td>Short serverless run, then the container freezes</td><td>Lower <code>OTEL_METRIC_EXPORT_INTERVAL</code>, <code>OTEL_LOGS_EXPORT_INTERVAL</code>, <code>OTEL_TRACES_EXPORT_INTERVAL</code></td><td>Defaults 60 s / 5 s / 5 s; docs suggest about 1000 ms. Buffered data is lost on freeze</td></tr>
+    <tr><td>Same config for 400 engineers</td><td>The <code>env</code> block in managed settings</td><td>Central and hard for users to drift from</td></tr>
+    <tr><td>Agent span inside an existing trace</td><td>Call <code>query()</code> inside an active span</td><td><code>TRACEPARENT</code> is passed along, so it becomes a child span, not a new root</td></tr>
+    <tr><td>Inbound <code>TRACEPARENT</code> from a caller</td><td>Agent SDK or <code>claude -p</code> runs</td><td>Interactive sessions ignore it and start their own trace</td></tr>
+    <tr><td>Where the time went inside one tool call</td><td><code>CLAUDE_CODE_ENHANCED_TELEMETRY_BETA=1</code> with <code>CLAUDE_CODE_ENABLE_TELEMETRY=1</code> and <code>OTEL_TRACES_EXPORTER</code></td><td>Root <code>claude_code.interaction</code>; children <code>llm_request</code>, <code>tool</code> and (detailed tracing) <code>hook</code>. Each tool span splits into <code>tool.blocked_on_user</code> (waiting on a permission prompt) and <code>tool.execution</code></td></tr>
+    <tr><td>Local debugging</td><td>Console exporter</td><td>Never under the Agent SDK, where stdout is the message channel</td></tr>
+  </tbody></table></div>
+  <p class="srcl"><a href="https://code.claude.com/docs/en/monitoring-usage" target="_blank" rel="noopener">Claude Code monitoring</a> · <a href="https://code.claude.com/docs/en/agent-sdk/observability" target="_blank" rel="noopener">Agent SDK observability</a></p>
+  <div class="contr"><h3>Contrasts to know</h3><p>Signal phrases to notice, what they usually point to, and the tempting answer that loses.</p><div class="tw wide" tabindex="0" role="region" aria-label="Contrasts to know (table)"><table><thead><tr><th>If the scenario says&hellip;</th><th>Lean toward&hellip;</th><th>Rule out&hellip;</th></tr></thead><tbody>
+    <tr><td>Which permission control applies, and in what order</td><td>Hooks, then deny rules, ask rules, the permission mode, allow rules, and finally the approval callback. An allow list pre-approves tools; it does not restrict them. A deny list blocks. Bypass approves whatever reaches it, and subagents inherit it</td><td>Treating an allow list as a whitelist that blocks everything else</td></tr>
+    <tr><td>An action must be blocked whatever mode the session runs in</td><td>A deny rule or a hook that blocks</td><td>A prompt instruction or an allow list</td></tr>
+    <tr><td>"Restrict which tools the agent can use"</td><td>A narrow <code>tools</code> set or <code>disallowedTools</code></td><td><code>allowedTools</code>, which only pre-approves</td></tr>
+    <tr><td>"No prompts for the safe tools"</td><td><code>allowedTools</code></td><td><code>bypassPermissions</code>, which approves everything</td></tr>
+    <tr><td>Telemetry "without content capture"</td><td>The default events plus labels (<code>OTEL_SERVICE_NAME</code>, resource attributes)</td><td><code>OTEL_LOG_USER_PROMPTS</code> or <code>OTEL_LOG_TOOL_DETAILS</code></td></tr>
+    <tr><td>A large tool set; naming follows a strict prefix scheme</td><td>Tool search with deferred loading, regex variant</td><td>Loading every tool definition up front</td></tr>
+    <tr><td>A large tool set; the model must find tools from natural-language need</td><td>Tool search with deferred loading, BM25 variant (natural-language queries, but lexical term matching, not semantic)</td><td>Regex search over loosely named tools</td></tr>
+    <tr><td>Questions about one known file, with citations</td><td>A document content block with citations enabled</td><td>Building a RAG pipeline for a single file</td></tr>
+    <tr><td>Large, changing corpus versus live record state</td><td>Retrieval for the corpus; a tool call to the system of record for live state</td><td>An index for data that changes by the minute</td></tr>
+    <tr><td>Organization must enforce settings users cannot override</td><td>Managed settings, which sit at the top of the precedence order</td><td>Project settings or a CLAUDE.md instruction</td></tr>
+    <tr><td>Error handling in production</td><td>429 means your own limit (back off, honor retry hints). 529 means provider overload (retry with backoff, consider a fallback). 500 is a server error. Credentials sent to the wrong provider route show up as auth errors</td><td>Treating every failure as a client bug, or retrying instantly in a loop</td></tr>
+    <tr><td>MCP design questions</td><td>Tools are model-controlled, resources are application-controlled, prompts are user-controlled. Local servers use stdio, remote ones use Streamable HTTP. Scopes are local, project and user</td><td>Using an older transport for a new remote server</td></tr>
+  </tbody></table></div></div>
+  <div class="practice" data-domain="d3"><noscript><p class="srcl">The practice questions need JavaScript.</p></noscript></div>
+</section>
+
+<!-- ================= D4 ================= -->
+<section class="chap" id="d4" data-title="Evaluation &amp; Optimization" data-w="16%" data-min="12">
+  <header><div class="eyebrow">Domain 4</div><h2>Evaluation, Testing &amp; Optimization</h2>
+  <div class="dmeta"><span class="pill w">16% · ~10 items</span><span class="pill">12 min read</span></div></header>
+
+  <h3 id="d4-metrics">1. Metrics: define all five before building</h3>
+  <div class="kv">
+    <div><b>Accuracy and quality</b>Task success, exact or field match, groundedness, rubric score, citation correctness.</div>
+    <div><b>Latency</b>Time to first token, p50/p95/p99 end to end, per step.</div>
+    <div><b>Cost</b>Tokens and cost <i>per completed task</i>, cache hit rate.</div>
+    <div><b>Safety</b>Harmful-output rate, policy violations, correct refusals versus over-refusals.</div>
+    <div><b>Security</b>Prompt injection resistance, data leakage, unauthorized tool calls.</div>
+  </div>
+  <p>Make success criteria specific and measurable ("≥95% field accuracy on the golden set, p95 under 3 s"), not "works well". Write them <b>before</b> you build the eval.</p>
+  <h3>Success criteria: SMART</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="Success criteria: SMART (table)"><table><thead><tr><th>Letter</th><th>Means</th><th>Fails like</th></tr></thead><tbody>
+    <tr><td>Specific</td><td>Names the task and the quality dimension</td><td>"Good summaries"</td></tr>
+    <tr><td>Measurable</td><td>A number, a threshold, a sample size and a defined grader</td><td>"A manager signs off on each summary"</td></tr>
+    <tr><td>Achievable</td><td>Grounded in benchmarks, prior experiments or industry results</td><td>"100% accuracy on open-ended answers"</td></tr>
+    <tr><td>Relevant</td><td>Tied to the business outcome</td><td>A metric users never feel</td></tr>
+  </tbody></table></div>
+  <p>The docs list these four. Some study material adds Time-bound (a date or release gate). The docs' model criterion: <b>"F1 score of at least 0.85"</b> on a stated held-out test set.</p>
+  <h3>The prompt engineering cycle</h3>
+  <div class="flow"><span class="n hl">Success criteria</span><span class="a">&rarr;</span><span class="n">Test cases</span><span class="a">&rarr;</span><span class="n">Draft prompt</span><span class="a">&rarr;</span><span class="n">Test and refine (loop)</span><span class="a">&rarr;</span><span class="n">Final validation on held-out cases</span><span class="a">&rarr;</span><span class="n hl">Ship</span></div>
+  <p>The step after "has test cases and a draft" is always <b>test against the cases and refine</b>, not final validation. A variant that wins after many revisions on one set must be confirmed on a held-out set before you trust it.</p>
+
+  <h3 id="d4-datasets">2. Datasets and mixed methods</h3>
+  <ul>
+    <li><b>Golden set:</b> representative real inputs with validated expected outputs, <b>stratified</b> by segment (document type, intent, language) so per-segment scores mean something.</li>
+    <li>Add <b>edge cases</b>, <b>adversarial cases</b> (injection, jailbreak, out-of-scope) and <b>regression cases</b> from every production bug.</li>
+    <li>Keep refreshing from production samples so the set keeps up with real traffic.</li>
+    <li>Report scores with <b>confidence intervals</b> and compare variants on the <b>same cases</b> (paired). A 2-point gap on 50 cases is usually noise; grow the set before deciding.</li>
+  </ul>
+  <div class="tw wide" tabindex="0" role="region" aria-label="2. Datasets and mixed methods (table)"><table><thead><tr><th>Grader</th><th>Best for</th><th>Watch for</th></tr></thead><tbody>
+    <tr><td>Code-based</td><td>Exact match, schema validity, field accuracy, test pass, latency</td><td>Can't judge tone or nuance</td></tr>
+    <tr><td>LLM-as-judge</td><td>Tone, helpfulness, groundedness, rubric criteria at scale</td><td>Calibrate against human labels; use clear rubrics; judge bias</td></tr>
+    <tr><td>Human review</td><td>Ground truth, high-stakes, calibration</td><td>Slow, expensive; use for samples and disagreements</td></tr>
+  </tbody></table></div>
+  <p>Use the cheapest reliable grader per criterion. Mixed methods means combining all three. The docs say <b>automate when possible</b>: many cases with automated grading beat a few hand-graded ones. For an LLM grader, give a clear rubric, ask for a binary yes/no or a 1–5 score with labeled ends, ask for the score only, and use a different model from the one being graded.</p>
+
+  <h3 id="d4-ab">3. A/B testing and iteration</h3>
+  <ul>
+    <li>Offline eval first, then online A/B on live traffic.</li>
+    <li>Change <b>one variable</b> at a time (prompt, model, retrieval setting) with a fixed eval and success metric chosen in advance.</li>
+    <li>Run until the sample is large enough to be meaningful. Track <b>guardrail metrics</b> (cost, latency, safety) so a quality gain cannot hide a regression.</li>
+    <li>Version prompts like code. Every change runs the regression suite in CI before release, and a canary or gradual rollout comes with a rollback plan.</li>
+    <li>Stage exposure: offline eval → <b>shadow</b> (new version runs on live inputs, output and actions discarded) → <b>canary</b> (small share of traffic) → A/B → full rollout. A rollback plan doesn't replace staged exposure.</li>
+  </ul>
+
+  <h3 id="d4-diagnose">4. Diagnose by symptom</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="4. Diagnose by symptom (table)"><table><thead><tr><th>Symptom</th><th>Likely cause</th><th>Check first</th></tr></thead><tbody>
+    <tr><td>Confident but wrong after a document refresh; model and latency unchanged</td><td>Retrieval: stale or broken index, embedding mismatch</td><td>Retrieved chunks for failing queries (see the worked scenario in the practice questions)</td></tr>
+    <tr><td>Consistently ignores a format or rule</td><td>Prompt failure: ambiguous, conflicting or buried instruction</td><td>Prompt clarity, examples, structured output</td></tr>
+    <tr><td>Wrong answer and the right chunk was never retrieved</td><td>Retrieval failure: the right source wasn't found</td><td>Retrieved chunks for the failing query</td></tr>
+    <tr><td>Answer states a fact found in none of the retrieved sources</td><td>Generation hallucination</td><td>Whether the answer quotes or cites a source; then require citations and allow "I don't know"</td></tr>
+    <tr><td>Fails on complex reasoning, fine on simple</td><td>Model mismatch</td><td>Eval a higher tier or thinking on those segments only</td></tr>
+    <tr><td>Quality dropped after an upgrade</td><td>Prompt tuned to the old model</td><td>Regression suite on the new version</td></tr>
+    <tr><td>Truncated answers</td><td><code>max_tokens</code> or the context ceiling</td><td>The <code>stop_reason</code> field</td></tr>
+    <tr><td>Wrong tool chosen</td><td>Overlapping or vague tool descriptions, too many tools</td><td>Tool names, descriptions, tool count</td></tr>
+  </tbody></table></div>
+  <p>Sampling settings are not a fix either. Current models (Claude 4.7 and later) reject non-default <code>temperature</code>, <code>top_p</code> and <code>top_k</code>, and even on older models that accept it, temperature 0 is not deterministic and doesn't fix hallucination.</p>
+
+  <h3 id="d4-optimize">5. Optimize cost, latency and tokens</h3>
+  <ul>
+    <li>Prompt caching for repeated prefixes. Static content first (see the Domain 2 worked scenario).</li>
+    <li>Route by difficulty: small model for simple steps, larger only where the eval proves the need.</li>
+    <li>Batch processing for non-urgent bulk work.</li>
+    <li>Trim context: retrieve less but better, compact history, drop unused tool definitions.</li>
+    <li>Cap output: concise output instructions, sensible <code>max_tokens</code>, structured formats.</li>
+    <li>Never cut required context (such as truncating the policy) or pick a model that does not fit the task just to save money.</li>
+  </ul>
+  <h3 id="d4-monitor">6. Monitor in production</h3>
+  <p>Dashboards for latency percentiles, error and stop-reason mix, tokens and cost per task, cache hit rate, tool error rate, and sampled quality scores. Alert on change from baseline. Each incident becomes a regression test.</p>
+  <div class="contr"><h3>Contrasts to know</h3><p>Signal phrases to notice, what they usually point to, and the tempting answer that loses.</p><div class="tw wide" tabindex="0" role="region" aria-label="Contrasts to know (table)"><table><thead><tr><th>If the scenario says&hellip;</th><th>Lean toward&hellip;</th><th>Rule out&hellip;</th></tr></thead><tbody>
+    <tr><td>Output must not contain PII or PHI</td><td>A binary LLM grader (pass or fail on the forbidden content)</td><td>Similarity scores</td></tr>
+    <tr><td>Tone, empathy or professionalism</td><td>An LLM grader with a Likert-scale rubric</td><td>Exact match</td></tr>
+    <tr><td>Output is one of a fixed set of labels</td><td>Exact match</td><td>An LLM grader</td></tr>
+    <tr><td>Output must follow a format (date pattern, email layout)</td><td>Regex or string match</td><td>An LLM grader</td></tr>
+    <tr><td>Answer should carry the same meaning as a reference</td><td>Embedding cosine similarity</td><td>Exact match</td></tr>
+    <tr><td>One question phrased many ways must get consistent answers</td><td>Average pairwise cosine similarity of sentence embeddings (the docs' FAQ-bot example uses Sentence-BERT), or an LLM grader with a consistency rubric when nuance matters</td><td>ROUGE-L, BLEU or exact match: they score wording, not meaning</td></tr>
+    <tr><td>Summary compared with a gold summary</td><td>ROUGE-L</td><td>Exact match or a latency metric</td></tr>
+    <tr><td>Fields extracted from documents</td><td>Per-field precision, recall and F1</td><td>Exact match on the whole record, or similarity scores</td></tr>
+    <tr><td>Classification with imbalanced classes</td><td>Per-class precision and recall (or F1)</td><td>Overall accuracy, which the majority class inflates</td></tr>
+    <tr><td>Translation or text compared with a reference</td><td>BLEU or ROUGE only as a rough lexical check; meaning needs embeddings or a rubric</td><td>A high BLEU score as proof of correctness</td></tr>
+    <tr><td>A safety metric for a stricter guardrail</td><td>Both sides: harmful-output rate and over-refusal rate</td><td>Harmful-output rate alone</td></tr>
+    <tr><td>The vast majority of requests within a time limit</td><td>p95 latency</td><td>Average latency or throughput</td></tr>
+    <tr><td>Test cases written, prompt drafted. What next?</td><td>Run the cases and refine in a loop</td><td>Jumping to final validation or shipping</td></tr>
+    <tr><td>A variant wins after many revisions on one set</td><td>Confirm it on a held-out set</td><td>More tuning on the same set</td></tr>
+    <tr><td>Evaluate a success criterion with SMART</td><td>Specific, Measurable, Achievable, Relevant (some summaries add Time-bound). A target with a number and a method passes</td><td>Manual sign-off (not measurable) or 100% accuracy on open-ended output (not achievable)</td></tr>
+  </tbody></table></div></div>
+  <div class="contr"><h3>Telemetry, in three layers</h3><p>Think content (what is logged), cost (how many series), and delivery (auth and timing). The exact variable for each row is in <a href="#d3-otel">Domain 3, section 10</a>.</p><div class="tw wide" tabindex="0" role="region" aria-label="Telemetry, in three layers (table)"><table><thead><tr><th>If the scenario says&hellip;</th><th>Lean toward&hellip;</th><th>Rule out&hellip;</th></tr></thead><tbody>
+    <tr><td>Prompt text or tool details must appear in telemetry</td><td>Content logging is opt-in; enable the specific switch deliberately</td><td>Assuming it is on by default</td></tr>
+    <tr><td>Metric storage cost is growing</td><td>Cut high-cardinality attributes (session, account, version) you do not query</td><td>Lowering the export frequency</td></tr>
+    <tr><td>Credentials for the collector expire, or short-lived jobs lose data</td><td>Refresh the auth header on a schedule that matches token life; shorten export intervals for short-lived processes</td><td>Relying on defaults built for long-running sessions</td></tr>
+    <tr><td>Attribute usage to an agent type, user or tenant</td><td>Resource attributes such as service name and tenant or user identifiers</td><td>Parsing prompt text</td></tr>
+    <tr><td>Where the console exporter fits</td><td>Local debugging only</td><td>Production or SDK deployments</td></tr>
+  </tbody></table></div></div>
+  <div class="practice" data-domain="d4"><noscript><p class="srcl">The practice questions need JavaScript.</p></noscript></div>
+</section>
+
+<!-- ================= D5 ================= -->
+<section class="chap" id="d5" data-title="Governance &amp; Safety" data-w="14%" data-min="10">
+  <header><div class="eyebrow">Domain 5</div><h2>Governance, Safety &amp; Risk Management</h2>
+  <div class="dmeta"><span class="pill w">14% · ~9 items</span><span class="pill">10 min read</span></div></header>
+
+  <h3 id="d5-guardrails">1. Guardrails in layers</h3>
+  <div class="tw" tabindex="0" role="region" aria-label="1. Guardrails in layers (table)"><table><thead><tr><th>Layer</th><th>Controls</th></tr></thead><tbody>
+    <tr><td>Input</td><td>Classify and screen requests (scope, abuse, injection), redact or minimize PII, rate limits, authentication</td></tr>
+    <tr><td>Prompt</td><td>System prompt with role, scope and refusal rules; instructions separated from untrusted data</td></tr>
+    <tr><td>Action</td><td>Least-privilege tools, scoped credentials, approval gates for irreversible or high-value actions, spending and turn limits</td></tr>
+    <tr><td>Output</td><td>Schema validation, policy classifiers, grounding and citation checks, PII scan before display or send</td></tr>
+    <tr><td>Monitoring</td><td>Audit logs, sampled review, incident response and rollback</td></tr>
+  </tbody></table></div>
+  <p>No single layer is enough. Prompts alone never enforce security. Put the hard limits in code and permissions.</p>
+
+  <h3 id="d5-risks">2. Risks and failure modes</h3>
+  <div class="kv">
+    <div><b>Hallucination</b>Plausible but false specifics. Ground with sources, cite, verify with tools.</div>
+    <div><b>Prompt injection</b>Direct from users, or indirect through documents, web pages and emails. Treat content as data and limit follow-on actions.</div>
+    <div><b>Excessive agency</b>The agent can do more than the task needs. Remove tools and add approvals.</div>
+    <div><b>Data leakage</b>PII or secrets in prompts, outputs or logs. Minimize, redact, control access.</div>
+    <div><b>Over-reliance</b>People rubber-stamp output. Design review so it requires real checking; a near-zero override rate is a warning sign.</div>
+    <div><b>Bias and drift</b>Uneven quality across groups; behavior changes over time or after a model update. Use segment evals and monitoring.</div>
+    <div><b>Over-refusal</b>Declining legitimate requests after a guardrail is tightened. Measure it next to harmful-output rate.</div>
+  </div>
+  <div class="contr"><h3>Direct vs indirect injection</h3><p>Ask who controls the malicious text before choosing a control.</p>
+  <div class="tw wide" tabindex="0" role="region" aria-label="Direct vs indirect injection (table)"><table><thead><tr><th>Source</th><th>Attacker</th><th>Defenses that fit</th></tr></thead><tbody>
+    <tr><td>Direct (jailbreak)</td><td>The user typing into the app</td><td>A lightweight harmlessness screen on inputs, input validation, a system prompt with clear refusal rules, continuous output monitoring, and throttling or banning users who repeatedly try to get around the guardrails</td></tr>
+    <tr><td>Indirect</td><td>Content Claude reads: web pages, emails, files, tool results</td><td>Treat it as data, wrap and label it as untrusted, keep tool permissions minimal, require approval before sensitive actions</td></tr>
+  </tbody></table></div>
+  <p class="srcl"><a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks" target="_blank" rel="noopener">Mitigate jailbreaks and prompt injections</a></p></div>
+
+  <h3 id="d5-hitl">3. Human in the loop, by risk tier</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="3. Human in the loop, by risk tier (table)"><table><thead><tr><th>Risk</th><th>Oversight model</th><th>Example</th></tr></thead><tbody>
+    <tr><td>High stakes or irreversible</td><td>Human approves before the action (in the loop)</td><td>Refund above threshold, medical or legal advice to a client, account deletion</td></tr>
+    <tr><td>Medium</td><td>Confidence or rule-based routing: low confidence goes to a human queue</td><td>Extraction with low-confidence fields, unusual claims</td></tr>
+    <tr><td>Low, high volume</td><td>Human monitors and samples (on the loop)</td><td>Ticket tagging, internal summaries</td></tr>
+  </tbody></table></div>
+  <p>Effective review shows the reviewer the source evidence, highlights uncertain fields, and measures reviewer agreement. Reviewer corrections feed the eval set. Avoid "approve all" queues that create automation bias.</p>
+  <div class="call note"><span class="tag">Anthropic Usage Policy: high-risk use cases</span><p>The policy names eleven high-risk areas: legal; medical; finance; credit; insurance; housing; employment; education and credentials; healthcare access; public benefits and services; and legal status and adjudication. When Claude produces advice or decisions about people in these areas, the policy requires a <b>qualified person to review each one, with authority to change it, before it is delivered or acted on</b>, and <b>disclosure to the affected person that AI was used</b>. <a class="srcl" href="https://www.anthropic.com/legal/aup" target="_blank" rel="noopener">Usage Policy</a></p></div>
+
+  <h3 id="d5-compliance">4. Compliance: what each regime forces in the design</h3>
+  <div class="tw wide" tabindex="0" role="region" aria-label="4. Compliance: what each regime forces in the design (table)"><table><thead><tr><th>Regime</th><th>Scope</th><th>Design implications</th></tr></thead><tbody>
+    <tr><td>GDPR</td><td>Personal data of people in the EU</td><td>Lawful basis and purpose limitation, data minimization, data residency and transfer safeguards, a data processing agreement with vendors, retention limits and right to erasure (consider what is stored in logs, caches and vector stores), a DPIA for high-risk processing, rights around solely automated decisions</td></tr>
+    <tr><td>HIPAA</td><td>Protected health information in the US</td><td>A Business Associate Agreement with every vendor that handles PHI, use only covered or eligible services and settings, minimum necessary data, access controls and audit logs, encryption</td></tr>
+    <tr><td>FedRAMP</td><td>US federal agency cloud use</td><td>Deploy only on an environment authorized at the required impact level. As listed on Anthropic's government page in October 2026: <b>FedRAMP High:</b> Claude on Bedrock in AWS GovCloud (also DoD IL4/IL5), Vertex AI under Assured Workloads, and Claude for Government. Bedrock in commercial US East/West regions is Moderate. The direct Claude API and Claude Enterprise are not FedRAMP-authorized, so a federal requirement dictates the delivery route. Authorizations change; check the current page.</td></tr>
+  </tbody></table></div>
+  <p>Data-handling levers to know: zero or short data retention agreements, regional deployment through the matching cloud route, PII redaction before the model, and access-controlled, redacted logs. Compliance requirements can dictate the delivery route.</p>
+  <h3>Retention, residency and HIPAA: the exact rules</h3>
+  <div class="tw" tabindex="0" role="region" aria-label="Retention, residency and HIPAA: the exact rules (table)"><table><thead><tr><th>Question</th><th>Answer</th></tr></thead><tbody>
+    <tr><td>Default retention without ZDR</td><td>API inputs and outputs are deleted within 30 days; Files API data stays until you delete it; flagged content is kept up to 2 years</td></tr>
+    <tr><td>Not eligible for ZDR</td><td>Files API, Message Batches, code execution, programmatic tool calling, Managed Agents, Agent Skills, MCP connector, and the Console and its playground. A ZDR customer's offline batch job therefore runs through the Messages API. <b>Models:</b> Fable 5.1 (like Fable 5 and the Mythos models) is a Covered Model that needs 30-day retention, so it isn't available under ZDR unless Anthropic expressly authorizes it; a ZDR org gets a 400. A ZDR org can turn on 30-day retention for one workspace to use it</td></tr>
+    <tr><td>Under ZDR, when can Anthropic still keep data?</td><td>Where required by law, or when content is flagged by trust-and-safety systems for a Usage Policy violation (kept up to 2 years)</td></tr>
+    <tr><td>Where does inference run?</td><td><code>inference_geo</code> per request: <code>"global"</code> (default) or <code>"us"</code> (1.1x price). Claude 4.6 and later only. Works on the Claude API, Claude Platform on AWS and Claude Models on Google Cloud (Anthropic managed); not on Bedrock, Vertex AI or Foundry, which use the cloud's own regions. ZDR does not control location</td></tr>
+    <tr><td>What does HIPAA readiness cover?</td><td>One organization that has signed a BAA and enabled it (it can't be turned off). It is an <b>alternative</b> to ZDR, not an add-on</td></tr>
+    <tr><td>Eligible API features</td><td>Messages, prompt caching, structured outputs, memory tool, web search, bash tool, text editor tool, <b>computer use</b>. Beta features are generally not covered unless the docs list them</td></tr>
+    <tr><td>Not eligible</td><td>Batch, Files API, Skills, code execution, web fetch, MCP connector, tool search, context editing, compaction, advisor tool, browser use. A request using an ineligible feature returns a 400</td></tr>
+    <tr><td>Not covered at all</td><td>The Console and its playground (even in a HIPAA-enabled org); Free, Pro and Max plans. Anthropic's HIPAA readiness is first-party only: it isn't offered on Claude Platform on AWS or Foundry. <b>Bedrock and Vertex AI</b> can still carry PHI, but under the <b>cloud provider's own BAA</b> and its list of eligible services, because the cloud provider is the data processor there</td></tr>
+    <tr><td>PHI and structured outputs</td><td>Eligible, but compiled schemas are cached separately for up to 24 hours without PHI protections. Keep PHI out of property names, <code>enum</code>, <code>const</code> and <code>pattern</code>; put it in the message</td></tr>
+    <tr><td>Claude Code and a BAA</td><td>The API's HIPAA readiness does not cover Claude Code. Whether a given Claude Code setup can fall under a BAA depends on the product, plan and sign-in method, so check the BAA coverage article before sending PHI through it</td></tr>
+    <tr><td>Evidence for auditors about the model</td><td>The system card (Transparency Hub)</td></tr>
+  </tbody></table></div>
+  <p class="srcl"><a href="https://platform.claude.com/docs/en/manage-claude/api-and-data-retention" target="_blank" rel="noopener">API and data retention</a> · <a href="https://platform.claude.com/docs/en/manage-claude/data-residency" target="_blank" rel="noopener">Data residency</a> · <a href="https://privacy.claude.com/en/articles/8114513-will-anthropic-sign-a-business-associate-agreement-baa-and-if-so-for-which-products" target="_blank" rel="noopener">BAA coverage</a></p>
+
+  <h3 id="d5-ethics">5. Ethics: bias, fairness, transparency</h3>
+  <ul>
+    <li><b>Bias and fairness:</b> evaluate quality and outcomes per demographic or user segment. Remove protected attributes, and proxies for them, from decision inputs where they are not needed. Keep consequential decisions (credit, hiring, care) under human review.</li>
+    <li><b>Transparency:</b> tell users they are dealing with AI, show sources and citations, explain the basis of recommendations, and offer an escalation to a human.</li>
+    <li><b>Accountability:</b> a named owner for each system, documented intended use and limits, and an audit trail of model and prompt versions per decision.</li>
+    <li><b>Fairness metrics conflict:</b> equal error rates (same false-positive and false-negative rates), equal selection rates (same share approved) and calibration (a score means the same risk in every group) can't all hold when groups' base rates differ. Pick the one the scenario's harm points to, and say why.</li>
+  </ul>
+  <div class="contr"><h3>Contrasts to know</h3><p>Signal phrases to notice, what they usually point to, and the tempting answer that loses.</p><div class="tw wide" tabindex="0" role="region" aria-label="Contrasts to know (table)"><table><thead><tr><th>If the scenario says&hellip;</th><th>Lean toward&hellip;</th><th>Rule out&hellip;</th></tr></thead><tbody>
+    <tr><td>A healthcare workload with PHI</td><td>An organization-level HIPAA arrangement with a signed BAA, eligible features only, minimum necessary data. Consumer plans and the web console are not covered</td><td>Assuming zero data retention is required, or that every feature is eligible</td></tr>
+    <tr><td>Which features are eligible</td><td>Messages, prompt caching, structured outputs, memory, web search, bash, text editor and computer use. Batch, Files, Skills, code execution, web fetch, MCP connector, tool search, context editing and compaction are not</td><td>Sending PHI through an ineligible feature because it is convenient</td></tr>
+    <tr><td>PHI and structured-output schemas</td><td>Keep PHI out of schemas (property names, enums, patterns), because compiled schemas are cached separately</td><td>Encoding patient values in the schema</td></tr>
+    <tr><td>Zero data retention has exceptions</td><td>Legal requirement, or a Usage Policy violation flag</td><td>Believing ZDR means nothing is ever kept</td></tr>
+    <tr><td>The system prompt must not leak</td><td>Layers: keep secrets out of the prompt (or isolated in the system turn), repeat the rule in the user turn, screen inputs for extraction attempts, screen outputs before display</td><td>Deleting the system prompt, a single "never reveal" instruction, or an NDA</td></tr>
+    <tr><td>A response is cut by a safety refusal while streaming</td><td>Detect <code>stop_reason: "refusal"</code> (it arrives in a normal 200 response), discard or replace the partial output, and reset or rephrase the context before continuing; a fallback model is optional</td><td>Showing the partial text as a finished answer, or assuming refusals are never billed</td></tr>
+    <tr><td>Cheap pre-screen for harmful input</td><td>A small, fast model as a classifier with structured output</td><td>The most capable model on every input</td></tr>
+    <tr><td>A human must approve before a risky action</td><td>A hook or permission rule in code</td><td>Asking the model to remember to confirm</td></tr>
+  </tbody></table></div></div>
+  <div class="practice" data-domain="d5"><noscript><p class="srcl">The practice questions need JavaScript.</p></noscript></div>
+</section>
+
+<!-- ================= D6 ================= -->
+<section class="chap" id="d6" data-title="Stakeholders &amp; Lifecycle" data-w="14%" data-min="9">
+  <header><div class="eyebrow">Domain 6</div><h2>Stakeholder Communication &amp; Lifecycle Management</h2>
+  <div class="dmeta"><span class="pill w">14% · ~9 items</span><span class="pill">9 min read</span></div></header>
+
+  <h3 id="d6-discovery">1. Structured discovery</h3>
+  <p>Before choosing any technology, capture:</p>
+  <div class="kv">
+    <div><b>Problem and outcome</b>The business problem, who has it, the metric that proves success, and today's baseline.</div>
+    <div><b>Users and workflow</b>Who uses it, where (tools, devices), and what they do today step by step.</div>
+    <div><b>Data</b>Sources, freshness, quality, owners, sensitivity, access rights.</div>
+    <div><b>Constraints</b>Compliance, residency, cloud commitments, budget, latency, volume, integration points.</div>
+    <div><b>Risk and accountability</b>Cost of a wrong answer, required approvals, audit needs.</div>
+    <div><b>Non-functional requirements</b>Availability, p95 latency, throughput, accuracy threshold, support model.</div>
+  </div>
+  <p>Validate feasibility early with a small prototype on real data and an initial eval set, before committing to the full build. A stakeholder's proposed solution ("we need an agent") is a hypothesis. Restate it as the problem and the measurable outcome.</p>
+
+  <h3 id="d6-comms">2. Communicating decisions and trade-offs</h3>
+  <ul>
+    <li>Write <b>Architecture Decision Records</b>: context, decision, options considered, trade-offs, consequences, and the conditions for revisiting.</li>
+    <li>Speak in the stakeholder's terms: executives hear cost per task, risk and time to value; engineers hear latency, interfaces and failure modes; compliance hears data flows and controls.</li>
+    <li>Present options with explicit trade-offs and a recommendation, backed by eval numbers, not opinions.</li>
+    <li>Be clear that outputs are probabilistic. Commit to measured rates on an eval set, never "it will always be right".</li>
+  </ul>
+
+  <h3 id="d6-sla">3. Expectations, feedback loops and SLAs</h3>
+  <div class="tw" tabindex="0" role="region" aria-label="3. Expectations, feedback loops and SLAs (table)"><table><thead><tr><th>SLA element</th><th>Make it measurable as</th></tr></thead><tbody>
+    <tr><td>Quality</td><td>Accuracy or rubric score at or above a threshold on an agreed, versioned eval set</td></tr>
+    <tr><td>Latency</td><td>p95 (and time to first token for chat) under a stated bound at stated volume</td></tr>
+    <tr><td>Availability</td><td>Uptime target, plus fallback behavior when the model or a tool is unavailable</td></tr>
+    <tr><td>Escalation</td><td>Share of cases routed to humans, and human response time</td></tr>
+  </tbody></table></div>
+  <p>A practical checklist for a complete SLA commitment names six things: the <b>metric</b>, the <b>percentile</b>, <b>where it is measured</b>, the <b>time window</b>, the <b>population</b> of requests it covers, and <b>what happens on breach</b>. "Fast" or "instant" becomes, for example, "p95 time to first token under 1 s, measured in the browser, per calendar month, for chat requests".</p>
+  <p>Agree acceptance criteria before the pilot. Hold regular reviews of metrics and user feedback, and turn feedback into eval cases and prioritized changes. When a request conflicts with an SLA or budget, show the trade-off and let the owner decide. Do not silently absorb it.</p>
+
+  <h3 id="d6-docs">4. Documentation and handoff</h3>
+  <p>Hand over an architecture diagram and data-flow map, ADRs, prompt and model version registry, tool and integration specs with permissions, the eval suite and its latest results, dashboards and alerts, a runbook (common failures, rollback, escalation contacts), and named owners. Handoff is complete when the receiving team can operate, change and roll back the system without you.</p>
+
+  <h3 id="d6-lifecycle">5. Lifecycle phases</h3>
+  <div class="flow"><span class="n hl">Discovery</span><span class="a">&rarr;</span><span class="n">Design</span><span class="a">&rarr;</span><span class="n">Build and pilot</span><span class="a">&rarr;</span><span class="n">Handoff</span><span class="a">&rarr;</span><span class="n">Monitor</span><span class="a">&rarr;</span><span class="n hl">Iterate</span><span class="a">&#8635;</span></div>
+  <div class="tw wide" tabindex="0" role="region" aria-label="5. Lifecycle phases (table)"><table><thead><tr><th>Phase</th><th>Key output</th><th>Common mistake</th></tr></thead><tbody>
+    <tr><td>Discovery</td><td>Problem, baseline, success metric, constraints</td><td>Jumping to a solution</td></tr>
+    <tr><td>Design</td><td>Architecture, ADRs, eval plan</td><td>No eval plan until after launch</td></tr>
+    <tr><td>Build and pilot</td><td>Working slice, eval results, limited users</td><td>Piloting without acceptance criteria</td></tr>
+    <tr><td>Handoff</td><td>Runbook, ownership, training</td><td>Undocumented prompts and tribal knowledge</td></tr>
+    <tr><td>Monitor</td><td>Dashboards, sampled quality, incidents</td><td>Watching uptime but not quality</td></tr>
+    <tr><td>Iterate</td><td>Versioned changes through regression tests</td><td>Untested prompt or model swaps in production</td></tr>
+  </tbody></table></div>
+  <h3>6. Capacity and spend reporting</h3>
+  <p>Rate limits are set per organization and measured in requests, input tokens and output tokens per minute (RPM, ITPM, OTPM) per model. Cached input does not count toward ITPM on most models. The recommended per-user allowance for Claude Code falls as the organization grows:</p>
+  <div class="tw" tabindex="0" role="region" aria-label="6. Capacity and spend reporting (table)"><table><thead><tr><th>Users in the org</th><th>Tokens per minute per user</th></tr></thead><tbody>
+    <tr><td>1–5</td><td>200k–300k</td></tr>
+    <tr><td>5–20</td><td>100k–150k</td></tr>
+    <tr><td>20–50</td><td>50k–75k</td></tr>
+    <tr><td>50–100</td><td>25k–35k</td></tr>
+    <tr><td>100–500</td><td>15k–20k</td></tr>
+    <tr><td>500+</td><td>10k–15k</td></tr>
+  </tbody></table></div>
+  <div class="tw" tabindex="0" role="region" aria-label="6. Capacity and spend reporting (table)"><table><thead><tr><th>Stakeholder asks for&hellip;</th><th>Use</th></tr></thead><tbody>
+    <tr><td>Spend in USD by workspace or description</td><td>The Usage &amp; Cost API (Admin API)</td></tr>
+    <tr><td>Per-user Claude Code adoption and productivity</td><td>The Claude Code Analytics API (Admin API key)</td></tr>
+    <tr><td>Per-user spend on Bedrock or Vertex traffic</td><td>An LLM gateway; Anthropic dashboards don't see cloud-platform traffic</td></tr>
+    <tr><td>Token estimate before sending a batch</td><td>The <code>count_tokens</code> endpoint: free, its own rate limits, no generation</td></tr>
+  </tbody></table></div>
+  <p class="srcl"><a href="https://code.claude.com/docs/en/costs" target="_blank" rel="noopener">Claude Code costs</a> · <a href="https://platform.claude.com/docs/en/build-with-claude/claude-code-analytics-api" target="_blank" rel="noopener">Analytics API</a></p>
+  <div class="contr"><h3>Contrasts to know</h3><p>Signal phrases to notice, what they usually point to, and the tempting answer that loses.</p><div class="tw wide" tabindex="0" role="region" aria-label="Contrasts to know (table)"><table><thead><tr><th>If the scenario says&hellip;</th><th>Lean toward&hellip;</th><th>Rule out&hellip;</th></tr></thead><tbody>
+    <tr><td>Many developers hit rate limits and one team is small</td><td>Limits are set per organization and shared; plan per-user budgets, request an increase, use caching and batching. Per-user allowances shrink as the organization grows</td><td>Blaming the one team or the model version</td></tr>
+    <tr><td>Bulk work nobody is waiting on</td><td>The Message Batches API: 50% off, up to 100,000 requests or 256 MB per batch, most done within 1 hour and all within 24, results kept 29 days and matched by <code>custom_id</code></td><td>Batch for anything interactive</td></tr>
+    <tr><td>Org grows from 15 to 300 developers</td><td>Plan aggregate demand: per-user allowance shrinks with org size</td><td>"Limits are per user, so nothing changes"</td></tr>
+    <tr><td>Finance wants spend by workspace; engineering wants adoption</td><td>Usage &amp; Cost API; Claude Code Analytics API</td><td>One dashboard for both</td></tr>
+    <tr><td>An SLA for a probabilistic system</td><td>Thresholds on a versioned eval set, p95 latency, and a fallback</td><td>Promising always-correct answers</td></tr>
+    <tr><td>A cost estimate for a stakeholder</td><td>Token counts, caching, routing, batch discount, with a range rather than one number</td><td>A single point estimate with no assumptions</td></tr>
+    <tr><td>The stakeholder asks for an agent</td><td>Discovery: problem, baseline, metric, constraints</td><td>Starting to build</td></tr>
+  </tbody></table></div></div>
+  <div class="practice" data-domain="d6"><noscript><p class="srcl">The practice questions need JavaScript.</p></noscript></div>
+</section>
+
+<!-- ================= D7 ================= -->
+<section class="chap" id="d7" data-title="Developer Productivity" data-w="7%" data-min="6">
+  <header><div class="eyebrow">Domain 7</div><h2>Developer Productivity &amp; Operational Enablement</h2>
+  <div class="dmeta"><span class="pill w">7% · ~4 items</span><span class="pill">6 min read</span></div></header>
+  <h3 id="d7-config">1. Configure Claude Code for a team</h3>
+  <div class="tw" tabindex="0" role="region" aria-label="1. Configure Claude Code for a team (table)"><table><thead><tr><th>Mechanism</th><th>What it is for</th></tr></thead><tbody>
+    <tr><td><code>CLAUDE.md</code></td><td>Project memory checked into the repo: build and test commands, conventions, architecture notes. Shared by the whole team. Keep it concise and current.</td></tr>
+    <tr><td>Settings files</td><td>Precedence, highest first: <b>managed</b> (organization policy) &gt; command line &gt; <b>project local</b> <code>.claude/settings.local.json</code> (personal, not committed) &gt; <b>shared project</b> <code>.claude/settings.json</code> (committed for the team) &gt; <b>user</b> <code>~/.claude/settings.json</code>. List keys such as permission rules merge across files.</td></tr>
+    <tr><td>Permissions</td><td><code>allow</code>, <code>ask</code> and <code>deny</code> rules per tool and command pattern. Deny destructive commands and secret files such as <code>.env</code>; pre-approve safe routine commands to cut prompts. Deny and ask rules apply immediately; committed allow rules and <code>additionalDirectories</code> wait until each person accepts the workspace trust dialog (interactive only). They are withheld, not ignored. Hooks, the <code>env</code> block and <code>apiKeyHelper</code> are not gated by trust. An allow in personal settings does not override an ask or deny from project or managed settings. Use managed settings to enforce rules organization-wide.</td></tr>
+    <tr><td>Hooks</td><td>Deterministic commands on lifecycle events, for example <code>PreToolUse</code> (can block a tool call with exit code 2), <code>PostToolUse</code> (run a formatter after edits; can't undo the call), <code>UserPromptSubmit</code>, <code>SessionStart</code>, <code>Stop</code> and <code>SubagentStop</code>. There are now over 30 events, including <code>PermissionRequest</code>, <code>PostToolUseFailure</code>, <code>SubagentStart</code>, <code>PreCompact</code>, <code>PostCompact</code> and <code>SessionEnd</code>. Use a hook when something must happen every time; an instruction in CLAUDE.md is only guidance.</td></tr>
+    <tr><td>Slash commands and Skills</td><td>Reusable team workflows (review, release notes, migration steps) versioned in the repo.</td></tr>
+    <tr><td>Subagents</td><td>Specialized agents with their own prompt, tools and clean context (reviewer, test writer) to keep the main context focused.</td></tr>
+    <tr><td>MCP servers</td><td>Project-scoped connections to issue trackers, docs, databases, shared through a project config file.</td></tr>
+    <tr><td>Headless mode and CI</td><td>Non-interactive runs (<code>claude -p</code>) in scripts and CI, such as GitHub Actions, for automated review, triage or fixes, with tightly scoped permissions.</td></tr>
+  </tbody></table></div>
+  <h3 id="d7-workflows">2. Improve developer workflows</h3>
+  <ul>
+    <li>Explore, then plan, then code, then commit. Use plan mode on bigger changes so a human approves the approach before edits.</li>
+    <li>Give Claude a way to verify its work: tests, type checks, linters, screenshots. Test-driven loops are the most reliable.</li>
+    <li>Keep humans as reviewers of pull requests. Track defect and regression rates, not just speed.</li>
+    <li>Clear or compact context between unrelated tasks. Run parallel sessions or worktrees for independent tasks.</li>
+  </ul>
+  <h3 id="d7-debug">3. Debugging and operations</h3>
+  <ul>
+    <li>Feed Claude the real evidence: stack traces, logs, failing test output, recent diffs. Ask it to reproduce before fixing.</li>
+    <li>For incidents, give read-only access to logs and metrics through scoped MCP servers or CLIs. Changes go through the normal reviewed path, not direct production writes.</li>
+    <li>Turn every fixed incident into a regression test and a runbook entry.</li>
+    <li>Undo a bad Claude Code session with checkpoints: <code>Esc</code> twice or <code>/rewind</code> restores code, conversation or both. Checkpoints track files Claude edited with its file tools; a file that only a Bash command changed (an <code>rm</code> or <code>mv</code> of a file Claude never edited) is not tracked, so recover it from git. File snapshots are kept for the 100 most recent checkpoints in a session and cleaned up about 30 days after the session last saved one (docs as of Oct 2026).</li>
+  </ul>
+  <h3>4. Exact settings and commands</h3>
+  <div class="tw" tabindex="0" role="region" aria-label="4. Exact settings and commands (table)"><table><thead><tr><th>Fact</th><th>What to remember</th></tr></thead><tbody>
+    <tr><td>Managed-only keys</td><td><code>allowManagedPermissionRulesOnly</code> (only central permission rules count) · <code>allowManagedHooksOnly</code> · <code>allowManagedMcpServersOnly</code> · <code>strictKnownMarketplaces</code> (plugin sources). <code>disableBypassPermissionsMode</code> works at <b>any</b> scope, though it usually sits in managed settings</td></tr>
+    <tr><td>Rule order</td><td><b>deny → ask → allow</b>; a deny wins at any scope. Bash rules match the literal command text, so for network access deny <code>curl</code>/<code>wget</code> and allow WebFetch per domain</td></tr>
+    <tr><td><code>acceptEdits</code></td><td>Auto-approves file edits plus <code>mkdir</code>, <code>touch</code>, <code>rm</code>, <code>rmdir</code>, <code>mv</code>, <code>cp</code>, <code>sed</code> inside the working directory; everything else follows the normal flow</td></tr>
+    <tr><td>Memory grows during a session</td><td><code>/heapdump</code> writes a <code>.heapsnapshot</code> and a <code>-diagnostics.json</code>. <code>/doctor</code> checks installation and settings, not live memory</td></tr>
+    <tr><td>Charges or 429s for one engineer only</td><td>A stray <code>ANTHROPIC_API_KEY</code> outranks the subscription login. Unset it and check <code>/status</code></td></tr>
+    <tr><td>Subagent nesting</td><td>Up to 3 layers below the main conversation by default; change it with <code>CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH</code> (<code>1</code> turns nesting off). At the cap a subagent doesn't get the Agent tool. Older versions behaved differently, so check current docs</td></tr>
+    <tr><td><code>ENABLE_TOOL_SEARCH=auto:N</code></td><td>Defers MCP tools once their definitions exceed N% of the context window (plain <code>auto</code> = 10%). A size threshold, not a tool count</td></tr>
+    <tr><td>"Prompt is too long" or autocompact thrashing</td><td>Read large files in line ranges, hand bulky work to a subagent, disable unused MCP servers, filter tool output with a PostToolUse hook</td></tr>
+    <tr><td>CLAUDE.md locations</td><td>Managed (org-wide) · <code>~/.claude/CLAUDE.md</code> (user) · <code>CLAUDE.md</code> or <code>.claude/CLAUDE.md</code> (project, committed) · <code>CLAUDE.local.md</code> (personal) · <code>@path</code> imports, up to 4 hops. Target under 200 lines per file; put area-specific rules in <code>.claude/rules/*.md</code> with a <code>paths:</code> list of globs so they load only for matching files</td></tr>
+    <tr><td>Skills and plugins</td><td>A skill is a folder with <code>SKILL.md</code> (name, description), in <code>~/.claude/skills/</code>, <code>.claude/skills/</code> or a plugin. A plugin bundles skills, commands, subagents, hooks and MCP servers; manifest <code>.claude-plugin/plugin.json</code></td></tr>
+    <tr><td>MCP scopes</td><td><code>claude mcp add</code> scopes: <b>local</b> (default; you, this project) · <b>project</b> (committed <code>.mcp.json</code>) · <b>user</b> (you, all projects)</td></tr>
+    <tr><td>Headless and CI</td><td><code>claude -p "…"</code> with <code>--output-format json|stream-json</code>, <code>--allowedTools</code>, <code>--permission-mode</code>, <code>--max-turns</code>. GitHub: <code>anthropics/claude-code-action@v1</code>. Cost: <code>--max-turns</code> in <code>claude_args</code>, workflow-level timeouts, GitHub concurrency controls, specific <code>@claude</code> requests. Security: keys in GitHub Secrets, only the permissions the workflow needs, review Claude's changes before merging. Running on every event is the distractor.</td></tr>
+  </tbody></table></div>
+  <p class="srcl"><a href="https://code.claude.com/docs/en/settings" target="_blank" rel="noopener">Settings</a> · <a href="https://code.claude.com/docs/en/managed-settings" target="_blank" rel="noopener">Managed settings</a> · <a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener">Hooks</a> · <a href="https://code.claude.com/docs/en/env-vars" target="_blank" rel="noopener">Env vars</a> · <a href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener">Commands</a></p>
+  <div class="contr"><h3>Contrasts to know</h3><p>Signal phrases to notice, what they usually point to, and the tempting answer that loses.</p><div class="tw wide" tabindex="0" role="region" aria-label="Contrasts to know (table)"><table><thead><tr><th>If the scenario says&hellip;</th><th>Lean toward&hellip;</th><th>Rule out&hellip;</th></tr></thead><tbody>
+    <tr><td>The CLI uses a lot of memory</td><td><code>/heapdump</code></td><td><code>/doctor</code>, which covers install and configuration</td></tr>
+    <tr><td>"Engineers can't loosen central rules"</td><td><code>allowManagedPermissionRulesOnly</code></td><td><code>strictKnownMarketplaces</code>, which governs plugin sources</td></tr>
+    <tr><td>API charges appear although the user signed in with a subscription</td><td>A stray API key in the environment takes precedence over the login: unset it and check the status screen</td><td>Re-authenticating repeatedly</td></tr>
+    <tr><td>Something must happen on every edit or before every command</td><td>A hook (pre-tool hooks can block, post-tool hooks react, plus prompt-submit and stop events)</td><td>An instruction in CLAUDE.md</td></tr>
+    <tr><td>Run Claude Code in CI or a script</td><td>Headless mode with the print flag</td><td>Driving the interactive UI</td></tr>
+    <tr><td>Team conventions versus enforcement</td><td>CLAUDE.md guides; settings and hooks enforce</td><td>Expecting a memory file to guarantee behavior</td></tr>
+  </tbody></table></div></div>
+  <div class="practice" data-domain="d7"><noscript><p class="srcl">The practice questions need JavaScript.</p></noscript></div>
+</section>
+
+<!-- ================= TRAPS ================= -->
+<section class="chap" id="traps" data-title="Distractor patterns" data-w="">
+  <header><div class="eyebrow">Pattern recognition</div><h2>Sixteen distractor patterns to spot</h2>
+  <p>Scenario questions usually offer four plausible options, and wrong options often follow these patterns. Learn to name the pattern and you can eliminate quickly.</p></header>
+  <div class="tw wide" tabindex="0" role="region" aria-label="Sixteen distractor patterns to spot (table)"><table><thead><tr><th>Distractor pattern</th><th>Why it loses</th><th>What usually wins</th></tr></thead><tbody>
+    <tr><td>Watch it: add logging, monitoring or a confirmation step</td><td>Leaves the risk in place</td><td>Remove the capability or prevent the action</td></tr>
+    <tr><td>Use a bigger or newer model</td><td>Doesn't fix data, rules, retrieval, security or format problems</td><td>Fix the layer that is failing; upgrade only on eval evidence</td></tr>
+    <tr><td>Add autonomy: an agent, or more agents</td><td>Adds cost, latency and non-determinism</td><td>The least autonomy that works, usually a workflow</td></tr>
+    <tr><td>Put the rule in the prompt</td><td>Prompts are probabilistic and can be overridden</td><td>Rules in code, permissions, rule engines and scoped credentials</td></tr>
+    <tr><td>Cut required context to save cost</td><td>Saves money by breaking correctness</td><td>Caching, routing, batch processing, retrieving less but better</td></tr>
+    <tr><td>Fine-tune early</td><td>Skips cheaper fixes</td><td>Prompt, then tools or retrieval, then a stronger pattern, then fine-tuning</td></tr>
+    <tr><td>The average looks fine</td><td>Hides a failing segment</td><td>Stratified, per-segment thresholds set in advance</td></tr>
+    <tr><td>RAG for live state</td><td>An index is a snapshot</td><td>A tool call to the system of record</td></tr>
+    <tr><td>Absolute promises ("always accurate")</td><td>Can't be met by probabilistic systems</td><td>Thresholds on a versioned eval set, plus fallbacks</td></tr>
+    <tr><td>Right trade-off, wrong scenario</td><td>True statement, but not about the constraint the question stresses</td><td>The option that names the stressed constraint</td></tr>
+    <tr><td>Fix at the wrong layer (sampling settings such as temperature, which current models reject anyway; "model weights changed")</td><td>Chases an unlikely cause</td><td>Cheapest diagnostic at the most likely layer: retrieval, prompt, stop_reason</td></tr>
+    <tr><td>Over-engineering (MCP or multi-agent for one app)</td><td>Machinery without the reuse or scale that justifies it</td><td>Direct tool use in one app; MCP for many clients; A2A for independent agents</td></tr>
+    <tr><td>Defer everything for maximum savings</td><td>Deferring the search tool, or every tool, returns a 400</td><td>Search tool and the 3–5 most-used tools stay loaded</td></tr>
+    <tr><td>"It's a tool setting, so the tools cache breaks"</td><td>Invalidation follows position in the prefix, not the parameter's name</td><td><code>tool_choice</code> and images break only the messages cache</td></tr>
+    <tr><td>A familiar NLP metric for meaning</td><td>ROUGE and BLEU score shared words; paraphrases score low and contradictions can score high</td><td>Embedding similarity or an LLM grader with a rubric</td></tr>
+    <tr><td>An indirect-injection defense for a direct attacker</td><td>Labelling user text as untrusted data does nothing when the user is the adversary</td><td>Harmlessness screen, monitoring, throttling repeat offenders</td></tr>
+  </tbody></table></div>
+  <div class="call tip"><span class="tag">For multiple-response items</span><p>Judge each option on its own as true or false for this scenario. Expect "select two" items where one wrong option sounds attractive, such as "use the largest model to remove bias".</p></div>
+</section>
+
+<!-- ================= CHEAT SHEET ================= -->
+<section class="chap" id="cheat" data-title="Cheat sheet" data-w="">
+  <header><div class="eyebrow">Quick lookup</div><h2>One-page cheat sheet</h2></header>
+  <div class="tw" tabindex="0" role="region" aria-label="One-page cheat sheet (table)"><table><thead><tr><th>If the scenario says&hellip;</th><th>Lean toward&hellip;</th></tr></thead><tbody>
+    <tr><td>Must own the audit trail, run behind our gateway</td><td>API or SDK behind the firm's own app and gateway</td></tr>
+    <tr><td>Already on AWS, GCP or Azure with a commitment</td><td>Bedrock, Vertex AI or Foundry respectively</td></tr>
+    <tr><td>Non-technical users, no build budget</td><td>Claude.ai with a Project</td></tr>
+    <tr><td>Rule, record, live state or exact maths</td><td>Existing system via a tool; Claude does the language part</td></tr>
+    <tr><td>Steps known, audit needed</td><td>Workflow (chain, route, parallelize, evaluator-optimizer)</td></tr>
+    <tr><td>Steps unknowable, errors recoverable</td><td>Bounded agent: tool limits, budgets, stop criteria, approvals</td></tr>
+    <tr><td>Large item, independent parts</td><td>Fan-out, validate, reconcile counts, synthesize</td></tr>
+    <tr><td>Role needs fewer capabilities</td><td>Remove the tools (least privilege)</td></tr>
+    <tr><td>Agent acts for many users</td><td>Per-user delegated scoped auth; authorize in the backend</td></tr>
+    <tr><td>Agent has 30+ tools or picks the wrong one</td><td>Trim per role; tool search with deferred loading</td></tr>
+    <tr><td>Tools reused across many clients</td><td>MCP. Independent agents across teams or vendors: A2A. One app: direct tool use</td></tr>
+    <tr><td>Codes, IDs, part numbers in queries</td><td>Sparse or hybrid retrieval</td></tr>
+    <tr><td>Contracts, manuals, policies</td><td>Hierarchical chunking</td></tr>
+    <tr><td>Confident-wrong after data refresh</td><td>Check retrieval and index first</td></tr>
+    <tr><td>Same big prompt every call</td><td>Static first, prompt caching</td></tr>
+    <tr><td>Cost pressure</td><td>Eval-driven routing, caching, batch, trim context. Never drop required context</td></tr>
+    <tr><td>Model change</td><td>Stratified eval, rollback threshold set first, regression suite</td></tr>
+    <tr><td>Bulk, non-urgent jobs</td><td>Message Batches API: 50% cheaper, up to 24 h, combine with caching</td></tr>
+    <tr><td>High-stakes or irreversible action</td><td>Human approval before the action</td></tr>
+    <tr><td>PHI</td><td>BAA plus eligible services, minimum necessary data</td></tr>
+    <tr><td>EU personal data</td><td>Minimization, residency, DPA, erasure across logs and stores</td></tr>
+    <tr><td>US federal workload</td><td>FedRAMP-authorized environment at the right impact level</td></tr>
+    <tr><td>Stakeholder asks for "an agent"</td><td>Discovery: problem, baseline, metric, constraints first</td></tr>
+    <tr><td>SLA for a probabilistic system</td><td>Thresholds on a versioned eval set, p95 latency, fallback</td></tr>
+    <tr><td>Must happen on every Claude Code edit</td><td>A hook, not an instruction in CLAUDE.md</td></tr>
+    <tr><td>Restrict an agent's tools</td><td><code>tools</code> or <code>disallowedTools</code>, never <code>allowedTools</code></td></tr>
+    <tr><td>Forbidden content (PII, PHI) in output</td><td>LLM grader, binary yes/no</td></tr>
+    <tr><td>Tone or empathy</td><td>LLM grader, Likert 1–5 with a rubric</td></tr>
+    <tr><td>Telemetry per agent type / per end user</td><td><code>OTEL_SERVICE_NAME</code> / <code>enduser.id</code> in resource attributes</td></tr>
+    <tr><td>Inference must stay in the US</td><td><code>inference_geo: "us"</code></td></tr>
+    <tr><td>Deferred tools, next turn</td><td>Search tool never deferred; resend all tools; no <code>tool_result</code> for <code>srvtoolu_</code></td></tr>
+    <tr><td>Only <code>tool_choice</code> or images changed</td><td>Only the messages cache misses (forced <code>any</code>/<code>tool</code> is a 400 on Opus 5.5, Sonnet 5.5 and Fable 5.1)</td></tr>
+    <tr><td>Same question, many phrasings</td><td>Embedding similarity or an LLM rubric, never ROUGE or BLEU</td></tr>
+    <tr><td>Workers must debate / known fan-out at scale</td><td>Agent team (costs scale with teammates) / dynamic workflow (1,000 agents per run, sandboxed script)</td></tr>
+    <tr><td>The user is the attacker</td><td>Harmlessness screen, monitoring, throttle or ban repeat offenders</td></tr>
+    <tr><td>Stable knowledge under ~200K tokens</td><td>No RAG; put it in the prompt and cache it</td></tr>
+    <tr><td>Extraction quality</td><td>Per-field precision, recall and F1</td></tr>
+    <tr><td>Ship a new prompt or model to live traffic</td><td>Offline eval → shadow → canary → A/B, with guardrail metrics</td></tr>
+    <tr><td>AI informs a credit, hiring, medical or legal decision</td><td>Qualified human review plus disclosure (Usage Policy)</td></tr>
+  </tbody></table></div>
+  <div class="call tip"><span class="tag">Exam technique</span><ul>
+    <li>About 1 min 54 s per item. Flag anything over 2.5 minutes and come back to it.</li>
+    <li>Underline the constraint word: <i>least</i>, <i>first</i>, <i>most directly</i>, <i>best</i>. "First" asks for the cheapest diagnostic step, not the full fix.</li>
+    <li>For multiple response, judge each option on its own as true or false for this scenario.</li>
+    <li>When two options both work, prefer the one that is simpler, deterministic, least privilege and measurable.</li>
+  </ul></div>
+</section>
+
+
+<!-- ================= EXACT FACTS ================= -->
+<section class="chap" id="facts" data-title="Exact facts" data-w="">
+  <header><div class="eyebrow">Recall drill</div><h2>Exact facts</h2>
+  <p>Some scenarios are easier when you know the exact name or number of a setting. This table collects the ones worth memorizing in one place. Switch on Hide answers, say each answer out loud, then hover or tap to check. Each fact also appears in its domain with a link to the doc it came from.</p></header>
+  <div class="toolbar"><button class="btn primary" id="hidebtn" type="button" aria-pressed="false">Hide answers</button><span class="srcl">49 facts · reviewed <span data-reviewed></span></span></div>
+  <div class="tw wide" tabindex="0" role="region" aria-label="Exact facts (table)"><table class="recall" id="recall"><thead><tr><th>Area</th><th>Question</th><th>Answer</th></tr></thead><tbody>
+    <tr><td>Models</td><td>Default model to start on (current docs)</td><td tabindex="0">Opus 5.5; move to Fable 5.1 only when evals at higher effort still fall short</td></tr>
+    <tr><td>Models</td><td>Context window on current models</td><td tabindex="0">1M tokens on Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5; 128K max output</td></tr>
+    <tr><td>Models</td><td>Turn thinking off</td><td tabindex="0">Opus 5.5: can't (lower effort instead); Sonnet 5.5: thinking type between_tools; Fable 5.1: always on; budget_tokens and prefill return a 400 on current models</td></tr>
+    <tr><td>Models</td><td>Forced tool_choice (any / tool) on Opus 5.5, Sonnet 5.5, Fable 5.1</td><td tabindex="0">400 error. Use auto plus an instruction naming the tool, strict: true, or structured outputs</td></tr>
+    <tr><td>Models</td><td>Effort levels and defaults</td><td tabindex="0">low · medium · high · xhigh · max. Default high; medium on Opus 5.5 and Haiku 5.5</td></tr>
+    <tr><td>Context</td><td>Input + max_tokens over the window, input fits</td><td tabindex="0">Accepted; stops with stop_reason model_context_window_exceeded (Claude 4.5+)</td></tr>
+    <tr><td>Caching</td><td>Write and read prices</td><td tabindex="0">Write 1.25x (5 min) or 2x (1 h); read 0.1x (Sonnet 5.5 included), 0.05x on Opus 5.5, 0.025x on Fable 5.1</td></tr>
+    <tr><td>Caching</td><td>Breakpoints and lookback</td><td tabindex="0">Max 4 per request (automatic caching uses 1); each looks back at most 20 block positions</td></tr>
+    <tr><td>Caching</td><td>Prompt below the minimum length</td><td tabindex="0">Silently not cached, no error. Minimum 512 tokens on current models</td></tr>
+    <tr><td>Tools</td><td>Tool search variants</td><td tabindex="0">regex for strict prefixes; BM25 for natural-language queries</td></tr>
+    <tr><td>Tools</td><td>defer_loading + cache_control on one tool</td><td tabindex="0">400 error. At least one tool must be non-deferred</td></tr>
+    <tr><td>Batches</td><td>Limits</td><td tabindex="0">100,000 requests or 256 MB; 50% off; within 24 h; results 29 days; match by custom_id</td></tr>
+    <tr><td>Rate limits</td><td>429 vs 529</td><td tabindex="0">429 = your limit (honor retry-after); 529 = provider overloaded (retry with backoff)</td></tr>
+    <tr><td>Governance</td><td>Fable 5.1 under ZDR</td><td tabindex="0">Not available: Covered Model needing 30-day retention (unless Anthropic expressly authorizes); enable 30-day retention per workspace</td></tr>
+    <tr><td>Governance</td><td>ZDR exceptions</td><td tabindex="0">Legal requirement or trust-and-safety flag; kept up to 2 years</td></tr>
+    <tr><td>Governance</td><td>US-only inference</td><td tabindex="0">inference_geo: &quot;us&quot; (1.1x); Claude 4.6+; Claude API, Claude Platform on AWS, Anthropic-managed Google Cloud; not Bedrock, Vertex AI or Foundry</td></tr>
+    <tr><td>Governance</td><td>HIPAA: surprising eligibility</td><td tabindex="0">Computer use eligible; Batch, Files, Skills, web fetch, MCP connector, tool search, compaction not</td></tr>
+    <tr><td>Governance</td><td>FedRAMP High routes</td><td tabindex="0">Bedrock in GovCloud, Vertex AI Assured Workloads, Claude for Government</td></tr>
+    <tr><td>SDK</td><td>Permission pipeline order</td><td tabindex="0">Hooks → deny → ask → mode → allow → canUseTool</td></tr>
+    <tr><td>SDK</td><td>allowedTools</td><td tabindex="0">Pre-approves; does not restrict. Restrict with tools or disallowedTools</td></tr>
+    <tr><td>Telemetry</td><td>Per agent type / per end user</td><td tabindex="0">OTEL_SERVICE_NAME / OTEL_RESOURCE_ATTRIBUTES enduser.id</td></tr>
+    <tr><td>Telemetry</td><td>Content opt-ins</td><td tabindex="0">OTEL_LOG_USER_PROMPTS · OTEL_LOG_TOOL_DETAILS · OTEL_LOG_RAW_API_BODIES (all off by default)</td></tr>
+    <tr><td>Telemetry</td><td>Cost and delivery</td><td tabindex="0">OTEL_METRICS_INCLUDE_SESSION_ID=false; otelHeadersHelper (29 min default); export intervals 60/5/5 s</td></tr>
+    <tr><td>Claude Code</td><td>Only central rules apply</td><td tabindex="0">allowManagedPermissionRulesOnly</td></tr>
+    <tr><td>Claude Code</td><td>Memory diagnosis</td><td tabindex="0">/heapdump (.heapsnapshot + -diagnostics.json); /doctor is install health</td></tr>
+    <tr><td>Claude Code</td><td>Subagent nesting</td><td tabindex="0">Default depth 3: CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH</td></tr>
+    <tr><td>Claude Code</td><td>Settings precedence</td><td tabindex="0">Managed → command line → local project → shared project → user</td></tr>
+    <tr><td>Evals</td><td>Success criteria letters (docs)</td><td tabindex="0">Specific, Measurable, Achievable, Relevant; example F1 ≥ 0.85 on a held-out set</td></tr>
+    <tr><td>Evals</td><td>Contextual retrieval gains</td><td tabindex="0">Failures −35% (embeddings), −49% (+BM25), −67% (+reranking)</td></tr>
+    <tr><td>Capacity</td><td>Per-user TPM, 100–500 users</td><td tabindex="0">15k–20k (1–5 users: 200k–300k; 500+: 10k–15k)</td></tr>
+    <tr><td>Tools</td><td>defer_loading on the search tool</td><td tabindex="0">Never. All tools deferred returns a 400</td></tr>
+    <tr><td>Tools</td><td>Next request after a tool search</td><td tabindex="0">Resend the full tools array; tool_reference expands automatically; no tool_result for srvtoolu_</td></tr>
+    <tr><td>Tools</td><td>Regex vs BM25 input limits</td><td tabindex="0">Regex pattern 200 chars; BM25 query 500 chars; both match names, descriptions, argument names and descriptions</td></tr>
+    <tr><td>Caching</td><td>tool_choice or images changed</td><td tabindex="0">Only the messages cache is invalidated</td></tr>
+    <tr><td>Context</td><td>Prior thinking on last-turn-only models</td><td tabindex="0">Stripped after a new user turn and stops counting; tool_use and tool_result stay</td></tr>
+    <tr><td>Multi-agent</td><td>Agent teams switch and limits</td><td tabindex="0">CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1; teammates can't spawn teammates; interactive only</td></tr>
+    <tr><td>Multi-agent</td><td>Dynamic workflow limits</td><td tabindex="0">1,000 agents per run; 16 concurrent by default (max 256); no filesystem or shell from the script; no mid-run input</td></tr>
+    <tr><td>Telemetry</td><td>Inbound TRACEPARENT honored by</td><td tabindex="0">Agent SDK and claude -p; interactive sessions ignore it</td></tr>
+    <tr><td>Telemetry</td><td>Span for permission waiting</td><td tabindex="0">claude_code.tool.blocked_on_user (vs claude_code.tool.execution)</td></tr>
+    <tr><td>Evals</td><td>FAQ consistency metric in the docs</td><td tabindex="0">Cosine similarity of Sentence-BERT embeddings</td></tr>
+    <tr><td>RAG</td><td>Current contextualized embedding model</td><td tabindex="0">voyage-context-4 (context-3 is the previous generation)</td></tr>
+    <tr><td>Tools</td><td>Tools returned per search, by default</td><td tabindex="0">Up to 5 (Claude can set a limit)</td></tr>
+    <tr><td>Multi-agent</td><td>Token cost vs a chat</td><td tabindex="0">Agents about 4×; multi-agent systems about 15×</td></tr>
+    <tr><td>RAG</td><td>When to skip retrieval</td><td tabindex="0">Knowledge under ~200K tokens (~500 pages): prompt plus caching</td></tr>
+    <tr><td>RAG</td><td>Reference retrieve and rerank</td><td tabindex="0">Retrieve top 150, rerank to top 20</td></tr>
+    <tr><td>Skills</td><td>Frontmatter limits</td><td tabindex="0">name ≤ 64 chars (no "anthropic"/"claude"); description ≤ 1,024 chars</td></tr>
+    <tr><td>Governance</td><td>Default API retention</td><td tabindex="0">30 days; Files API until deleted; flagged up to 2 years</td></tr>
+    <tr><td>Claude Code</td><td>Checkpoints</td><td tabindex="0">Esc Esc or /rewind; snapshots for the 100 most recent checkpoints, cleaned up ~30 days after last save; files only Bash changed aren't tracked</td></tr>
+    <tr><td>Claude Code</td><td>CLAUDE.md size</td><td tabindex="0">Target under 200 lines; scoped rules in .claude/rules/*.md with paths:</td></tr>
+  </tbody></table></div>
+  <div class="practice" data-domain="facts"><noscript><p class="srcl">The practice questions need JavaScript.</p></noscript></div>
+</section>
+
+<!-- ================= FINAL REVIEW ================= -->
+<section class="chap" id="final" data-title="Final review" data-w="">
+  <header><div class="eyebrow">Last two days</div><h2>Final review</h2>
+  <p>Use this chapter after you have read the domains and drilled the contrast boxes. Detailed settings are rarely worth memorizing; scenario items reward knowing which layer a control lives in and which control is the smallest fix.</p></header>
+
+  <h3>Five questions to ask of every item</h3>
+  <ol class="ordr">
+    <li><b>Constraint.</b> Which one is stressed: cost, latency, risk, compliance, reliability, control, audience?</li>
+    <li><b>Layer.</b> Where does the problem live: prompt, model, retrieval, tool, permissions, infrastructure, process?</li>
+    <li><b>Smallest fix.</b> What is the least change that solves it at that layer?</li>
+    <li><b>Remove or watch.</b> Can the risk be removed, or does the option merely monitor it?</li>
+    <li><b>Exact feature.</b> Does the option name the real mechanism for this noun (grader type, cache setting, permission control), or a near neighbor?</li>
+  </ol>
+
+  <h3>Elimination rules</h3>
+  <div class="kv">
+    <div><b>Absolutes</b>"Always", "never", "guarantees" and "100%" are usually wrong for probabilistic systems.</div>
+    <div><b>Drastic fixes</b>Re-architecting, fine-tuning or switching model when a configuration change would do.</div>
+    <div><b>More of X</b>More tools, agents, autonomy or context is rarely the cure for reliability or cost.</div>
+    <div><b>Wrong metric</b>An average where a percentile is needed, or similarity where exact match is needed.</div>
+    <div><b>Over-engineering</b>Machinery without the scale or reuse that would justify it.</div>
+    <div><b>Layers beat one control</b>Defense in depth beats a single instruction or filter.</div>
+    <div><b>Batch only when nobody waits</b>Any interactive requirement rules it out.</div>
+    <div><b>Match the setting to the noun</b>An org-level problem needs an org-level control; a session problem, a session control.</div>
+    <div><b>Read qualifiers twice</b>"First", "least", "most cost-effective" and "select two" change the answer.</div>
+    <div><b>Multi-select</b>Rule out the clearly wrong options first, then judge each remaining option on its own.</div>
+  </div>
+
+  <h3>Exam-day pacing and tactics</h3>
+  <ul>
+    <li>Budget about 90 seconds per item on the first pass. Flag anything slow and move on.</li>
+    <li>Keep about 25 minutes at the end to revisit flagged items.</li>
+    <li>Check how many answers a multiple-response item wants before reading the options.</li>
+    <li>Change an answer only when you can name the specific reason, such as a qualifier you missed.</li>
+    <li>When two options both work, choose the simpler, more deterministic, more measurable one.</li>
+    <li>Unfamiliar setting names are normal. Reason from the concept and from which layer the control belongs to.</li>
+  </ul>
+
+  <h3>Self-check scenarios</h3>
+  <p>Original practice scenarios. Answer in your head, then open the reveal.</p>
+  <details class="scn"><summary>A support assistant gives correct but overlong replies and the length limit keeps being breached. What is the cheapest first change?</summary><div><p>Prompt for brevity, set a maximum output length, or lower effort. Changing model family is the heavier fix and does not target length.</p></div></details>
+  <details class="scn"><summary>An agent was given a list of pre-approved read-only tools, yet it edited files while running in bypass mode. Why, and what fixes it?</summary><div><p>A pre-approval list approves those tools without a prompt; it does not forbid the others, and bypass approves everything else. Add deny rules or a blocking hook, and avoid bypass for this agent.</p></div></details>
+  <details class="scn"><summary>In a long chat the cache hit rate drops late in the conversation although the system prompt is marked for caching. What is the likely cause?</summary><div><p>A breakpoint looks back at most 20 block positions. Add explicit breakpoints as the conversation grows.</p></div></details>
+  <details class="scn"><summary>The requirement is that 95% of replies arrive within two seconds. Which latency measure do you track?</summary><div><p>The 95th percentile. An average hides the slow tail.</p></div></details>
+  <details class="scn"><summary>A classifier must return one of five fixed labels. How do you grade it?</summary><div><p>Exact match against the expected label. An LLM grader adds cost and noise with no benefit.</p></div></details>
+  <details class="scn"><summary>A 400-person organization sees 429 errors, while one small team's own usage is light. What should you look at?</summary><div><p>Rate limits are shared at the organization level. Review total demand, per-user allocation, caching, batching for non-urgent work, and request a higher limit if needed.</p></div></details>
+  <details class="scn"><summary>A clinic wants to run overnight summarization of patient notes through the bulk batch endpoint. What do you check first?</summary><div><p>Whether that feature is covered by the organization's HIPAA arrangement. The Batch API is not HIPAA-eligible, and a request using an ineligible feature returns a 400. Run it through the Messages API instead.</p></div></details>
+  <details class="scn"><summary>A developer signed in with a subscription but sees API usage charges. Where do you look?</summary><div><p>An API key set in the environment overrides the login. Unset it and check the status screen.</p></div></details>
+  <details class="scn"><summary>An agent with 300 connected tools keeps choosing the wrong one. What helps?</summary><div><p>Trim tools per role and use tool search with deferred loading so only relevant definitions are loaded.</p></div></details>
+  <details class="scn"><summary>Security says a destructive command must never run, even when a developer approves everything automatically. Which control?</summary><div><p>A deny rule or a blocking pre-tool hook, since those are evaluated before the permission mode can approve.</p></div></details>
+
+  <h3>Verify against the current docs</h3>
+  <div class="call note"><span class="tag">Where sources can differ</span><p>Course material and practice exams sometimes differ from the docs. These are the common differences, with what the docs said when this playbook was last reviewed. If a question clearly assumes an older framing, answer on the principle it tests.</p></div>
+  <div class="tw" tabindex="0" role="region" aria-label="Verify against the current docs (table)"><table><thead><tr><th>Item</th><th>What the docs say now</th></tr></thead><tbody>
+    <tr><td>Subagent nesting depth</td><td>Default 3, set by <code>CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH</code>. Older material may say 5.</td></tr>
+    <tr><td>Agent teams in the Agent SDK</td><td>Teams need an interactive Claude Code session; <code>-p</code> and Agent SDK sessions do not spawn teammates. Answer on the principle tested: peer messaging, shared task list, higher token cost.</td></tr>
+    <tr><td>Mid-run input to a dynamic workflow</td><td>Not supported. Runs pause only for permission prompts and usage-limit waits; use separate workflows for sign-off.</td></tr>
+    <tr><td>A hook that asks for approval while bypass mode is on</td><td>Still not documented. A hook that denies is documented to hold. For a guarantee, deny.</td></tr>
+    <tr><td>Effort level and reply length</td><td>Effort is "a behavioral signal, not a strict token budget"; on some models it doesn't reliably shorten replies, so also prompt for length.</td></tr>
+    <tr><td>Cache control on deferred tool definitions</td><td>Returns a 400 per the docs. Put the breakpoint on a non-deferred tool.</td></tr>
+    <tr><td>Model names, versions and context windows</td><td>Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5; all 1M context. Docs start on Opus 5.5. Fable 5.1 needs 30-day retention, so it isn't available under ZDR.</td></tr>
+    <tr><td>HIPAA-eligible feature list</td><td>Computer use is eligible; MCP connector, tool search, context editing and compaction are not. The PHI-in-schema rule is stated for structured outputs. Bedrock and Vertex AI fall under the cloud provider's own BAA, not Anthropic's HIPAA readiness.</td></tr>
+    <tr><td>Telemetry setting names, defaults and intervals</td><td>Domain 3 §10 follows the docs as of October 2026, including the 29-minute header refresh and 60 s / 5 s / 5 s export intervals. Check current docs if a name looks unfamiliar.</td></tr>
+    <tr><td>Rate-limit figures and batch limits</td><td>Per-user TPM table (Domain 6 §6) and 100,000 requests / 256 MB per batch, as listed in the docs in October 2026.</td></tr>
+    <tr><td>Retake policy, fee and exam format</td><td>As of October 2026: $175; 14, 30 then 90 days between retakes; 4 attempts in 12 months; 720 to pass. Confirm on the official exam page before booking.</td></tr>
+  </tbody></table></div>
+</section>
+
+<!-- ================= TIMED EXAM ================= -->
+<section class="chap" id="exam" data-title="Timed exam" data-w="">
+  <header><div class="eyebrow">Dress rehearsal</div><h2>Timed exam mode</h2>
+  <p>63 questions drawn at random from this playbook's question bank in the published domain weights (D1 11, D2 8, D3 12, D4 10, D5 9, D6 9, D7 4), with a 120-minute timer. The mix is scenario-based: at most 4 recall items from the Exact facts set appear in a run. Answers and explanations appear only after you submit, in a review of every question. Each run draws a new mix and a new option order. An unfinished run is saved in this browser, so a reload resumes it.</p>
+  <div class="call note"><span class="tag">About these questions</span><p>Original practice questions written with AI assistance for this playbook. They are not official, not real exam items and not a prediction of what the exam will ask. The 72% and 80% readiness thresholds are raw percent-correct proxies; the real exam reports a scaled score (720 of 1,000 to pass), which is not the same thing.</p></div></header>
+  <noscript><p class="srcl">The timed exam needs JavaScript.</p></noscript>
+  <div id="examBox"></div>
+</section>
+
+<!-- ================= SOURCES ================= -->
+<section class="chap" id="sources" data-title="Sources" data-w="">
+  <header><div class="eyebrow">Last reviewed <span data-reviewed></span></div><h2>Sources</h2>
+  <p>Reviewed against Anthropic docs as of October 2026; when they disagree, the docs win.</p></header>
+  <div class="tw" tabindex="0" role="region" aria-label="Sources (table)"><table><thead><tr><th>Area</th><th>Page</th></tr></thead><tbody>
+    <tr><td>Exam</td><td><a href="https://anthropic-partners.skilljar.com/page/claude-certification-exam-prep-courses" target="_blank" rel="noopener">Official exam page and exam guide (Anthropic Academy)</a></td></tr>
+    <tr><td>Exam</td><td><a href="https://anthropic-partners.skilljar.com/page/faq-certifications" target="_blank" rel="noopener">Certification FAQ (retakes, validity)</a></td></tr>
+    <tr><td>Exam</td><td><a href="https://www.pearsonvue.com/us/en/anthropic.html" target="_blank" rel="noopener">Pearson VUE exam page</a></td></tr>
+    <tr><td>Models</td><td><a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank" rel="noopener">Models overview</a></td></tr>
+    <tr><td>Models</td><td><a href="https://platform.claude.com/docs/en/build-with-claude/effort" target="_blank" rel="noopener">Effort</a></td></tr>
+    <tr><td>Models</td><td><a href="https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking" target="_blank" rel="noopener">Adaptive thinking</a></td></tr>
+    <tr><td>Context</td><td><a href="https://platform.claude.com/docs/en/build-with-claude/context-windows" target="_blank" rel="noopener">Context windows</a></td></tr>
+    <tr><td>Context</td><td><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank" rel="noopener">Prompt caching</a></td></tr>
+    <tr><td>Tools</td><td><a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool" target="_blank" rel="noopener">Tool search tool</a></td></tr>
+    <tr><td>Tools</td><td><a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector" target="_blank" rel="noopener">MCP connector</a></td></tr>
+    <tr><td>Tools</td><td><a href="https://modelcontextprotocol.io/specification/2026-07-28/server" target="_blank" rel="noopener">MCP specification</a></td></tr>
+    <tr><td>API</td><td><a href="https://platform.claude.com/docs/en/build-with-claude/batch-processing" target="_blank" rel="noopener">Message Batches</a></td></tr>
+    <tr><td>API</td><td><a href="https://platform.claude.com/docs/en/build-with-claude/search-results" target="_blank" rel="noopener">Search result blocks</a></td></tr>
+    <tr><td>Design</td><td><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Building effective agents</a></td></tr>
+    <tr><td>Design</td><td><a href="https://anthropic.com/news/contextual-retrieval" target="_blank" rel="noopener">Contextual retrieval</a></td></tr>
+    <tr><td>Evals</td><td><a href="https://platform.claude.com/docs/en/test-and-evaluate/develop-tests" target="_blank" rel="noopener">Define success criteria and build evaluations</a></td></tr>
+    <tr><td>Safety</td><td><a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/handle-streaming-refusals" target="_blank" rel="noopener">Streaming refusals</a></td></tr>
+    <tr><td>Safety</td><td><a href="https://platform.claude.com/docs/en/manage-claude/api-and-data-retention" target="_blank" rel="noopener">API and data retention (ZDR, HIPAA)</a></td></tr>
+    <tr><td>Safety</td><td><a href="https://platform.claude.com/docs/en/manage-claude/data-residency" target="_blank" rel="noopener">Data residency (inference_geo)</a></td></tr>
+    <tr><td>Safety</td><td><a href="https://privacy.claude.com/en/articles/8114513-will-anthropic-sign-a-business-associate-agreement-baa-and-if-so-for-which-products" target="_blank" rel="noopener">BAA coverage by product</a></td></tr>
+    <tr><td>Safety</td><td><a href="https://claude.com/government" target="_blank" rel="noopener">Claude for Government (FedRAMP)</a></td></tr>
+    <tr><td>Agent SDK</td><td><a href="https://code.claude.com/docs/en/agent-sdk/permissions" target="_blank" rel="noopener">Permissions</a></td></tr>
+    <tr><td>Agent SDK</td><td><a href="https://code.claude.com/docs/en/agent-sdk/observability" target="_blank" rel="noopener">Observability</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/monitoring-usage" target="_blank" rel="noopener">Monitoring (OpenTelemetry)</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/settings" target="_blank" rel="noopener">Settings</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/managed-settings" target="_blank" rel="noopener">Managed settings</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener">Hooks</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/env-vars" target="_blank" rel="noopener">Environment variables</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener">Commands</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">MCP in Claude Code</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/costs" target="_blank" rel="noopener">Costs and rate-limit guidance</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://platform.claude.com/docs/en/build-with-claude/claude-code-analytics-api" target="_blank" rel="noopener">Analytics API</a></td></tr>
+    <tr><td>Context</td><td><a href="https://platform.claude.com/docs/en/build-with-claude/extended-thinking" target="_blank" rel="noopener">Extended thinking</a></td></tr>
+    <tr><td>RAG</td><td><a href="https://platform.claude.com/docs/en/build-with-claude/embeddings" target="_blank" rel="noopener">Embeddings (Voyage contextualized models)</a></td></tr>
+    <tr><td>Safety</td><td><a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks" target="_blank" rel="noopener">Mitigate jailbreaks and prompt injections</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/agent-teams" target="_blank" rel="noopener">Agent teams</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">Subagents</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/workflows" target="_blank" rel="noopener">Dynamic workflows</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener">Permissions and workspace trust</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/github-actions" target="_blank" rel="noopener">GitHub Actions</a></td></tr>
+    <tr><td>Design</td><td><a href="https://www.anthropic.com/engineering/multi-agent-research-system" target="_blank" rel="noopener">How we built our multi-agent research system</a></td></tr>
+    <tr><td>Skills</td><td><a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener">Agent Skills overview</a></td></tr>
+    <tr><td>Tools</td><td><a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization" target="_blank" rel="noopener">MCP authorization</a></td></tr>
+    <tr><td>Safety</td><td><a href="https://www.anthropic.com/legal/aup" target="_blank" rel="noopener">Usage Policy (high-risk use cases)</a></td></tr>
+    <tr><td>Safety</td><td><a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data" target="_blank" rel="noopener">Data retention periods</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/checkpointing" target="_blank" rel="noopener">Checkpointing</a></td></tr>
+    <tr><td>Claude Code</td><td><a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener">Memory (CLAUDE.md and rules)</a></td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="chap" id="reset" data-title="Reset" data-w="">
+  <header><h2>Reset my progress</h2><p>Answers and objective ticks are stored only in this browser. Clearing them cannot be undone.</p></header>
+  <button class="btn" id="resetall" type="button">Reset my progress</button>
+</section>
+
+</main>
+</div>
+
+<footer class="sitefoot">
+  <p>Independent, community-written study guide. Not affiliated with, endorsed by or reviewed by Anthropic. All practice questions are original study material written with AI assistance: they are not real exam questions and do not predict exam content. Product details change, so when this guide and the current Anthropic docs disagree, the docs win.</p>
+  <p>Last reviewed <span data-reviewed>October 2026</span> · <a href="https://github.com/mukesh-simform/claude-certified-architect-guide/issues/new/choose">Report an error</a> · <a href="https://github.com/mukesh-simform/claude-certified-architect-guide">Source on GitHub</a> · <a href="https://anthropic.skilljar.com/">Anthropic Academy</a></p>
+</footer>
+<script src="questions.js"></script>
+<script src="ccap.js"></script>
+</body>
+</html>

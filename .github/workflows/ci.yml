@@ -1,0 +1,23 @@
+name: Checks
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate HTML
+        run: npx --yes html-validate@9 "*.html" "*/*.html"
+      - name: Check question banks
+        run: node scripts/check-questions.js
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --include-fragments --exclude-path 404.html --max-retries 2 --accept 200,403,429 "./**/*.html"
+          fail: true

@@ -1,80 +1,74 @@
-# Claude Certified Architect · Foundations Exam — Guide
+[![Claude Certification Prep: study guides for the Claude Certified Architect exams](assets/img/og-card.png)](https://mukesh-simform.github.io/claude-certified-architect-guide/)
 
-> **Claude Certified Architect · Foundations Exam**  
-> Everything you need in one repo — official materials, an interactive study guide, a full practice question bank, and the required course list.  
-> **Minimum passing score: 720 / 1000**
+# Claude Certification Prep
 
----
+Independent, free study guides for the **Claude Certified Architect** exams. Static site, no build step, deployed with GitHub Pages.
 
-## How to Use This Repo
+**Live site:** https://mukesh-simform.github.io/claude-certified-architect-guide/
 
-| Resource | What it is |
-|---|---|
-| [Interactive Study Guide](https://mukesh-simform.github.io/claude-certified-architect-guide/) | Primary study resource — all 5 domains, cheat sheets, code examples, dark-themed UI |
-| [Practice Question Bank](https://mukesh-simform.github.io/claude-certified-architect-guide/questions.html) | 49 unique questions from official practice exams, grouped by scenario, with reveal answers |
-| [Required Courses](https://mukesh-simform.github.io/claude-certified-architect-guide/courses.html) | The 5 Anthropic Academy courses to complete before the exam |
-| [Official Exam Guide](docs/Exam_Guide.pdf) | Anthropic's official exam specification (8 pages) |
-| [Course Catalog](docs/Anthropic_Academy_Course_Catalog.pdf) | Full Anthropic Academy catalog |
+> Community-written and not affiliated with, endorsed by or reviewed by Anthropic. All practice questions are original study material written with AI assistance: they are not real exam questions and do not predict exam content. Product details change, so when this guide and the current Anthropic docs disagree, the docs win.
 
----
+**Last reviewed:** October 2026.
 
-## Exam at a Glance
+## What is inside
 
-| Domain | Topic | Weight |
+| Guide | Exam | What you get |
 |---|---|---|
-| D1 | Agentic Architecture & Orchestration | **27%** |
-| D2 | Tool Design & MCP Integration | **18%** |
-| D3 | Claude Code Configuration & Workflows | **20%** |
-| D4 | Prompt Engineering & Structured Output | **20%** |
-| D5 | Context Management & Reliability | **15%** |
+| [CCAF guide](https://mukesh-simform.github.io/claude-certified-architect-guide/ccaf/) | Foundations | 5 domains, cheat sheets, code examples, 12 sample questions, 4 hands-on exercises |
+| [Practice hub](https://mukesh-simform.github.io/claude-certified-architect-guide/practice/) | Both | Links to the CCAF practice bank and the CCAP timed mock |
+| [CCAF practice](https://mukesh-simform.github.io/claude-certified-architect-guide/ccaf/practice.html) | Foundations | 62 scenario questions across all 6 scenarios, domain filter, saved progress |
+| [Courses](https://mukesh-simform.github.io/claude-certified-architect-guide/courses/) | Both | CCAF and CCAP prep courses, optional courses and official links |
+| [CCAP playbook](https://mukesh-simform.github.io/claude-certified-architect-guide/ccap/) | Professional | 7 domains, 38-objective map, distractor patterns, cheat sheet, 49 exact facts, 129 questions, 63-question timed mock with resume and answer review |
 
----
+## Exams at a glance
 
-## Required Courses (complete before exam)
+| | CCAF (Foundations) | CCAP (Professional) |
+|---|---|---|
+| Domains | 5: Agentic Architecture 27%, Tools & MCP 18%, Claude Code 20%, Prompting 20%, Context 15% | 7: Solution Design 17%, Models & Prompting 13%, Integration 19%, Evaluation 16%, Governance 14%, Stakeholders 14%, Developer Productivity 7% |
+| Format | Scenario-based multiple choice | Multiple choice and multiple response, 63 items, 120 minutes |
+| Pass mark | 720 / 1,000 | 720 / 1,000 |
 
-Complete these five [Anthropic Academy](https://anthropic.skilljar.com) courses in order:
+Exam details are as of October 2026. Check the official exam pages and Anthropic Academy for current fees, eligibility and policies before booking. Practice exams are available in your Anthropic Academy account.
 
-1. **Claude Code 101** — Installation, agentic loop, CLAUDE.md, hooks, subagents, MCP basics → covers all 5 domains as baseline
-2. **Claude Code in Action** *(Level 200)* — Hooks, custom commands, Agent SDK → covers D3, D1
-3. **Building with the Claude API** *(Level 100 + 200)* — API fundamentals through agents and production patterns → covers D1, D4, D5
-4. **Introduction to Model Context Protocol** *(Level 200)* — Building MCP servers and clients → covers D2
-5. **Model Context Protocol: Advanced Topics** *(Level 300)* — Production MCP patterns: sampling, notifications, file system access, transport mechanisms → deepens D2
+## Repository layout
 
-See [courses](https://mukesh-simform.github.io/claude-certified-architect-guide/courses.html) for full descriptions and domain mapping.
+Each section is self-contained: its page, styles, scripts and data live in the same folder.
 
----
+```
+index.html                  landing page
+404.html                    not-found page; also forwards the old questions.html and courses.html URLs
+ccaf/                       Foundations: index.html (guide), practice.html, ccaf.css/js, practice.css/js
+ccap/                       Professional: index.html (playbook, practice sets, timed mock), ccap.css/js, questions.js
+courses/                    Courses for both exams: index.html, courses.css
+practice/                   Practice hub linking both exams: index.html
+assets/css/theme.css        shared design tokens and site chrome (light and dark)
+assets/js/                  theme.js (toggle, review date), legacy-redirect.js (old-URL forwarding)
+assets/img/                 social card, touch icon
+scripts/sync-head-footer.py  applies shared <head> sharing tags and the footer to every page
+scripts/check-questions.js  question-bank and anchor checks (run in CI)
+.github/                    CI (HTML validation, link check, question checks), issue and PR templates
+```
 
-## Domain Quick Reference
+Light and dark themes share one set of tokens in `assets/css/theme.css`. Progress (answers, ticks, an in-progress mock) is stored in the visitor's browser only. The "last reviewed" date shown on every page comes from `assets/js/theme.js`.
 
-**D1 — Agentic Architecture (27%):** Agentic loop lifecycle · `stop_reason` · multi-agent coordinator/subagent patterns · task decomposition · error propagation · session resumption
+## Run locally
 
-**D2 — Tool Design & MCP (18%):** Effective tool descriptions · structured error responses · `tool_choice` · MCP server configuration · composite tools · scope and distribution
+```bash
+python3 -m http.server 8000
+# open http://localhost:8000/
 
-**D3 — Claude Code Config (20%):** `CLAUDE.md` hierarchy (user → project → path) · custom slash commands and skills · `context: fork` · `allowed-tools` · Plan Mode · CI/CD with `-p` flag
+node scripts/check-questions.js          # question banks and anchors
+npx html-validate "*.html" "*/*.html"
+```
 
-**D4 — Prompt Engineering (20%):** Explicit criteria vs vague instructions · few-shot examples · structured output via `tool_use` · validation and retry loops · multi-pass review · batch processing
+## Deploying
 
-**D5 — Context Management (15%):** Context window optimization · lost-in-the-middle · progressive summarization · persistent fact blocks · Explore subagent for isolation · information provenance
+GitHub Pages, **Deploy from a branch**, `master` / root. `.nojekyll` turns off Jekyll processing. If you fork or rename the repo, update the `/claude-certified-architect-guide/` prefix in `404.html` and the base URL in `scripts/sync-head-footer.py`, `robots.txt` and `sitemap.xml`, then run `python3 scripts/sync-head-footer.py`.
 
----
+## Contributing
 
-## Key Numbers to Memorize
+See [CONTRIBUTING.md](CONTRIBUTING.md). Fixes and corrections backed by a link to the current Anthropic docs are especially welcome.
 
-- Passing score: **720 / 1000**
-- Batch API max latency: **24 hours** — disqualifies any blocking workflow
-- `stop_reason: "tool_use"` → continue loop · `stop_reason: "end_turn"` → stop
-- `context: fork` isolates skill execution from main conversation history
-- `-p` flag puts Claude Code into non-interactive (CI/pipeline) mode
-- User-scope (`~/.claude/`) overrides project-scope (`.claude/`) for that user
+## License
 
----
-
-## Practice Exam
-
-Practice Exam: Claude Certified Architect – Foundations Certification
-
-1. Login to https://anthropic.skilljar.com/
-2. Access My Profile
-3. Access Practice Exam
-
-> Do not attempt the final exam until you score 850–900 in practice exam.
+MIT, see [LICENSE](LICENSE). Claude and Anthropic are trademarks of Anthropic, PBC.

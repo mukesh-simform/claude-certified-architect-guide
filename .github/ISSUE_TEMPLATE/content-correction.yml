@@ -1,0 +1,33 @@
+name: Content correction
+description: Something in a guide or question is wrong or out of date
+labels: [content]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Page and section
+      description: Link to the page (with #anchor if you can) or the question id.
+      placeholder: https://mukesh-simform.github.io/claude-certified-architect-guide/ccap/#d3
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What is wrong
+      description: Quote the current text and say what it should say.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: A link to the current Anthropic docs (or other primary source) that backs the correction.
+    validations:
+      required: true
+  - type: checkboxes
+    id: nda
+    attributes:
+      label: Exam content
+      options:
+        - label: This report does not contain real exam questions or NDA-covered material.
+          required: true

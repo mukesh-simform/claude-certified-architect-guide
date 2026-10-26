@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CCAF Practice Questions · Claude Certified Architect Foundations</title>
+<meta name="description" content="Scenario-based practice questions for the Claude Certified Architect – Foundations exam, tagged by domain, with explanations.">
+<link rel="canonical" href="https://mukesh-simform.github.io/claude-certified-architect-guide/ccaf/practice.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Claude Certification Prep">
+<meta property="og:title" content="CCAF Practice Questions · Claude Certified Architect Foundations">
+<meta property="og:description" content="Scenario-based practice questions for the Claude Certified Architect – Foundations exam, tagged by domain, with explanations.">
+<meta property="og:url" content="https://mukesh-simform.github.io/claude-certified-architect-guide/ccaf/practice.html">
+<meta property="og:image" content="https://mukesh-simform.github.io/claude-certified-architect-guide/assets/img/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FAF9F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1F1E1D" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<link rel="stylesheet" href="practice.css">
+<script src="../assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="sitebar">
+  <a class="logo" href="../index.html"><i aria-hidden="true"></i>Claude Certification Prep</a>
+  <nav aria-label="Site">
+    <a href="../ccaf/index.html">CCAF guide</a><a href="../ccap/index.html">CCAP playbook</a><a href="../practice/index.html" aria-current="true">Practice</a><a href="../courses/index.html">Courses</a>
+  </nav>
+  <button class="iconbtn" id="themebtn" type="button">Dark mode</button>
+</header>
+<main class="pwrap" id="main">
+<header>
+  <div class="eyebrow">Claude Certified Architect · Foundations</div>
+  <h1>Practice Question Bank</h1>
+  <p>62 questions grouped by the six exam scenarios and tagged by domain. Choose an answer to check it, or open <em>Show answer</em>. Progress is saved in this browser only.</p>
+  <p class="pnote"><strong>About these questions:</strong> original practice questions written to exercise the exam domains. They are not official exam questions and not a prediction of exam content.</p>
+  <noscript><p class="pnote">JavaScript is off, so answers are not checked automatically, the domain filter does not work and progress is not saved. Open <em>Show answer</em> under each question to see the answer and explanation.</p></noscript>
+  <div class="chips" role="group" aria-label="Filter by domain">
+    <button class="chip" type="button" data-d="" aria-pressed="true"><i aria-hidden="true"></i>All (62)</button>
+    <button class="chip" type="button" data-d="d1" aria-pressed="false"><i aria-hidden="true"></i>D1 Agentic · 27% (16)</button>
+    <button class="chip" type="button" data-d="d2" aria-pressed="false"><i aria-hidden="true"></i>D2 Tools &amp; MCP · 18% (11)</button>
+    <button class="chip" type="button" data-d="d3" aria-pressed="false"><i aria-hidden="true"></i>D3 Claude Code · 20% (12)</button>
+    <button class="chip" type="button" data-d="d4" aria-pressed="false"><i aria-hidden="true"></i>D4 Prompting · 20% (13)</button>
+    <button class="chip" type="button" data-d="d5" aria-pressed="false"><i aria-hidden="true"></i>D5 Context · 15% (10)</button>
+  </div>
+</header>
+<div class="scorebar"><span id="score"></span><button class="btn" id="reset" type="button">Reset my progress</button></div>
+
+<section class="scenario-block" aria-labelledby="scenario-1">
+  <div class="scenario-header">
+    <div class="scenario-icon" aria-hidden="true">🎧</div>
+    <h2 id="scenario-1">Scenario 1 · Customer Support Resolution Agent</h2>
+    <span class="qcount">17 questions</span>
+  </div>
+  <p class="scenario-ctx">An Agent SDK support agent with MCP tools <code>get_customer</code>, <code>lookup_order</code>, <code>process_refund</code> and <code>escalate_to_human</code>, targeting 80%+ first-contact resolution.</p>
+
+  <article class="q-card" id="ccaf-cs-tool-descriptions" data-qid="ccaf-cs-tool-descriptions" data-d="d2" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q1</span><span class="d-badge d2">D2 · Tool Design &amp; MCP</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-tool-descriptions-q">In testing, the agent frequently calls <code>get_customer</code> when users ask about order status, even though <code>lookup_order</code> would be more appropriate. What should you examine first to address this issue?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-tool-descriptions-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Reduce the number of tools available to the agent so that there are fewer options to choose between on each turn.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Implement a pre-processing classifier that detects order queries and routes them directly to <code>lookup_order</code>.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Review the tool descriptions to make sure they clearly distinguish each tool's purpose and when to use it.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add few-shot examples covering every possible order-related query pattern to the agent's system prompt.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">Tool descriptions are the main signal Claude uses to choose a tool, and vague or overlapping descriptions are the most common cause of misselection. Check them first, before adding classifiers, removing tools or writing large sets of examples.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-multiple-matches" data-qid="ccaf-cs-multiple-matches" data-d="d2" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q2</span><span class="d-badge d2">D2 · Tool Design &amp; MCP</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-multiple-matches-q">Your <code>get_customer</code> tool returns all matches when searching by name. When there are several, Claude picks the customer with the most recent order, and production data shows 15% of multi-match cases then proceed with the wrong account. How should you address this?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-multiple-matches-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Score each candidate match and proceed automatically when the top candidate scores above 85%, asking for clarification only below that.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Modify <code>get_customer</code> to return only the single most likely match.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add few-shot examples showing Claude how to use earlier conversation context, such as recent orders, to infer which customer is meant.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">When <code>get_customer</code> returns multiple matches, have Claude ask for another identifier: email, phone or order number.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">When a lookup returns several customers, the agent must ask for an additional identifier and must not pick one by heuristic. Confidence thresholds, returning only the "most likely" match and inferring from context are all heuristics, and any of them can act on the wrong customer's account.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-keyword-bias" data-qid="ccaf-cs-keyword-bias" data-d="d2" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q3</span><span class="d-badge d2">D2 · Tool Design &amp; MCP</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-keyword-bias-q">Production logs show that when customers include "account" in their message (e.g., "check my account for the order"), the agent calls <code>get_customer</code> first 78% of the time. Without "account" (e.g., "check on the order I placed"), it calls <code>lookup_order</code> first 93% of the time. The tool descriptions are well written. What is the most likely root cause?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-keyword-bias-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">The system prompt has keyword-sensitive instructions (for example about "account") that steer tool choice.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">The model's base training links the word "account" to customer operations so strongly that no prompt or description change can override it.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">The model needs fine-tuning on examples that mix account and order language.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">The tool descriptions need extra negative examples stating when NOT to use each tool, even though they are otherwise already well written.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">When the descriptions are already good and the behaviour flips on a single keyword, look for system prompt wording such as "always verify the customer's account first" that steers selection. Blaming base training or reaching for fine-tuning skips the cheap, likely fix, and more description text doesn't address a prompt-level bias.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-verify-prerequisite" data-qid="ccaf-cs-verify-prerequisite" data-d="d1" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q4</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-verify-prerequisite-q">Production data shows that in 12% of cases, your agent skips <code>get_customer</code> entirely and calls <code>lookup_order</code> using only the customer's stated name, occasionally leading to misidentified accounts and incorrect refunds. What change would most effectively address this reliability issue?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-verify-prerequisite-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Strengthen the system prompt so it states, in bold and near the top, that verification via <code>get_customer</code> is mandatory before any order operation.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Implement a routing classifier that analyzes each request and enables only the subset of tools appropriate for that request type.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add few-shot examples showing the agent always calling <code>get_customer</code> first.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add a programmatic prerequisite that blocks <code>lookup_order</code> and <code>process_refund</code> until <code>get_customer</code> returns a verified ID.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">Identity verification before financial operations is a hard rule, so it needs deterministic enforcement. A programmatic prerequisite guarantees the order; prompt wording and few-shot examples only make compliance more likely, which isn't enough when a miss means a refund on the wrong account. A routing classifier controls which tools are available, not the order they are called in.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-parallel-tool-calls" data-qid="ccaf-cs-parallel-tool-calls" data-d="d2" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q5</span><span class="d-badge d2">D2 · Tool Design &amp; MCP</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-parallel-tool-calls-q">Production metrics show your agent averages 4+ API round-trips per resolution. Analysis reveals Claude often requests <code>get_customer</code> and <code>lookup_order</code> in separate sequential turns, even though both lookups are independent and needed up front. What's the most effective way to reduce round-trips?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-parallel-tool-calls-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Implement speculative execution that automatically calls every likely-needed tool alongside whichever tool Claude requested.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Encourage parallel tool use in the system prompt, and return every <code>tool_result</code> together in one user message.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Merge the customer, order and billing lookups into one generic <code>lookup</code> tool with a mode parameter, so any request needs a single call.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Increase <code>max_tokens</code> so Claude can plan ahead and group its requests.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">Claude can request several independent tools in one response. Ask for this in the prompt, and make the harness run them and return all the results in a single user message, because splitting results across messages teaches the model to stop calling tools in parallel. Speculative calls waste work and context. A generic multi-mode tool blurs the descriptions Claude relies on for selection. <code>max_tokens</code> has nothing to do with it.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-normalize-hook" data-qid="ccaf-cs-normalize-hook" data-d="d1" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q6</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-normalize-hook-q">Production logs reveal the agent misinterprets data: Unix timestamps from <code>get_customer</code>, ISO 8601 dates from <code>lookup_order</code>, and numeric status codes (1=pending, 2=shipped). Some tools are third-party MCP servers you cannot modify. What's the most maintainable approach to normalize data formats?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-normalize-hook-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Document each tool's timestamp and status-code conventions in the system prompt.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Create a <code>normalize_data</code> tool that the agent is instructed to call after every retrieval to transform the values.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Use a <code>PostToolUse</code> hook to normalize timestamps and status codes in tool results before the agent sees them.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Rewrite the tools you control to return readable formats, and ask the third-party vendors to change their servers to match.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">A <code>PostToolUse</code> hook is deterministic: it transforms results in one place before Claude reads them, whether the server is yours or a third party's. Prompt documentation and an extra normalization tool both depend on the model remembering to apply them, and you can't rely on vendors changing their servers.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-escalation-calibration" data-qid="ccaf-cs-escalation-calibration" data-d="d5" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q7</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-escalation-calibration-q">Your agent achieves 55% first-contact resolution, well below the 80% target. Logs show it escalates straightforward cases (standard damage replacements with photo evidence) while attempting to autonomously handle complex situations requiring policy exceptions. What's the most effective way to improve escalation calibration?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-escalation-calibration-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Add explicit escalation criteria to the system prompt, with few-shot examples of when to escalate and when to resolve.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Implement sentiment analysis that detects customer frustration and escalates automatically when negative sentiment passes a threshold.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Deploy a separate classifier model, trained on historical tickets, to predict which requests need escalation before the agent starts.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Have the agent self-report a confidence score and escalate when it is low.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">The agent doesn't know where the decision boundary is, so state it: explicit, policy-based criteria plus examples on both sides. Sentiment doesn't track case complexity, self-reported confidence is poorly calibrated (the agent is already confidently wrong on hard cases), and a separate classifier is heavy infrastructure before the prompt has even been fixed.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-case-facts" data-qid="ccaf-cs-case-facts" data-d="d5" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q8</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-case-facts-q">Your support agent uses progressive summarization: when context reaches 70% capacity, older turns are summarized while recent ones stay verbatim. Customers reference specific amounts stated 20+ turns ago (e.g., "the 15% discount I mentioned"), but the agent responds with incorrect values because these details were condensed into vague summaries like "discussed promotional pricing." What's the most effective fix?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-case-facts-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Store the full history externally and add retrieval that searches it whenever the agent detects phrases like "I mentioned" or "earlier".</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Extract transactional facts (amounts, dates, order numbers) into a persistent "case facts" block kept outside the summary.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Revise the summarization prompt to ask that important numbers be kept, while still summarizing the whole conversation as one block.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Raise the summarization trigger from 70% to 85% of context capacity.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">Summaries lose exact values, so values the agent must act on shouldn't live in the summary at all. A persistent case-facts block that travels with every prompt keeps amounts, dates and order numbers exact however much the narrative is compressed. Retrieval triggered by phrases is brittle, a better summary prompt still risks loss, and a later trigger only delays the problem.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-multi-concern-decompose" data-qid="ccaf-cs-multi-concern-decompose" data-d="d1" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q9</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-multi-concern-decompose-q">Simple requests like "refund order #1234" succeed in 3-4 tool calls with a 91% resolution rate. Complex requests like "I've been charged twice, my discount didn't apply, and I want to cancel" average 12+ tool calls with only 54% resolution: the agent investigates concerns one after another and gathers redundant customer data for each. What's the most effective change?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-multi-concern-decompose-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Consolidate <code>get_customer</code>, <code>lookup_order</code> and the billing lookups into a single tool so each concern needs fewer calls.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add verification gates that require the agent to checkpoint after resolving each concern before it moves on to the next one.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Decompose the request into distinct concerns, investigate them in parallel with shared customer context, then synthesize.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add few-shot examples that demonstrate ideal tool-call sequences for a variety of multi-part billing scenarios.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">Splitting the request into independent concerns and investigating them in parallel, with the customer context fetched once and shared, removes both the redundant lookups and the slow sequential handling. Consolidating tools blurs their purpose, checkpoints make the process more sequential, and examples don't remove the duplicated data gathering.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-stop-reason" data-qid="ccaf-cs-stop-reason" data-d="d1" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q10</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-stop-reason-q">You're implementing the agentic loop for your support agent. After each API call to Claude, you need to decide whether to continue (execute the requested tools and call Claude again) or stop (present the final response to the customer). What determines this decision?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-stop-reason-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Parse the response text for phrases like "I've completed" that signal the task is finished.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">End the loop as soon as the response contains any assistant text.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Stop after a fixed number of iterations (for example 10), whatever Claude indicates.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Check the <code>stop_reason</code> field of each response: keep looping while it is <code>"tool_use"</code>, and stop once it is <code>"end_turn"</code>.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text"><code>stop_reason</code> is the authoritative signal: <code>"tool_use"</code> means Claude wants tools run, and <code>"end_turn"</code> means it has finished. Text patterns are fragile, a response can contain text and tool calls together, and an iteration cap is a safety limit, not a completion signal.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-multi-concern-fewshot" data-qid="ccaf-cs-multi-concern-fewshot" data-d="d4" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q11</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-multi-concern-fewshot-q">Your agent handles single-concern requests with 94% accuracy, but multi-concern messages (e.g., "I need a refund for order #1234 and also want to update my shipping address for order #5678") drop to 58%: it addresses only one concern or mixes up parameters between orders. The platform team can't add new services this quarter, so the fix has to be made in the agent's prompt. What's the most effective change?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-multi-concern-fewshot-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Add few-shot examples showing the reasoning and tool sequence for multi-concern requests, keeping each order's parameters separate.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add a single sentence to the end of the system prompt: "Make sure you address every concern the customer raises in their message."</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Consolidate the refund and address tools into one general-purpose account tool so the agent has fewer tool selections to make.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Ask the customer to send each concern as a separate message before the agent starts working on any of them.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">Within a prompt-only constraint, examples that show how to split the concerns, which tool handles each, and how to keep order #1234's parameters apart from order #5678's teach the exact behaviour that's failing. A one-line instruction is the kind of prose that is already being followed inconsistently. Merging tools isn't a prompt change and hurts selection, and asking customers to restructure their messages pushes the problem onto them.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-structured-errors" data-qid="ccaf-cs-structured-errors" data-d="d2" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q12</span><span class="d-badge d2">D2 · Tool Design &amp; MCP</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-structured-errors-q">The <code>lookup_order</code> MCP tool returns the text "Operation failed" for every problem: order-service timeouts, malformed order IDs, and orders belonging to another account. The agent either retries everything or gives the customer a vague apology. What change best lets the agent choose the right recovery?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-structured-errors-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Have the tool retry internally up to ten times, and return "Operation failed" only after every one of those retries is exhausted.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Return structured errors: <code>isError</code>, a category (transient, validation, permission, business), <code>isRetryable</code>, a clear message.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add a system prompt rule that the agent must retry any failed tool call three times before it escalates the case to a human.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Return an empty result instead of an error so the conversation can carry on.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">The agent can only recover sensibly if it knows what kind of failure happened. A timeout is worth retrying, a malformed ID needs a corrected input or a clarifying question, and a permission problem should never be retried. A generic message after many retries hides that, a blanket retry rule treats every error the same, and an empty result hides the failure completely.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-complete-explanations" data-qid="ccaf-cs-complete-explanations" data-d="d4" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q13</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-complete-explanations-q">Complex cases (billing disputes, multi-order returns) score 15% lower on customer satisfaction than simple cases, even when the resolution is technically correct. Root-cause analysis shows the agent's resolutions are accurate but its explanations are inconsistent: they sometimes omit relevant policy details, timelines, or next steps. You want to improve quality without adding human review. What's most effective?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-complete-explanations-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Add a step where the agent asks "Does this fully address your concern?" before closing.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Route complex cases from a smaller model tier to a larger one automatically, based on a complexity score from the first message.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add few-shot examples of complete explanations (policy, timeline, next steps) for five common complex case types.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add a self-critique step in which the agent re-reads its own draft in the same conversation and asks itself whether it looks complete.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">The agent hasn't been shown what a complete explanation looks like. Few-shot examples covering policy, timeline and next steps set that pattern consistently. Self-critique in the same session shares the blind spots that caused the omissions, a bigger model doesn't fix an unspecified output pattern, and a confirmation question hands quality control to the customer.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-escalation-trigger" data-qid="ccaf-cs-escalation-trigger" data-d="d2" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q14</span><span class="d-badge d2">D2 · Tool Design &amp; MCP</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-escalation-trigger-q">After calling <code>get_customer</code> and <code>lookup_order</code>, the agent has all available system data but still faces uncertainty. Which situation is the most appropriate trigger for calling <code>escalate_to_human</code>?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-escalation-trigger-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">The customer wants to cancel an order that shipped yesterday and arrives tomorrow, and policy clearly covers in-transit cancellations.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">The customer's message mixes a billing question with a product return, so a human could coordinate both issues at the same time.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">The customer says the order never arrived, but tracking shows it was delivered and signed for three days ago.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">A competitor price-match request, when policy covers only your own site's prices and is silent on competitors.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">When policy is silent on the customer's specific request, the agent has no authority to decide, so it should escalate. The other cases are within the agent's data and policy: a covered cancellation, two concerns it can handle in turn, and a delivery dispute it can investigate and explain first.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-fewshot-ambiguous" data-qid="ccaf-cs-fewshot-ambiguous" data-d="d4" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q15</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-fewshot-ambiguous-q">Production logs show the agent sometimes selects <code>get_customer</code> when <code>lookup_order</code> would be more appropriate for ambiguous requests like "I need help with my recent purchase." You decide to add few-shot examples. Which approach will most effectively address this issue?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-fewshot-ambiguous-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Add 4-6 examples of ambiguous requests, each showing the reasoning for choosing one tool over plausible alternatives.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add examples grouped by tool: all <code>get_customer</code> cases first, then all <code>lookup_order</code> cases.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add examples that show only the final tool call for each ambiguous request, leaving out the reasoning to keep the prompt short.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add 10-15 examples of clear, unambiguous requests that demonstrate correct tool selection for each tool's typical use cases.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">The failures are on ambiguous requests, so the examples should sit on that decision boundary and show why one tool beats the plausible alternative. Clear-cut examples don't teach the hard cases, grouping by tool doesn't show the contrast, and dropping the reasoning removes what generalizes.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-refund-limit-hook" data-qid="ccaf-cs-refund-limit-hook" data-d="d1" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q16</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-refund-limit-hook-q">Policy says refunds above $500 need human approval. The system prompt states this rule clearly, yet logs show the agent occasionally calls <code>process_refund</code> for amounts between $600 and $900. Which change guarantees the policy is followed?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-refund-limit-hook-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Repeat the $500 rule in capital letters at both the start and the end of the system prompt, and explain the financial risk.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add a <code>PreToolUse</code> hook that denies <code>process_refund</code> above $500 and redirects the case to <code>escalate_to_human</code>.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add few-shot examples showing the agent escalating refunds of $600, $750 and $900 instead of processing them itself.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Log every refund above $500 and have a supervisor review that log weekly, reversing any refund that should not have been issued.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">Only interception outside the model guarantees compliance. A <code>PreToolUse</code> hook sees every <code>process_refund</code> call and denies it deterministically. Stronger wording and more examples still leave a non-zero failure rate, and a weekly audit catches violations after the money has gone.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cs-trim-tool-output" data-qid="ccaf-cs-trim-tool-output" data-d="d5" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q17</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cs-trim-tool-output-q"><code>lookup_order</code> returns about 40 fields per order (warehouse IDs, carrier codes, internal flags). In long sessions covering several orders, the context fills with order data and the agent starts losing track of what the customer said earlier. What's the most effective fix?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cs-trim-tool-output-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Move the agent to a model with a larger context window, so that verbose order data no longer pushes earlier turns out of view.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Summarize the entire conversation every five turns, including the order data, and replace the history with that summary.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Trim each tool result to the fields the task needs (status, items, return eligibility) before adding it to history.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Ask customers to open a new chat for each order.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">Verbose tool output takes up context out of proportion to its value. Trim it at the source, before it enters the history. A bigger window postpones the problem, blanket summarization loses exact details the customer referred to, and splitting chats makes the customer do the work.</div></div>
+      </details>
+    </div>
+  </article>
+</section>
+
+<section class="scenario-block" aria-labelledby="scenario-2">
+  <div class="scenario-header">
+    <div class="scenario-icon" aria-hidden="true">💻</div>
+    <h2 id="scenario-2">Scenario 2 · Code Generation with Claude Code</h2>
+    <span class="qcount">11 questions</span>
+  </div>
+  <p class="scenario-ctx">A team using Claude Code day to day: slash commands and skills, <code>CLAUDE.md</code> configuration, plan mode versus direct execution.</p>
+
+  <article class="q-card" id="ccaf-cg-memory-diagnose" data-qid="ccaf-cg-memory-diagnose" data-d="d3" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q18</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cg-memory-diagnose-q">Claude follows your API conventions inconsistently in <code>packages/api</code>. The conventions live in <code>.claude/rules/api-conventions.md</code> and are pulled into <code>packages/api/CLAUDE.md</code> with an <code>@</code> import. Before changing anything, what's the best first diagnostic step?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cg-memory-diagnose-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Copy the conventions into the root <code>CLAUDE.md</code> too, so they load from two places.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Delete Claude Code's local cache so every <code>CLAUDE.md</code> is re-read on the next start.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Ask Claude to summarize the conventions at the start of each session to confirm it remembers them.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Run <code>/memory</code> in a session in that package to see exactly which memory and rules files Claude Code has loaded.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text"><code>/memory</code> shows which memory files Claude Code has loaded, so you can see whether the import or rules file is being picked up at all. Duplicating the content hides the real fault, Claude Code doesn't keep a stale <code>CLAUDE.md</code> cache to clear, and asking for a recap tests recall, not configuration.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cg-mcp-env-expansion" data-qid="ccaf-cg-mcp-env-expansion" data-d="d2" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q19</span><span class="d-badge d2">D2 · Tool Design &amp; MCP</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cg-mcp-env-expansion-q">Your team wants to add a GitHub MCP server to enable PR lookups and CI status checks through Claude Code. Each of the six developers has their own GitHub personal access token. You want consistent tooling across the team without committing credentials to version control. What's the most effective configuration approach?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cg-mcp-env-expansion-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Write an MCP wrapper server that reads tokens from a committed <code>.env</code> file and proxies requests to GitHub, then add it to <code>.mcp.json</code>.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Have each developer add the server in user scope with <code>claude mcp add --scope user</code>.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Commit a project config with a placeholder token, then have every developer override the whole server entry in their local scope.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Commit a project <code>.mcp.json</code> that uses <code>${GITHUB_TOKEN}</code> expansion, and document the variable to set.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">A project-scoped <code>.mcp.json</code> gives everyone the same server definition, and <code>${GITHUB_TOKEN}</code> is expanded from each developer's own environment at runtime, so no secret is committed. A committed <code>.env</code> leaks tokens, per-user setup drifts, and placeholder-plus-override duplicates the config on every machine.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cg-skill-frontmatter" data-qid="ccaf-cg-skill-frontmatter" data-d="d3" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q20</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cg-skill-frontmatter-q">Your team's <code>/migration</code> skill has three production issues: (1) developers invoke it without arguments, producing poorly named files; (2) the skill picks up schema details from unrelated earlier conversation; (3) a developer accidentally ran a destructive cleanup because the skill pre-approved broad tool access. Which configuration addresses all three issues?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cg-skill-frontmatter-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Use positional parameters instead of <code>$ARGUMENTS</code>, reference the schema files with <code>@</code> syntax, and add a <code>description</code> warning about destructive operations.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add <code>argument-hint</code> plus an instruction to ask for a name if <code>$ARGUMENTS</code> is empty, set <code>context: fork</code>, and narrow <code>allowed-tools</code>.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Split it into <code>/migration-create</code> and <code>/migration-apply</code>, add <code>disable-model-invocation: true</code>, and keep a broad <code>allowed-tools</code> list to avoid prompts.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add body instructions to check <code>$ARGUMENTS</code>, ignore earlier conversation, and avoid destructive commands.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text"><code>argument-hint</code> is only an autocomplete hint and doesn't force input, so pair it with an instruction to ask for a migration name when none is given. <code>context: fork</code> runs the skill in an isolated sub-agent, so earlier conversation can't leak in. <code>allowed-tools</code> pre-approves the tools it lists rather than restricting Claude to them, so a broad list let the destructive command run without a prompt. Narrow it to the file tools the skill needs and anything else goes back to a normal permission prompt; use deny rules in settings for a hard block. Prose instructions can't remove context that is already loaded.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cg-explore-fork" data-qid="ccaf-cg-explore-fork" data-d="d3" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q21</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cg-explore-fork-q">Developers report that after running your <code>/explore-alternatives</code> skill, Claude's later responses are influenced by the exploration, sometimes referencing abandoned approaches or keeping exploratory context that confuses the actual implementation work. What's the most effective way to configure this skill?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cg-explore-fork-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Add <code>context: fork</code> to the skill's frontmatter, so the exploration runs in an isolated sub-agent context and only its result returns.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Split the skill into <code>/explore-start</code> and <code>/explore-end</code> to mark when to discard exploration context.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Move the skill from <code>.claude/skills/</code> into <code>~/.claude/skills/</code>, so that it runs at user scope instead of project scope.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Use the <code>!</code> prefix in the skill to run the exploration logic as a bash subprocess and capture only its output.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text"><code>context: fork</code> runs the skill in a separate sub-agent context and returns only its result, so the abandoned approaches never enter the main conversation. Start/end markers don't remove anything from context, scope changes who can use the skill rather than where it runs, and <code>!</code> runs shell commands, not reasoning.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cg-rules-directory" data-qid="ccaf-cg-rules-directory" data-d="d3" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q22</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cg-rules-directory-q">Your team's <code>CLAUDE.md</code> has grown to over 500 lines, mixing TypeScript conventions, testing guidelines, API patterns and deployment procedures. Developers find it hard to locate and update the relevant sections. What does Claude Code support for organizing project-level instructions into focused, topic-specific modules?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cg-rules-directory-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Split the instructions into <code>README.md</code> files in the relevant subdirectories, which Claude Code automatically loads as instructions.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Define a <code>.claude/config.yaml</code> file that maps file patterns to specific sections inside the existing <code>CLAUDE.md</code> file.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Create separate markdown files in <code>.claude/rules/</code>, one per topic (e.g., <code>testing.md</code>, <code>api-conventions.md</code>).</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Create several <code>CLAUDE.md</code> files at different directory levels, each one completely replacing its parent's instructions.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text"><code>.claude/rules/</code> is the supported way to split a monolithic <code>CLAUDE.md</code> into topic files, optionally scoped with glob patterns. READMEs aren't loaded as instructions, <code>config.yaml</code> section maps don't exist, and nested <code>CLAUDE.md</code> files add to the parent's instructions rather than replacing them.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cg-explore-subagent" data-qid="ccaf-cg-explore-subagent" data-d="d5" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q23</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cg-explore-subagent-q">You're adding error-handling wrappers to external API calls across a 120-file codebase in three phases: (1) discover all API call locations, (2) design the approach collaboratively, (3) implement the wrappers consistently. During Phase 1, Claude produces verbose output listing hundreds of call sites, and your context window is filling fast before discovery is even complete. What's the most effective approach?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cg-explore-subagent-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Define the error-handling pattern in <code>CLAUDE.md</code>, then process files in batches across multiple sessions, relying on that shared file for consistency.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Run Phase 1 in the Explore subagent so its verbose output stays isolated and only a summary returns.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Stay in the main conversation and run <code>/compact</code> periodically.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Switch to headless mode with <code>--continue</code>, passing explicit context summaries by hand between each batch invocation.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">The Explore subagent keeps the noisy discovery output out of the main conversation and returns a compact summary, leaving the main context free for the design and implementation phases where continuity matters. Compacting after the fact loses detail, and splitting the work across sessions or headless runs breaks the collaborative design phase.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cg-exemplar-skill" data-qid="ccaf-cg-exemplar-skill" data-d="d3" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q24</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cg-exemplar-skill-q">Including 2-3 full exemplar endpoint implementations as context significantly improves consistency when generating new API endpoints. However, this context is only useful for creating new endpoints, not for bug fixes, code reviews or other work in the API directory. What's the most efficient configuration?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cg-exemplar-skill-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Create a skill that references the exemplar endpoints and includes pattern-following instructions, invoked on demand via a slash command.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add the exemplar endpoint code and its pattern documentation to the project <code>CLAUDE.md</code> so it is always available.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Configure path-specific rules in <code>.claude/rules/</code>, scoped to the API directory, that include the full exemplar code.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Paste the relevant exemplar code into each generation request by hand, copying it each time from the existing endpoints.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">A skill loads the heavy exemplar context only when someone is actually creating an endpoint. <code>CLAUDE.md</code> would load it in every session, path-scoped rules would load it for every task in the API directory, and pasting it by hand is error-prone and inconsistent.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cg-io-examples" data-qid="ccaf-cg-io-examples" data-d="d3" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q25</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cg-io-examples-q">You've asked Claude Code to implement a function that transforms API responses into a normalized internal format. After two iterations the output structure still doesn't match: some fields are nested differently and timestamps aren't formatted correctly. You've been describing the requirements in prose, and Claude interprets them differently each time. What's the most effective approach for the next iteration?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cg-io-examples-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Rewrite the requirements with greater technical precision, spelling out exact field mappings, nesting rules and timestamp format strings.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Write a JSON schema for the output structure and validate each result against it, without changing how you describe the requirements.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Provide 2-3 concrete input-output examples showing the expected transformation for representative API responses.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Ask Claude to explain its interpretation of the requirements so you can see where it diverges.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">When prose is being interpreted inconsistently, switch to concrete input → output pairs. They show the nesting and timestamp format unambiguously. More precise prose is still prose, a schema check detects mismatches without telling Claude what the right output is, and asking for its interpretation only diagnoses the problem.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cg-personal-skill" data-qid="ccaf-cg-personal-skill" data-d="d3" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q26</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cg-personal-skill-q">You've created a <code>/commit</code> skill in <code>.claude/skills/commit/SKILL.md</code> that your team uses. One developer wants to customize it for their personal workflow (different commit message format, additional checks) without affecting teammates. What should you recommend?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cg-personal-skill-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Set <code>override: true</code> in a personal copy's frontmatter so that it takes precedence over the shared project version.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Create a personal skill in <code>~/.claude/skills/</code> under a different name, such as <code>/my-commit</code>, starting from a copy of the team's version.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add username-based conditional logic to the project skill's frontmatter so it behaves differently for that one developer.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add the developer's format to the project <code>CLAUDE.md</code> under their name.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">User-scoped skills in <code>~/.claude/skills/</code> are personal and never affect teammates, and a distinct name avoids any question about which version runs. There is no <code>override</code> or username-conditional frontmatter, and anything added to the project <code>CLAUDE.md</code> changes behaviour for the whole team.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cg-user-level-claude-md" data-qid="ccaf-cg-user-level-claude-md" data-d="d3" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q27</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cg-user-level-claude-md-q">Three developers have used Claude Code for months, and Claude correctly follows the "always include comprehensive error handling" guideline for them. A fourth developer who just joined, on a fresh install with no personal configuration, reports Claude isn't following it, although all four work in the same repository with the latest code pulled. What's the most likely cause?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cg-user-level-claude-md-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">The new developer's machine runs an older Claude Code version that ignores the project <code>CLAUDE.md</code> file entirely.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Claude Code learns per-user preferences over time, so the new developer must keep repeating it.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Claude Code caches <code>CLAUDE.md</code> after its first read, and the original developers are still working from an older cached copy.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">The guideline is in the original developers' user-level <code>~/.claude/CLAUDE.md</code>, not the project file.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">User-level <code>~/.claude/CLAUDE.md</code> is never shared through version control. If only long-standing team members get the behaviour, the guideline almost certainly lives in their personal files, so move it to the project-level <code>CLAUDE.md</code>. Claude Code doesn't learn per-user preferences or cache old copies, and version drift wouldn't produce this pattern.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-cg-independent-review" data-qid="ccaf-cg-independent-review" data-d="d1" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q28</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-cg-independent-review-q">Your team uses Claude Code to generate code changes, but subtle issues (performance optimizations that break edge cases, cleanups that change behaviour) only surface when another team member reviews the PR. Claude's generation reasoning shows it considered these cases but concluded its approach was correct. Which approach directly addresses the root cause of this self-review limitation?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-cg-independent-review-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Have a second, independent Claude Code instance review the changes without seeing the generator's reasoning.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add explicit self-review instructions to the generation prompt, asking Claude to critique its suggestions before finalizing them.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Enable extended thinking for the generation pass.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Include comprehensive test files and documentation in the prompt so Claude better understands expected behaviour while generating.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">A model reviewing its own work is anchored by its own reasoning. It already considered these cases and talked itself into them. An independent instance that never sees that reasoning catches what the generator rationalized away, just as human review catches what the author misses. More self-critique or deliberation in the same context repeats the same blind spots.</div></div>
+      </details>
+    </div>
+  </article>
+</section>
+
+<section class="scenario-block" aria-labelledby="scenario-3">
+  <div class="scenario-header">
+    <div class="scenario-icon" aria-hidden="true">🔬</div>
+    <h2 id="scenario-3">Scenario 3 · Multi-Agent Research System</h2>
+    <span class="qcount">13 questions</span>
+  </div>
+  <p class="scenario-ctx">A coordinator delegating to web search, document analysis and synthesis subagents that together produce cited research reports.</p>
+
+  <article class="q-card" id="ccaf-rs-conflicting-statistics" data-qid="ccaf-rs-conflicting-statistics" data-d="d1" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q29</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-conflicting-statistics-q">The document analysis agent finds that two credible sources directly conflict: a government report states 40% growth while an industry analysis states 12%. Both appear legitimate, and the discrepancy could significantly change the research conclusions. What's the most effective way for the document analysis agent to handle this?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-conflicting-statistics-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Include both figures in the analysis output without flagging them, and let the synthesis agent decide which one to use in the report.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Finish the analysis with both figures attributed to their sources, flag the conflict, and let the coordinator reconcile it.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Halt the analysis and escalate to the coordinator immediately, asking it to decide which source is authoritative before continuing.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Apply credibility heuristics to pick the more likely figure and use it.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">The subagent should finish its work, keep both values with their sources, and flag the conflict explicitly so the coordinator can decide. Passing both values on unflagged loses the signal, halting mid-task wastes the rest of the analysis, and choosing one value makes a decision that belongs to the coordinator.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-local-recovery" data-qid="ccaf-rs-local-recovery" data-d="d1" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q30</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-local-recovery-q">The document analysis subagent often hits failures: corrupted PDF sections, password-protected files and parsing timeouts. Currently any exception immediately terminates the subagent and returns an error to the coordinator, so the coordinator is constantly involved in routine error handling. What's the most effective architectural improvement?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-local-recovery-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Always return a success status, with any error details in metadata.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Create a dedicated error-handling agent that monitors every subagent failure through a shared queue and makes all recovery decisions.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Recover locally from transient failures; propagate only unresolved errors, with what was tried and any partial results.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Have the coordinator pre-validate every document before dispatch and reject any document that looks likely to cause a failure.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">Handle errors at the lowest level that can resolve them. The subagent retries timeouts itself, and only what it can't fix goes up, with what was attempted and what was recovered. Marking failures as success hides them, a separate error agent adds coordination overhead, and pre-validation can't predict parsing failures.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-empty-vs-timeout" data-qid="ccaf-rs-empty-vs-timeout" data-d="d1" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q31</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-empty-vs-timeout-q">During a materials research task, the web search subagent queries three source categories: academic databases return 15 relevant papers, industry reports return "0 results found," and patent databases return "Connection timeout." When designing error propagation to the coordinator, what approach enables the best recovery decisions?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-empty-vs-timeout-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Report both the timeout and the "0 results" outcome as failures, so the coordinator can intervene on every source that returned nothing.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Retry everything internally, including the empty query, and report only a final list of sources that still have no results.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Aggregate the outcomes into a single coverage metric (e.g., "67% source coverage"), with detailed logs available on request.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Distinguish the access failure (timeout, needs a retry decision) from the valid empty result (a successful query).</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">A timeout means the query never ran and might succeed on retry. "0 results" means it ran and found nothing. If these are reported the same way, as failures, as a retry list or as a single percentage, the coordinator will retry queries that already succeeded and miss the one that really failed.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-coverage-annotations" data-qid="ccaf-rs-coverage-annotations" data-d="d1" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q32</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-coverage-annotations-q">Web search covered 3 of 5 requested source categories (competitor websites and industry reports succeeded; news archives and social media feeds timed out). Document analysis succeeded for every provided document. The synthesis agent must now produce a findings summary from this mixed-quality input. What's the most effective error propagation strategy?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-coverage-annotations-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Structure the synthesis with coverage annotations showing which findings are well supported and which areas have gaps.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Have the synthesis agent ask the coordinator to retry the timed-out sources with extended timeouts before it writes anything.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Proceed using only the successful sources, and generate the summary without indicating which data was unavailable.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Return an error to the coordinator reporting incomplete upstream data, triggering either a full retry or a task failure.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">Coverage annotations deliver value from the data you have while telling the reader exactly where the gaps are. Silently omitting the gaps misleads readers, and blocking or failing the whole task discards good work over sources that may stay unavailable.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-partition-research" data-qid="ccaf-rs-partition-research" data-d="d1" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q33</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-partition-research-q">When researching a broad topic, both the web search agent and the document analysis agent investigate the same subtopics, producing significant overlap in findings. Token usage has nearly doubled without a matching increase in research coverage. What's the most effective way to address this?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-partition-research-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Let both agents finish their parallel work, then have the coordinator deduplicate overlapping findings before passing them to synthesis.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Have the coordinator partition the research space before delegating, giving each agent distinct subtopics or source types.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Switch to sequential execution: run document analysis only after web search completes, using its findings as context to avoid repeats.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Give both agents a shared scratchpad listing the subtopics each has started.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">Overlap is a delegation problem, so fix it at delegation time with distinct, non-overlapping assignments. Deduplicating afterwards still pays for the redundant work, sequential execution gives up parallelism, and a shared scratchpad introduces races and coordination the agents weren't designed for.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-tool-naming" data-qid="ccaf-rs-tool-naming" data-d="d2" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q34</span><span class="d-badge d2">D2 · Tool Design &amp; MCP</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-tool-naming-q">Production logs show requests to "analyze the quarterly report I uploaded" are routed to the web search agent 45% of the time instead of the document analysis agent. The web search agent has an <code>analyze_content</code> tool described as "analyzes content and extracts key information," while the document analysis agent has <code>analyze_document</code> described as "analyzes documents and extracts key information." How should you address this misrouting?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-tool-naming-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Expand <code>analyze_document</code>'s description with more detail about its extraction features, leaving <code>analyze_content</code> unchanged.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add few-shot examples to the coordinator's prompt showing correct routing, e.g. "user uploads quarterly report → document analysis agent."</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add a pre-routing classifier that decides whether the user means uploaded files or web content before the coordinator runs.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Rename the web tool to <code>extract_web_results</code> and say in its description that it handles web content only.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">The two tools are nearly identical in name and description, so the overlap is at the naming level. Renaming the vague tool and stating its scope removes the ambiguity at its source. Expanding only the other tool leaves the overlap in place, while examples and classifiers work around unclear tool definitions instead of fixing them.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-scoped-verify-tool" data-qid="ccaf-rs-scoped-verify-tool" data-d="d1" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q35</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-scoped-verify-tool-q">During testing, the synthesis agent often needs to verify specific claims while combining findings. Currently it returns control to the coordinator, which invokes the web search agent and then re-invokes synthesis, adding 2-3 round-trips per task and increasing latency by 40%. 85% of verifications are simple fact-checks; 15% need deeper investigation. What's the most effective approach?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-scoped-verify-tool-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Have the synthesis agent collect all of its verification needs and return them to the coordinator as one batch at the end of its pass.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Give the synthesis agent all of the web search tools.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Give the synthesis agent a scoped <code>verify_fact</code> tool for simple lookups; complex checks still go through the coordinator.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Have the web search agent cache extra context during initial research, anticipating what the synthesis agent might need to verify.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">A narrowly scoped tool covers the common 85% locally and leaves complex checks on the existing coordinated path. That is least privilege. Batching at the end blocks synthesis steps that depend on verified facts, full web search access over-provisions the synthesis agent, and speculative caching can't predict what will need checking.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-claim-provenance" data-qid="ccaf-rs-claim-provenance" data-d="d5" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q36</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-claim-provenance-q">Final reports contain statistics that reviewers can't trace. Subagents return prose summaries such as "several industry reports suggest adoption tripled," and the synthesis agent can no longer tell which source said what, or when. What's the most effective fix?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-claim-provenance-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Have subagents return structured claim–source records (claim, source and URL, excerpt, publication date).</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Instruct the synthesis agent to add a citation to every statistic, choosing from the list of sources named in the coordinator's original task.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add a final fact-check agent that searches the web for each statistic after the report is written and appends the first matching URL.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Raise the subagents' output limits so their summaries carry more context.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">Once a subagent summarizes into prose, the link between claim and source is gone for good, and nothing downstream can rebuild it. Capture structured claim–source mappings, with publication dates, at the point of extraction. Citations assigned afterwards from a source list or a web search are guesses, and longer prose is still prose.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-lost-in-middle" data-qid="ccaf-rs-lost-in-middle" data-d="d5" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q37</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-lost-in-middle-q">Production monitoring reveals inconsistent synthesis quality. When aggregated results total ~75K tokens, the synthesis agent reliably cites information from the first 15K and final 10K tokens but often omits critical findings in the middle 50K, even when those findings directly address the research question. How should you restructure the aggregated input?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-lost-in-middle-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Summarize all subagent outputs to under 20K tokens before aggregation.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Put a key-findings summary at the start of the input, and organize the detailed results under explicit section headers.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Stream results to the synthesis agent incrementally, finishing all web search results before introducing document analysis findings.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Rotate which subagent's results appear first across research tasks, so that no single source is always placed in the middle.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">This is the "lost in the middle" effect: models attend best to the start and end of long inputs. Putting a key-findings summary first places the critical content where attention is strongest, and section headers make the body easy to navigate. Heavy summarization throws detail away, and reordering or rotating only changes which findings get lost.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-constrained-fetch" data-qid="ccaf-rs-constrained-fetch" data-d="d2" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q38</span><span class="d-badge d2">D2 · Tool Design &amp; MCP</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-constrained-fetch-q">You gave the document analysis agent a general-purpose <code>fetch_url</code> tool so it could load documents from URLs. Production logs reveal it now often fetches search engine result pages to run ad-hoc web searches, behaviour that should go through the web search agent. What's the most effective fix?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-constrained-fetch-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Block <code>fetch_url</code> calls to known search-engine domains with a filter, while still allowing every other URL through.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Remove <code>fetch_url</code> and route all URL loading through the coordinator to the web search agent, including document links.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Replace <code>fetch_url</code> with a <code>load_document</code> tool that validates the URL points to a document (PDF, DOCX, etc.).</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add instructions to the agent's prompt clarifying that it should use <code>fetch_url</code> only for document URLs, never for searching.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">A purpose-built <code>load_document</code> tool makes the misuse structurally impossible while keeping the capability the agent needs. Domain blocklists are whack-a-mole, routing every document through the web search agent breaks role boundaries in the other direction, and prompt instructions are probabilistic.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-upstream-structured" data-qid="ccaf-rs-upstream-structured" data-d="d5" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q39</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-upstream-structured-q">Combined outputs from the web search agent (~85K tokens) and the document analysis agent (~70K tokens) total 155K tokens, but the synthesis agent performs best with inputs under 50K tokens. What's the most effective solution?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-upstream-structured-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Add an intermediate summarization agent that condenses the combined findings to under 50K tokens before they reach synthesis.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Have synthesis process the findings in sequential batches with running state.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Store all findings in a vector database and give the synthesis agent retrieval tools to query it while it writes the report.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Have upstream agents return structured data (key facts, citations, relevance scores) instead of verbose prose.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">The volume is generated unnecessarily upstream. Design the upstream output format around the downstream budget: key facts, citations and scores, not transcripts and reasoning chains. An extra summarization agent, batching or retrieval all process bloat that shouldn't have been produced, and each adds latency and failure points.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-subagent-context" data-qid="ccaf-rs-subagent-context" data-d="d1" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q40</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-subagent-context-q">The coordinator gathers the user's constraints during the conversation (only 2022–2024 data; exclude vendor-funded studies), then spawns the document analysis subagent with the prompt "Analyze the uploaded documents for relevant findings." The subagent's output includes 2019 figures and vendor-funded studies. What's the root-cause fix?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-subagent-context-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Include the constraints explicitly in the subagent's prompt; subagents don't inherit the coordinator's conversation.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Give the subagent a larger context window so it can see more of the coordinator's conversation history when it starts its work.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add a filter after synthesis that removes any finding dated before 2022 or attributed to a vendor-funded source.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Give the subagent a tool for querying the coordinator's conversation history whenever it is unsure about the task's scope.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">Subagents start with only what their prompt gives them. They never saw the user's constraints, so the coordinator must pass them explicitly. A bigger window doesn't add context that was never sent, a downstream filter treats the symptom after the work is wasted, and a history-query tool reinvents the prompt as a fragile side channel.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-rs-parallel-spawn" data-qid="ccaf-rs-parallel-spawn" data-d="d1" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q41</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-rs-parallel-spawn-q">The coordinator delegates three independent subtopics to search subagents, but logs show it spawns one, waits for its result, then spawns the next, so total latency is the sum of all three. What change lets the subagents run in parallel?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-rs-parallel-spawn-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Raise the coordinator's <code>max_tokens</code> so it has room to plan all three delegations before it starts spawning any of them.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Have the coordinator emit all three Agent (Task) tool calls in a single response, not one per turn.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add "run in parallel with the other subagents" to each subagent's system prompt so they coordinate their own timing.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Merge the three subagents into one that has all of their tools.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">Parallel subagents come from multiple Agent tool calls in one coordinator response. Calls made one per turn are inherently sequential. Token limits don't change that, subagents can't control when they are spawned, and merging them loses the specialization and isolation that justified separate agents.</div></div>
+      </details>
+    </div>
+  </article>
+</section>
+
+<section class="scenario-block" aria-labelledby="scenario-4">
+  <div class="scenario-header">
+    <div class="scenario-icon" aria-hidden="true">🧰</div>
+    <h2 id="scenario-4">Scenario 4 · Developer Productivity with Claude</h2>
+    <span class="qcount">5 questions</span>
+  </div>
+  <p class="scenario-ctx">Agents and Claude Code sessions that explore and explain a large codebase using the built-in tools plus MCP servers.</p>
+
+  <article class="q-card" id="ccaf-dp-grep-then-read" data-qid="ccaf-dp-grep-then-read" data-d="d2" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q42</span><span class="d-badge d2">D2 · Tool Design &amp; MCP</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-dp-grep-then-read-q">Engineers use an agent built on Claude's built-in tools to answer questions about a 2,000-file monorepo. Asked "Where is the retry logic for the payments client, and what calls it?", the agent Reads dozens of files one by one and runs out of context before answering. Which exploration strategy should you steer it toward?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-dp-grep-then-read-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Glob every file in the repository first, then Read them in alphabetical order until the retry logic finally turns up.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Read the README and every file in the top-level <code>src</code> directory first, so the agent has full context before searching.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Grep for the retry function and its callers, then Read only those files and follow imports from there.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Use Bash to <code>cat</code> the whole payments directory in one call, so all of the code arrives in a single tool result.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">Find, then read: Grep locates entry points and call sites cheaply, and Read is used only on the files that matter, following imports step by step. Reading everything up front, whether file by file, by directory or with a large <code>cat</code>, is exactly what exhausts the context.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-dp-mcp-local-scope" data-qid="ccaf-dp-mcp-local-scope" data-d="d2" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q43</span><span class="d-badge d2">D2 · Tool Design &amp; MCP</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-dp-mcp-local-scope-q">You want to try a community Jira MCP server for a week before proposing it to your team. It needs your personal API token, and teammates shouldn't see it in their tool lists yet. How should you add it?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-dp-mcp-local-scope-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Add it to the project's <code>.mcp.json</code> with the token written inline, and ask teammates to ignore the extra tools for now.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add it to the project's <code>.mcp.json</code> using <code>${JIRA_TOKEN}</code> and commit it, so it's ready if the team agrees.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Build a custom Jira MCP server instead, since community servers can't be scoped per developer.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add it with the default local scope (<code>claude mcp add</code>), which keeps the server and its token private to you in this project only.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">Local scope is the default and is meant for exactly this: private, experimental servers with personal credentials. Committing it, with or without variable expansion, puts it in every teammate's tool list before the team has agreed, an inline token leaks a secret, and community servers can be scoped like any other server.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-dp-read-only-agent" data-qid="ccaf-dp-read-only-agent" data-d="d1" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q44</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-dp-read-only-agent-q">You're building an internal code Q&amp;A agent with the Claude Agent SDK. It must explore code but never modify files or run shell commands. Occasionally, when a user says "go ahead and fix that typo," it edits a file. What's the most reliable fix?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-dp-read-only-agent-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Restrict the agent's allowed tools to Read, Grep and Glob, so edit and shell tools aren't available at all.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add a clear rule to the system prompt stating that the agent is read-only and must refuse any request to change files.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add a <code>PostToolUse</code> hook that logs every Edit and Write call for later review.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add few-shot examples of the agent politely declining edit requests and explaining that it can only answer questions.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">If the agent must never write, don't give it write tools. Restricting the tool list is deterministic least privilege. Prompt rules and examples are probabilistic, and a <code>PostToolUse</code> log only records the edit after it has already happened.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-dp-resume-after-changes" data-qid="ccaf-dp-resume-after-changes" data-d="d1" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q45</span><span class="d-badge d1">D1 · Agentic Architecture</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-dp-resume-after-changes-q">Yesterday you spent an hour with Claude Code mapping the billing module. Overnight a teammate's merge rewrote 22 of the 30 files you analyzed. You want to continue today. What's the best way to pick up the work?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-dp-resume-after-changes-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Resume yesterday's session with <code>--resume</code> and carry on, since the earlier tool results are already in its context.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Start a fresh session with a structured summary of yesterday's findings, listing the changed files to re-analyze.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Resume yesterday's session and run <code>/compact</code> straight away, so that the stale file contents are compressed away.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Fork yesterday's session, so the old analysis and today's work are kept separate while still sharing the same baseline.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">With most of the analyzed files rewritten, the old tool results in a resumed session are stale and will mislead the analysis. Start fresh, carry the conclusions forward as an injected summary, and point Claude at the changed files. Compacting or forking keeps the stale state as the baseline.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-dp-scratchpad-memory" data-qid="ccaf-dp-scratchpad-memory" data-d="d5" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q46</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-dp-scratchpad-memory-q">Two hours into mapping a legacy auth system, Claude starts describing "typical patterns" instead of the specific classes it found earlier and contradicts some of its earlier findings. You need several more hours of investigation. What's the most effective approach?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-dp-scratchpad-memory-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Keep going in the same session, but ask Claude to re-read every file it analyzed earlier whenever it seems unsure of a detail.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Switch to a model with a larger context window and continue in the same session, so that nothing from earlier has to be dropped.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Have Claude record findings (paths, line numbers, decisions) in a scratchpad file and reload it after compaction.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Run <code>/compact</code> and rely on the compressed summary alone to carry the specific file paths and line numbers forward.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">Generic answers and contradictions are signs of context degradation. A scratchpad file acts as external memory that survives compaction or a fresh session, so the specifics stay exact. Re-reading everything refills the context, a bigger window only delays degradation, and a compressed summary on its own is where those specifics get lost.</div></div>
+      </details>
+    </div>
+  </article>
+</section>
+
+<section class="scenario-block" aria-labelledby="scenario-5">
+  <div class="scenario-header">
+    <div class="scenario-icon" aria-hidden="true">⚙️</div>
+    <h2 id="scenario-5">Scenario 5 · Claude Code for Continuous Integration</h2>
+    <span class="qcount">11 questions</span>
+  </div>
+  <p class="scenario-ctx">Claude Code running in CI/CD for automated code review and test generation, where false positives erode trust.</p>
+
+  <article class="q-card" id="ccaf-ci-batch-tool-loop" data-qid="ccaf-ci-batch-tool-loop" data-d="d4" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q47</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-ci-batch-tool-loop-q">The code review component works iteratively: Claude analyzes a changed file, then may request related files via tool calls to understand context before giving final feedback. You're evaluating the Message Batches API to reduce costs. What is the primary technical constraint when considering batch processing for this workflow?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-ci-batch-tool-loop-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Batch latency of up to 24 hours is too slow for pull request feedback, although the workflow could otherwise function unchanged.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Batch processing has no way to match outputs back to their input requests.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">The Message Batches API doesn't accept tool definitions in request parameters, so tools can't be offered to Claude at all.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">A batch request can't pause mid-request to run a tool and return the result for Claude to continue.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">Each batch request is a single, asynchronous request and response. You can't execute a requested tool and feed the result back within it, so a multi-turn tool loop doesn't fit. Batches do accept tool definitions and do correlate results via <code>custom_id</code>. Latency matters too, but it isn't the constraint that breaks this workflow.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-ci-batch-vs-sync" data-qid="ccaf-ci-batch-vs-sync" data-d="d4" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q48</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-ci-batch-vs-sync-q">Your CI/CD system performs three types of analysis: (1) quick style checks on each PR that block merging, (2) comprehensive security audits run weekly, and (3) test case generation triggered nightly. The Message Batches API offers 50% cost savings but can take up to 24 hours. Which combination correctly matches each task to its API approach?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-ci-batch-vs-sync-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Synchronous for PR style checks; Message Batches API for the weekly audits and nightly test generation.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Synchronous calls for PR style checks and nightly test generation; the Message Batches API only for the weekly security audits.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">The Message Batches API for all three tasks, maximizing the 50% savings and accepting longer waits on the PR checks.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Synchronous calls for all three, relying on prompt caching to cut costs.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">Blocking work that developers wait on needs synchronous calls. Scheduled background jobs, such as weekly audits and nightly generation, can tolerate batch latency and take the 50% saving.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-ci-allowed-tools" data-qid="ccaf-ci-allowed-tools" data-d="d3" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q49</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-ci-allowed-tools-q">A CI job runs <code>claude -p</code> to write tests and then run them. The tests get written, but the run step never happens: the output says permission to use Bash for <code>npm test</code> was not granted. What's the best fix?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-ci-allowed-tools-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Add a line to <code>CLAUDE.md</code> stating that Claude has permission to run any shell command whenever it is running inside CI.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Pre-approve only that command, e.g. <code>--allowedTools "Bash(npm test:*)"</code> or an allow rule in project settings.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Set <code>CLAUDE_HEADLESS=true</code> in the pipeline environment so that all permission prompts are approved automatically.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Run with <code>--dangerously-skip-permissions</code> on the shared CI runner so that no tool call can ever be blocked again.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">Non-interactive runs can't answer permission prompts, so pre-approve exactly the commands the job needs with an allow rule. <code>CLAUDE.md</code> is guidance, not a permission system. <code>CLAUDE_HEADLESS</code> isn't a real setting. Skipping all permissions removes every guardrail and is only appropriate in an isolated sandbox, not on a shared runner.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-ci-explicit-criteria" data-qid="ccaf-ci-explicit-criteria" data-d="d4" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q50</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-ci-explicit-criteria-q">Your automated review analyzes comments and docstrings. The current prompt tells Claude to "check that comments are accurate and up-to-date." Findings often flag acceptable patterns (TODO markers, straightforward descriptions) while missing comments that describe behaviour the code no longer implements. What change addresses the root cause?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-ci-explicit-criteria-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Include git blame data so Claude can identify comments that predate the most recent modifications to the code they describe.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Filter out TODO, FIXME and purely descriptive comment patterns before analysis so that they can no longer create noise.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Specify explicit criteria: flag a comment only when its claimed behaviour contradicts what the code actually does.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add few-shot examples of misleading comments.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">"Accurate and up-to-date" is vague, so the model fills the gap with its own interpretation. Explicit criteria define exactly what counts as a finding. Blame data, pre-filtering and examples work around the vague instruction instead of replacing it.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-ci-existing-tests" data-qid="ccaf-ci-existing-tests" data-d="d4" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q51</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-ci-existing-tests-q">Your automated review generates test case suggestions for each PR. Claude suggests 10 test cases, but 6 duplicate scenarios already covered by the existing test suite. What change would most effectively reduce duplicate suggestions?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-ci-existing-tests-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Add instructions directing Claude to focus exclusively on edge cases and error conditions in every suggestion it makes.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Reduce the requested suggestions from 10 to 5, on the assumption that Claude will prioritize the most valuable cases first.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Add post-processing that drops any suggestion whose description shares keywords with the names of existing tests.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Include the existing test file in the context, so Claude can see which scenarios are already covered and suggest only new ones.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">Claude can't avoid duplicating tests it can't see. Putting the existing tests in context removes the cause. Narrowing the focus, asking for fewer suggestions or keyword filtering all guess around missing information.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-ci-json-output" data-qid="ccaf-ci-json-output" data-d="d3" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q52</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-ci-json-output-q">Your CI pipeline runs the Claude Code CLI with <code>-p</code> for code reviews. Developers like the reviews, but the narrative output is hard to integrate: they need structured data with file path, line number, severity and suggested fix to auto-post inline PR comments. What's the most effective approach?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-ci-json-output-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Add explicit formatting instructions to the review prompt, requiring each finding to follow a parseable template like <code>[FILE:path] [LINE:n] [SEVERITY:level]</code>.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Use <code>--output-format json</code> with <code>--json-schema</code> for schema-conforming findings, then post them via the API.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Keep the narrative format, but add a second step that asks Claude to turn the narrative into a structured JSON summary.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add a "Review Output Format" section to <code>CLAUDE.md</code> with examples that show what structured findings should look like.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">The CLI's JSON output with a JSON schema gives machine-parseable, schema-conforming findings, which is a deterministic contract for the posting script. Text templates and <code>CLAUDE.md</code> examples rely on the model following prose formatting, and a second conversion pass adds cost and another place for errors.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-ci-disable-noisy-categories" data-qid="ccaf-ci-disable-noisy-categories" data-d="d4" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q53</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-ci-disable-noisy-categories-q">Analysis shows very different false positive rates: security/correctness 8%, performance 18%, style/naming 52%, documentation 48%. Developer surveys show growing distrust: many dismiss findings without reading them because "half are wrong," and the noisy categories are undermining confidence in the accurate ones. What approach best restores developer trust?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-ci-disable-noisy-categories-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Temporarily disable the high false-positive categories (style, naming, docs) and improve their prompts offline.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Apply a uniform strictness reduction across every category to bring the overall false-positive rate down to an acceptable level.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Keep all categories but show a confidence score on each finding.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add few-shot examples of false positives to every category's prompt, and keep all categories posting while those take effect.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">Trust recovers when what developers see is reliable. Pausing the noisy categories lets the high-precision findings stand on their own while you fix the rest. A uniform reduction weakens the good categories, and keeping noisy categories live, with or without scores, keeps teaching developers to ignore the bot.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-ci-inline-reasoning" data-qid="ccaf-ci-inline-reasoning" data-d="d4" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q54</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-ci-inline-reasoning-q">Your automated code review averages 15 findings per PR with a 40% false positive rate. The bottleneck is investigation time: developers must click into each finding to read Claude's reasoning before deciding. Your <code>CLAUDE.md</code> already has comprehensive rules, and stakeholders have rejected filtering findings before developers see them. What change would best address the investigation-time bottleneck?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-ci-inline-reasoning-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Categorize findings as "blocking issues" versus "suggestions," each with its own tiered review requirements.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add a post-processor that compares findings with historical false-positive signatures and suppresses the matches automatically.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Require Claude to put its reasoning and a confidence assessment inline with each finding, so developers can decide without clicking through.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Configure Claude to surface only findings it rates as high confidence, filtering out uncertain flags before developers see them.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">The cost is the extra click to see the reasoning, so put the reasoning inline. Suppression and confidence filtering are both forms of pre-filtering, which stakeholders ruled out, and categorization doesn't remove the click.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-ci-fewshot-actionable" data-qid="ccaf-ci-fewshot-actionable" data-d="d4" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q55</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-ci-fewshot-actionable-q">Your automated reviews find valid issues, but developers say the feedback isn't actionable: findings like "complex ticket allocation logic" or "potential null pointer" don't say what to change. Adding "always include specific fix suggestions" to the prompt gives inconsistent output, sometimes detailed and sometimes vague. What prompting technique would most reliably produce consistently actionable feedback?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-ci-fewshot-actionable-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Use two passes: one prompt finds the issues and a second writes the fixes.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Refine the instructions further, with more explicit written requirements for each part of the feedback format.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Include more of the surrounding codebase in context so the model can propose fixes.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Add 3-4 few-shot examples showing the exact format: the issue, its code location, and a specific, concrete suggested fix.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">Prose instructions have already been tried and give inconsistent results. Concrete examples give the model a template to match. More prose repeats what didn't work, and extra passes or context don't define what "actionable" looks like.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-ci-prior-findings" data-qid="ccaf-ci-prior-findings" data-d="d3" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q56</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-ci-prior-findings-q">After an initial review generates 12 findings, a developer pushes new commits to address them. The re-review produces 8 findings, but 5 duplicate earlier comments on code that the new commits already fixed. What's the most effective way to eliminate redundant feedback while keeping the analysis thorough?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-ci-prior-findings-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Include the prior review findings in context and tell Claude to report only new or still-unaddressed issues.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Add a post-processing filter that removes any finding matching a previous finding's file path and issue description.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Run reviews only when the PR is first created and on its final pre-merge state, skipping every intermediate commit.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Restrict the review scope to only the files modified in the most recent push, ignoring the rest of the pull request.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">With the earlier findings in context, Claude can reason about what was actually fixed and what still stands. Text-matching filters are brittle and can hide issues that are still open, skipping commits delays feedback, and limiting scope to the latest push misses issues elsewhere in the PR.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-ci-claude-md-context" data-qid="ccaf-ci-claude-md-context" data-d="d3" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q57</span><span class="d-badge d3">D3 · Claude Code Config</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-ci-claude-md-context-q">Tests generated in CI ignore your fixture conventions (use factories in <code>tests/factories</code>; never call the network). The <code>claude -p</code> prompt lives in a pipeline file owned by another team. Where should the conventions go so that both CI runs and developers' interactive sessions apply them?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-ci-claude-md-context-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Append them to the <code>-p</code> prompt string in the pipeline file, and ask developers to paste the same text when working interactively.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Put them in <code>~/.claude/CLAUDE.md</code> on the CI runner's image.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Put them in a <code>CONVENTIONS.md</code> file at the repository root, which Claude Code loads automatically alongside the README.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">In the project <code>CLAUDE.md</code> (or <code>.claude/rules/</code>) committed to the repo, which <code>claude -p</code> also reads.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">Claude Code loads the project's <code>CLAUDE.md</code> and rules in both interactive and <code>-p</code> runs, so one committed file serves CI and developers alike. Prompt strings and runner-image user files fork the source of truth, and arbitrary markdown files aren't loaded automatically.</div></div>
+      </details>
+    </div>
+  </article>
+</section>
+
+<section class="scenario-block" aria-labelledby="scenario-6">
+  <div class="scenario-header">
+    <div class="scenario-icon" aria-hidden="true">🧾</div>
+    <h2 id="scenario-6">Scenario 6 · Structured Data Extraction</h2>
+    <span class="qcount">5 questions</span>
+  </div>
+  <p class="scenario-ctx">A pipeline that extracts structured fields from invoices and contracts using JSON schemas, validation and human review.</p>
+
+  <article class="q-card" id="ccaf-se-tool-schema" data-qid="ccaf-se-tool-schema" data-d="d4" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q58</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-se-tool-schema-q">An invoice pipeline asks Claude to "respond only with JSON." About 3% of responses fail to parse: trailing commas, missing brackets, or a sentence before the JSON. What's the most reliable fix?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-se-tool-schema-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Write "Return valid JSON only, with no other text" in capitals at both the start and the end of the extraction prompt.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Define an extraction tool with a JSON <code>input_schema</code> and require a call to it, or use structured outputs.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Parse with a lenient JSON library that strips stray prose and repairs trailing commas, retrying whenever a repair fails.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Set temperature to 0 so the formatting becomes deterministic.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">Schema-constrained output, whether through <code>tool_use</code> with an <code>input_schema</code> or native structured outputs, removes syntax errors entirely. Louder instructions and temperature 0 only make them rarer, and lenient parsing guesses at malformed output. Schema validity still doesn't guarantee correct values, so keep semantic validation.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-se-nullable-fields" data-qid="ccaf-se-nullable-fields" data-d="d4" data-answer="C">
+    <div class="q-meta"><span class="q-num">Q59</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-se-nullable-fields-q">Your extraction schema marks <code>payment_terms</code> as a required string. Many contracts have no payment terms at all, and reviewers find invented values like "Net 30" in about 20% of those contracts. What's the best fix?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-se-nullable-fields-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Add a prompt instruction saying "never invent values," while keeping <code>payment_terms</code> as a required string field.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Post-filter the results and drop any <code>payment_terms</code> equal to "Net 30," since that is the most common invented value.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Make <code>payment_terms</code> nullable (<code>["string", "null"]</code>) and not required, so the model can return null when a contract has no terms.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Retry the extraction up to three times when <code>payment_terms</code> looks generic, giving the model more chances to find it.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: C</div><div class="answer-text">A required non-null field forces the model to produce something, so it fabricates. Making the field nullable lets it report absence honestly. An instruction conflicts with the schema, filtering one value misses other inventions and drops real "Net 30" terms, and retries can't find information that isn't in the document.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-se-retry-with-feedback" data-qid="ccaf-se-retry-with-feedback" data-d="d4" data-answer="A">
+    <div class="q-meta"><span class="q-num">Q60</span><span class="d-badge d4">D4 · Prompt Engineering</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-se-retry-with-feedback-q">Semantic validation shows line items don't add up to the stated total in 6% of extractions. Failures are retried by re-sending the identical prompt, which rarely helps. Some failures come from invoices whose second page was never uploaded. What's the best approach?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-se-retry-with-feedback-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Retry with the document, the failed extraction and the specific errors; send missing-page cases to review instead.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Retry the identical request up to five times and keep whichever answer appears most often across all of those attempts.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Remove the sum check, since tool use with a JSON schema already guarantees that the extracted output is valid.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Move every extraction to a larger model, so that semantic errors like mismatched totals stop occurring in the first place.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: A</div><div class="answer-text">Retries help when the model can see what went wrong, so send back the document, the failed attempt and the specific validation errors. They can't help when the data is missing, as with the unuploaded page, so route those cases to a person. Identical retries repeat the mistake, schemas don't catch semantic errors, and a bigger model doesn't recover a missing page.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-se-stratified-review" data-qid="ccaf-se-stratified-review" data-d="d5" data-answer="D">
+    <div class="q-meta"><span class="q-num">Q61</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-se-stratified-review-q">Extraction accuracy is 97% overall, so the team proposes ending human review. A breakdown by document type shows multi-currency invoices are only 61% accurate on the total field. What should you do?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-se-stratified-review-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">End human review, since 97% beats the 95% target, and spot-check a flat random 1% of all documents each week instead.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Ask Claude to self-report a 1–10 confidence score for each invoice, and send only the ones it rates below 5 to human review.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Keep reviewing every document by hand indefinitely, until the overall accuracy figure finally climbs above 99.5%.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Route extractions to human review by calibrated field-level confidence and document type, and keep stratified sampling running by segment.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: D</div><div class="answer-text">Aggregate accuracy hides segment failures. Calibrate field-level confidence against a labeled set, route low-confidence fields and weak segments to people, and keep sampling by document type and confidence band to catch drift. A flat 1% sample rarely sees the weak segment, uncalibrated self-reported scores are unreliable, and reviewing everything forever wastes the automation.</div></div>
+      </details>
+    </div>
+  </article>
+
+  <article class="q-card" id="ccaf-se-field-provenance" data-qid="ccaf-se-field-provenance" data-d="d5" data-answer="B">
+    <div class="q-meta"><span class="q-num">Q62</span><span class="d-badge d5">D5 · Context Management</span></div>
+    <div class="q-body">
+      <p class="q-text" id="ccaf-se-field-provenance-q">Reviewers checking extracted contract fields spend most of their time hunting through 40-page documents to find where each value came from. What change most speeds up review while improving trust in the output?</p>
+      <div class="q-options" role="group" aria-labelledby="ccaf-se-field-provenance-q">
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">A</span><span class="q-opt-text">Have Claude also write a prose summary of the whole contract, so reviewers can read it first before checking the fields.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">B</span><span class="q-opt-text">Return each field with its source page and a verbatim excerpt, plus a confidence value reviewers can sort by.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">C</span><span class="q-opt-text">Show reviewers only the fields with confidence below 0.5 and hide all the others, so there is less to check per document.</span></button>
+        <button type="button" class="q-opt" aria-pressed="false"><span class="q-opt-letter">D</span><span class="q-opt-text">Ask Claude to double-check its own extraction in the same conversation, and add a note to any field it changed.</span></button>
+      </div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <details class="answer-block">
+        <summary class="reveal-btn">Show answer</summary>
+        <div class="answer-inner"><div class="answer-label">Correct answer: B</div><div class="answer-text">Provenance at field level (page and excerpt) lets a reviewer verify each value in seconds, and confidence helps them prioritize. A summary adds more reading without linking values to evidence, hiding fields based on uncalibrated confidence risks missing errors, and same-session self-checks share the original blind spots.</div></div>
+      </details>
+    </div>
+  </article>
+</section>
+
+</main>
+<footer class="sitefoot">
+  <p>Independent, community-written study guide. Not affiliated with, endorsed by or reviewed by Anthropic. All practice questions are original study material written with AI assistance: they are not real exam questions and do not predict exam content. Product details change, so when this guide and the current Anthropic docs disagree, the docs win.</p>
+  <p>Last reviewed <span data-reviewed>October 2026</span> · <a href="https://github.com/mukesh-simform/claude-certified-architect-guide/issues/new/choose">Report an error</a> · <a href="https://github.com/mukesh-simform/claude-certified-architect-guide">Source on GitHub</a> · <a href="https://anthropic.skilljar.com/">Anthropic Academy</a></p>
+</footer>
+<script src="practice.js"></script>
+</body>
+</html>
